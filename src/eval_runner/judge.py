@@ -1,224 +1,160 @@
 """
-MemoryQwen — Eval Judge
-Supports manual / heuristic / llm judging modes.
+MemoryQwen — Heuristic Judge v3
+Cautious uncertainty recognition + overclaim detection
 """
+
 from __future__ import annotations
-from dataclasses import dataclass, field
-import json, logging
-
-logger = logging.getLogger(__name__)
-
-JudgeMode = "manual"  # acceptable values: manual, heuristic, llm
+import re
+from src.eval_runner.models import EvalQuestion, EvalAnswer, EvalJudgement
 
 
-@dataclass
-class JudgeResult:
-    correctness: str = "unjudged"  # correct / partial / wrong / unjudged
-    confidence: float = 0.0
-    failure_type: str = ""
-    notes: str = ""
-    judge_mode: str = "heuristic"
-    evidence: dict = field(default_factory=dict)
-    manual_override: bool = False
+# ─── Caution Expressions ─────────────────────────────
 
-
-# ─── Rubric ──────────────────────────────────────────
-
-CORRECT_RULES = [
-    "事实正确，无严重遗漏",
-    "没有把未实现/未来计划说成已实现",
-    "没有编造 CLI/tool/功能",
-    "对 yes/no 边界题给出明确判断",
-    "没有 overclaim",
-]
-PARTIAL_RULES = [
-    "大方向正确但遗漏关键限定",
-    "引用不足或表达模糊",
-    "没有完整覆盖 expected_answer",
-]
-WRONG_RULES = [
-    "把未实现/未来计划说成已实现",
-    "编造 CLI/tool/功能",
-    "把 wrong_answer 当事实",
-    "答非所问",
-    "与 expected_answer 核心结论相反",
-    "严重 source_misread",
+CAUTIOUS_ZH = [
+    "不能确定", "无法确定", "当前资料不足", "没有足够依据",
+    "资料中未提及", "根据当前信息无法判断", "需要查看当前代码",
+    "需要查看当前文档", "不能确认已经实现", "不能把未来计划",
+    "建议以当前", "资料不足", "未明确说明", "无法从已知",
 ]
 
-NEGATION_SIGNALS = [
-    "不是", "没有", "不支持", "未实现", "不包含", "无法",
-    "不能", "不可", "不会", "不做",
+CAUTIOUS_EN = [
+    "cannot determine", "not enough information", "insufficient evidence",
+    "not mentioned in the provided sources", "i cannot confirm",
+    "needs verification", "based on the current context",
+    "it is unclear", "cannot be confirmed",
+]
+
+# ─── Overclaim Patterns — always wrong regardless ────
+
+OVERCLAIM_PATTERNS = [
+    # Web UI / GUI
+    (r"v0\.1.*已.*(实现|支持|有).*(Web\s*UI|webui|网页|浏览器)", "WebUI overclaim"),
+    # PDF / DOCX
+    (r"v0\.1.*(支持|可.*导入|可.*ingest).*(PDF|DOCX|\.pdf|\.docx)", "PDF overclaim"),
+    # embedding / vector
+    (r"v0\.1.*(支持|有).*(embedding|向量|vector\s*DB|vector\s*database)", "embedding overclaim"),
+    # Internet
+    (r"v0\.1.*(支持|有|可).*(联网|Internet|网络搜索|web\s*search)", "Internet overclaim"),
+    # Fake CLI
+    (r"(cli\s*webui|cli\s*pdf\s*ingest|cli\s*daemon\s*start|cli\s*model\s*unload|cli\s*crawler)", "Fake CLI"),
+    # Archive = crawler
+    (r"source\s*archive.*(自动.*抓|自动.*爬|是.*crawler|crawler.*是)(?!.*(?:不是|不同|区分))", "Archive crawler confusion"),
+    # 32B default
+    (r"(?:推荐|默认|应该|适合)\s*(?:使用|用|选)?\s*(32[Bb]|70[Bb])", "32B default recommendation"),
+    (r"(32[Bb]|70[Bb])\s*(?:是|作为)\s*(?:推荐|默认)", "32B default recommendation"),
+    # wrong_answer as fact
+    (r"wrong_answer.*(事实|正确|可以作为|应该是)", "wrong_answer as fact"),
+    # LoRA / fine-tuning
+    (r"AutoModelAdapter.*(是|就是).*(LoRA|微调|fine.?tun)", "LoRA confusion"),
+    # daemon
+    (r"GPU\s*Guardian.*是.*daemon", "Guardian daemon confusion"),
 ]
 
 
-def heuristic_judge(question_text: str, expected_answer: str,
-                    actual_answer: str, expected_sources: list[str],
-                    guard_triggered: bool) -> JudgeResult:
-    """Heuristic v2 judge — multi-dimensional, not just keyword match."""
-    if not expected_answer or len(expected_answer) < 10:
-        return JudgeResult(correctness="unjudged", confidence=0.0,
-                           notes="expected_answer too short for heuristic judge")
+def judge_v3(question: EvalQuestion, answer: EvalAnswer) -> EvalJudgement:
+    """Heuristic judge v3 with cautious uncertainty recognition."""
+    a = answer.answer.lower()
+    q = question.question.lower()
+    expected = question.expected_answer.lower()
 
-    ans = actual_answer.lower()
-    exp = expected_answer.lower()
+    judgement = EvalJudgement()
+    metadata = {
+        "cautious_uncertainty_detected": False,
+        "expected_uncertainty_alignment": False,
+        "overclaim_detected": False,
+        "fake_cli_detected": False,
+        "judge_version": "heuristic_v3",
+    }
 
-    # 1. Extract key concepts from expected answer (verbs + nouns)
-    concept_hits = 0
-    concept_total = 0
-    concepts = _extract_concepts(exp)
-    for c in concepts:
-        concept_total += 1
-        if c in ans:
-            concept_hits += 1
+    # ─── Step 1: Check for overclaims (always wrong) ───
+    for pat, label in OVERCLAIM_PATTERNS:
+        if re.search(pat, a, re.IGNORECASE):
+            judgement.correctness = "wrong"
+            judgement.notes = f"Overclaim detected: {label}"
+            judgement.failure_type = "capability_overclaim"
+            metadata["overclaim_detected"] = True
+            if "cli" in label.lower():
+                metadata["fake_cli_detected"] = True
+            judgement.metadata = metadata
+            return judgement
 
-    # 2. Negation check: if expected says "没有/不支持" and answer also says "没有/不支持"
-    exp_negative = any(w in exp for w in NEGATION_SIGNALS)
-    ans_negative = any(w in ans for w in NEGATION_SIGNALS)
-    negation_match = exp_negative == ans_negative if exp_negative else True
-
-    # 3. Overclaim check
-    overclaim = False
-    overclaim_patterns = [
-        ("web ui", "不支持"),
-        ("pdf", "不支持"),
-        ("daemon", "不是"),
-        ("cli webui", "没有"),
-        ("crawler", "不支持"),
-        ("embedding", "不支持"),
-        ("lora", "不支持"),
-    ]
-    for feat, should_say in overclaim_patterns:
-        if feat in ans and should_say not in ans and "不支持" not in ans and "没有" not in ans and "未实现" not in ans:
-            # only flag if feature appears positively
-            positive = True
-            for neg in NEGATION_SIGNALS:
-                if neg in ans[ans.find(feat)-20:ans.find(feat)+len(feat)+20]:
-                    positive = False
-                    break
-            if positive:
-                overclaim = True
-
-    # 4. "不能确定/资料不足" as valid answer
-    uncertainty_signals = ["不能确定", "无法确定", "资料不足", "资料中没有", "未提及", "不确定"]
-    ans_uncertain = any(s in ans for s in uncertainty_signals)
-
-    # Decision
-    concept_ratio = concept_hits / concept_total if concept_total else 0
-
-    if overclaim:
-        return JudgeResult(correctness="wrong", confidence=0.9,
-                           failure_type="capability_overclaim",
-                           notes="Overclaim detected: positive statement about unsupported feature",
-                           evidence={"concept_ratio": concept_ratio, "overclaim": True})
-
-    if concept_ratio >= 0.6 and negation_match and not overclaim:
-        return JudgeResult(correctness="correct_candidate", confidence=concept_ratio,
-                           notes=f"Heuristic: {concept_hits}/{concept_total} concepts matched",
-                           evidence={"concept_ratio": concept_ratio, "negation_match": negation_match})
-
-    if concept_ratio >= 0.3:
-        return JudgeResult(correctness="partial_candidate", confidence=concept_ratio,
-                           notes=f"Heuristic: {concept_hits}/{concept_total} concepts — partial",
-                           evidence={"concept_ratio": concept_ratio})
-
-    if ans_uncertain:
-        return JudgeResult(correctness="partial_candidate", confidence=0.5,
-                           notes="Model expressed uncertainty — may be valid anti-hallucination",
-                           evidence={"uncertain": True})
-
-    return JudgeResult(correctness="unjudged", confidence=0.0,
-                       notes="Insufficient confidence for auto-judge",
-                       evidence={"concept_ratio": concept_ratio})
-
-
-def _extract_concepts(text: str) -> list[str]:
-    """Extract meaningful concept tokens from mixed EN+ZH text."""
-    import re
-    concepts = []
-    # Extract CJK sequences as separate tokens
-    cjk_pattern = re.compile(r'[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]+')
-    for match in cjk_pattern.finditer(text):
-        w = match.group()
-        if len(w) > 1:
-            # Split long CJK sequences into bigrams
-            for i in range(len(w)-1):
-                concepts.append(w[i:i+2])
-            if len(w) <= 4:
-                concepts.append(w)
-    # Extract space-separated English/ASCII words
-    stop = {"the","a","an","is","are","was","were","be","been","being","have","has","had",
-            "do","does","did","will","would","shall","should","may","might","must","can","could",
-            "and","or","but","if","then","else","when","where","how","what","which","who",
-            "to","of","in","for","on","with","at","by","from","as","into","through","about",
-            "this","that","these","those","it","its","they","them","their","we","our","you","your",
-            "not","no","none","nor","only","just","also","very","too","so","than","more","most",
-            "v0","v0.1","v0.2","是","的","了","在","有","和","就","不","人","都","去","也",
-            "很","到","说","要","吗","吧","呢","啊","哦","嗯","啦","呀"}
-    en_pattern = re.compile(r'[a-z0-9._-]+')
-    for match in en_pattern.finditer(text.lower()):
-        w = match.group()
-        if len(w) > 2 and w not in stop:
-            concepts.append(w)
-    # Deduplicate preserving order, limit to 20
-    seen = set()
-    result = []
-    for c in concepts:
-        if c not in seen:
-            seen.add(c)
-            result.append(c)
-            if len(result) >= 20:
+    # ─── Step 2: Detect cautious uncertainty in answer ───
+    is_cautious = False
+    for expr in CAUTIOUS_ZH:
+        if expr in a:
+            is_cautious = True
+            break
+    if not is_cautious:
+        for expr in CAUTIOUS_EN:
+            if expr in a:
+                is_cautious = True
                 break
-    return result
 
+    metadata["cautious_uncertainty_detected"] = is_cautious
 
-# ─── LLM-as-Judge ────────────────────────────────────
+    # ─── Step 3: Detect expected uncertainty ───
+    expected_uncertain_terms = [
+        "未实现", "不能确定", "资料不足", "未来计划", "v0.2",
+        "不支持", "没有", "不可用", "不推荐", "not implemented",
+        "not supported", "future", "not available",
+    ]
+    expected_is_uncertain = any(t in expected for t in expected_uncertain_terms)
+    metadata["expected_uncertainty_alignment"] = expected_is_uncertain and is_cautious
 
-LLM_JUDGE_PROMPT = """You are an evaluation judge for MemoryQwen.
+    # ─── Step 4: Match answer to expected keywords ───
+    answer_matches_expected = False
+    if expected:
+        keywords = [w for w in expected.split() if len(w) > 2]
+        hits = sum(1 for kw in keywords if kw in a)
+        answer_matches_expected = hits >= len(keywords) * 0.5 and len(keywords) > 0
 
-Review the following:
-
-Question: {question}
-Expected Answer: {expected}
-Model Answer: {actual}
-
-Rubric:
-- correct: Factually correct, no overclaim, clearly states unsupported features as unsupported.
-- partial: Generally correct but missing key details, vague, or incomplete.
-- wrong: Claims unsupported features are supported, fabricates CLI/tools, uses wrong_answer as fact, or contradicts expected answer.
-
-Return ONLY a JSON object:
-{{"correctness": "correct|partial|wrong", "confidence": 0.0-1.0, "failure_type": "hallucination|source_misread|capability_overclaim|source_miss|...", "notes": "brief", "reason": "brief"}}"""
-
-
-async def llm_judge(question_text: str, expected_answer: str,
-                    actual_answer: str, model_client) -> JudgeResult:
-    """Use an LLM to judge the answer."""
-    prompt = LLM_JUDGE_PROMPT.format(
-        question=question_text[:500],
-        expected=expected_answer[:500],
-        actual=actual_answer[:800],
-    )
-    try:
-        resp = await model_client.chat(messages=[
-            {"role": "user", "content": prompt}
-        ])
-        raw = resp.content.strip()
-        # Extract JSON
-        start = raw.find("{")
-        end = raw.rfind("}") + 1
-        if start >= 0 and end > start:
-            data = json.loads(raw[start:end])
+    # ─── Step 5: Decision ───
+    if is_cautious and expected_is_uncertain:
+        # Answer is cautious and expected answer itself says "unsupported/uncertain"
+        judgement.correctness = "correct_candidate"
+        judgement.notes = "Cautious uncertainty aligns with expected uncertainty"
+    elif is_cautious and not expected_is_uncertain:
+        # Answer is cautious but expected answer was definitive
+        if answer_matches_expected:
+            judgement.correctness = "correct_candidate"
+            judgement.notes = "Cautious answer but matches expected facts"
         else:
-            raise ValueError("No JSON found in response")
-        return JudgeResult(
-            correctness=data.get("correctness", "unjudged"),
-            confidence=float(data.get("confidence", 0.0)),
-            failure_type=data.get("failure_type", ""),
-            notes=data.get("reason", data.get("notes", "")),
-            judge_mode="llm",
-            evidence={"raw": raw[:200]},
-        )
-    except Exception as e:
-        logger.warning(f"LLM judge failed: {e}")
-        return JudgeResult(correctness="unjudged", confidence=0.0,
-                           notes=f"LLM judge error: {e}", judge_mode="llm")
+            judgement.correctness = "partial_candidate"
+            judgement.notes = "Cautious answer; missing key facts from expected answer"
+    elif answer_matches_expected:
+        judgement.correctness = "correct_candidate"
+        judgement.notes = "Answer matches expected answer keywords"
+    else:
+        judgement.correctness = "unjudged"
+
+    judgement.metadata = metadata
+    return judgement
+
+
+# ─── Re-judge existing eval results ──────────────────
+
+def rejudge_report(report_path: str) -> dict:
+    """Re-apply judge_v3 to an existing eval report JSON."""
+    from src.eval_runner.report import load_json
+    report = load_json(report_path)
+    if not report:
+        return {"error": "Report not found"}
+
+    changes = {"before_wrong": 0, "after_wrong": 0, "fixed": 0}
+    for r in report.results:
+        old = r.judgement.correctness
+        if old == "wrong":
+            changes["before_wrong"] += 1
+        new_judge = judge_v3(r.question, r.answer)
+        r.judgement = new_judge
+        if old == "wrong" and new_judge.correctness != "wrong":
+            changes["fixed"] += 1
+        if new_judge.correctness == "wrong":
+            changes["after_wrong"] += 1
+
+    from src.eval_runner.report import write_json
+    # Write back
+    out_dir = report_path.rsplit("/", 1)[0] if "/" in str(report_path) else "."
+    write_json(report, out_dir)
+    changes["report_path"] = report_path
+    return changes

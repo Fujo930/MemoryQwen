@@ -55,6 +55,7 @@ class RetrievalConfig(BaseModel):
     vector_weight: float = 0.7
     bm25_weight: float = 0.3
     min_score: float = 0.3
+    index_load_limit: int = 500
 
 
 class RetrievalKeywordConfig(BaseModel):
@@ -98,6 +99,12 @@ class AgentConfig(BaseModel):
     enable_strategy_learning: bool = True
     error_memory_recent_fallback: bool = True
     strategy_memory_recent_fallback: bool = True
+    use_retrieval_gate: bool = True
+    retrieval_gate_mode: str = "heuristic"
+    retrieval_gate_default_retrieve: bool = True
+    retrieval_gate_min_confidence: float = 0.4
+    retrieval_gate_casual_skip: bool = True
+    retrieval_gate_max_top_k: int = 5
 
 
 class IngestionConfig(BaseModel):

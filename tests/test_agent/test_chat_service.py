@@ -349,7 +349,7 @@ class TestErrorIntegration:
             session_id="s1", user_message="test", wrong_answer="w", correct_answer="c",
         ))
 
-        resp = await svc.chat(ChatRequest(session_id="s3", message="test query"))
+        resp = await svc.chat(ChatRequest(session_id="s3", message="test error query wrong_answer"))
         assert "error_store" in resp.memory_used
 
     @pytest.mark.asyncio

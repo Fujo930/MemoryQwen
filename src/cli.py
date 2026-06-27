@@ -267,6 +267,15 @@ async def cmd_chat(config, store, model_client, args):
             print(f"  risk_level:   {response.metadata.get('capability_guard_risk_level', 'low')}")
             print(f"  matched_terms: {', '.join(response.metadata.get('capability_guard_terms', []))}")
 
+        print(f"\nRetrieval Gate:")
+        print(f"  enabled:       {'yes' if response.metadata.get('retrieval_gate_enabled') else 'no'}")
+        print(f"  should_retrieve: {'yes' if response.metadata.get('retrieval_gate_should_retrieve') else 'no'}")
+        print(f"  stores:        {', '.join(response.metadata.get('retrieval_gate_stores', []))}")
+        print(f"  reason:        {response.metadata.get('retrieval_gate_reason', '')}")
+        print(f"  confidence:    {response.metadata.get('retrieval_gate_confidence', 0)}")
+        print(f"  risk_level:    {response.metadata.get('retrieval_gate_risk_level', 'low')}")
+        print(f"  skipped:       {'yes' if response.metadata.get('retrieval_skipped') else 'no'}")
+
 
 async def cmd_correct(config, store, args):
     """纠错"""

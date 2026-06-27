@@ -16,8 +16,8 @@ server:
 
 model:
   default_provider: "ollama"
-  default_light_model: "qwen2.5-coder:3b"
-  default_deep_model: "qwen2.5-coder:3b"
+  default_light_model: "qwen2.5:7b"
+  default_deep_model: "qwen2.5:7b"
   embedding_model: "BAAI/bge-small-zh-v1.5"
   embedding_device: "cpu"
   embedding_dimension: 512
@@ -57,6 +57,7 @@ memory:
     vector_weight: 0.7
     bm25_weight: 0.3
     min_score: 0.3
+    index_load_limit: 500
   retrieval_keyword:
     enabled: true
     default_top_k: 5
@@ -111,6 +112,12 @@ agent:
   enable_strategy_learning: true
   error_memory_recent_fallback: true
   strategy_memory_recent_fallback: true
+  use_retrieval_gate: true
+  retrieval_gate_mode: "heuristic"
+  retrieval_gate_default_retrieve: true
+  retrieval_gate_min_confidence: 0.4
+  retrieval_gate_casual_skip: true
+  retrieval_gate_max_top_k: 5
 
 reasoner:
   enable_multi_path: false

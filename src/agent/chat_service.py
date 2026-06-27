@@ -16,6 +16,7 @@ from src.agent.models import (
 )
 from src.agent.prompt_builder import PromptBuilder
 from src.agent.capability_guard import CapabilityBoundaryGuard, CapabilityGuardResult
+from src.agent.retrieval_gate import RetrievalGate, RetrievalDecision
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +37,7 @@ class AgentChatService:
         self.prompt_builder = PromptBuilder(
             system_prompt=config.agent.system_prompt,
         )
+        self.retrieval_gate = RetrievalGate(config)
 
     async def chat(self, request: ChatRequest) -> AgentChatResponse:
         if not request.message.strip():
@@ -65,23 +67,35 @@ class AgentChatService:
         except Exception as e:
             logger.warning("Capability guard failed: %s", e)
 
-        # 2. 检索知识、错误、策略
+        # 1.6 检索门控
+        gate_decision = RetrievalDecision(should_retrieve=True,
+            store_types=["knowledge_store", "error_store", "strategy_store"],
+            top_k=5, reason="default")
+        retrieval_skipped = False
         try:
-            retrieved = await self.retriever.search(
-                query=request.message, top_k=request.top_k,
-            )
-            memory_used.append("knowledge_store")
+            gate_decision = self.retrieval_gate.decide(request.message)
+            retrieval_skipped = gate_decision.skipped_retrieval
         except Exception as e:
-            logger.warning("Knowledge retrieval failed: %s", e)
+            logger.warning("Retrieval gate failed: %s", e)
 
-        if self.config.agent.use_error_memory:
+        # 2. 检索知识、错误、策略（受 gate 控制）
+        if "knowledge_store" in gate_decision.store_types:
+            try:
+                retrieved = await self.retriever.search(
+                    query=request.message, top_k=request.top_k,
+                )
+                memory_used.append("knowledge_store")
+            except Exception as e:
+                logger.warning("Knowledge retrieval failed: %s", e)
+
+        if self.config.agent.use_error_memory and "error_store" in gate_decision.store_types:
             try:
                 error_retrieved = await self._search_errors(request.message)
                 memory_used.append("error_store")
             except Exception as e:
                 logger.warning("Error retrieval failed: %s", e)
 
-        if self.config.agent.use_strategy_memory:
+        if self.config.agent.use_strategy_memory and "strategy_store" in gate_decision.store_types:
             try:
                 strategy_retrieved = await self._search_strategies(request.message)
                 memory_used.append("strategy_store")
@@ -169,6 +183,13 @@ class AgentChatService:
             "capability_guard_triggered": cap_guard_result.is_capability_question,
             "capability_guard_terms": cap_guard_result.matched_terms,
             "capability_guard_risk_level": cap_guard_result.risk_level,
+            "retrieval_gate_enabled": self.retrieval_gate.enabled,
+            "retrieval_gate_should_retrieve": gate_decision.should_retrieve,
+            "retrieval_gate_stores": gate_decision.store_types,
+            "retrieval_gate_reason": gate_decision.reason,
+            "retrieval_gate_confidence": gate_decision.confidence,
+            "retrieval_gate_risk_level": gate_decision.risk_level,
+            "retrieval_skipped": retrieval_skipped,
         }
         if cap_guard_result.is_capability_question:
             memory_used.append("capability_guard")

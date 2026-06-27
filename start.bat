@@ -1,54 +1,42 @@
 @echo off
-chcp 65001 >nul
-title MemoryQwen
-
-echo ========================================
-echo    MemoryQwen v0.1.0 — 启动中...
-echo ========================================
+echo ============================================
+echo   MemoryQwen v0.1.0 — Developer Preview
+echo ============================================
 echo.
+echo Requirements:
+echo   1. Ollama running (or LM Studio with OpenAI API)
+echo   2. Python 3.11+ in PATH
+echo   3. pip install -r requirements.txt (done?)
+echo.
+echo Checking environment...
 
-:: 检查 Python
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [错误] 未检测到 Python，请安装 Python 3.11+
+    echo [ERROR] Python not found. Install Python 3.11+
     pause
     exit /b 1
 )
 
-:: 检查 Python 版本
-python -c "import sys; v=sys.version_info; assert v.major==3 and v.minor>=10, '需要 Python 3.10+'"
-if %errorlevel% neq 0 (
-    echo [错误] 需要 Python 3.10+
-    pause
-    exit /b 1
-)
-
-:: 虚拟环境
-if not exist ".venv\" (
-    echo [信息] 创建虚拟环境...
-    python -m venv .venv
-)
-
-echo [信息] 激活虚拟环境...
-call .venv\Scripts\activate.bat
-
-:: 安装依赖
-echo [信息] 检查依赖...
-pip install -q -r requirements.txt 2>nul
-
-:: 启动
 echo.
-echo ========================================
-echo    启动服务: http://localhost:7860
-echo ========================================
+python -m src.cli health
+echo.
+echo ============================================
+echo   Start chatting: type a message below
+echo   Type /exit to quit
+echo ============================================
 echo.
 
-python -m src
+cd /d "%~dp0"
+:loop
+set "MSG="
+set /p "MSG=You > "
+if /i "%MSG%"=="/exit" goto end
+if "%MSG%"=="" goto loop
+echo.
+python -m src.cli chat "%MSG%"
+echo.
+goto loop
 
-if %errorlevel% neq 0 (
-    echo.
-    echo [错误] 服务异常退出，错误码: %errorlevel%
-    pause
-)
-
-call .venv\Scripts\deactivate.bat
+:end
+echo Bye!
+pause

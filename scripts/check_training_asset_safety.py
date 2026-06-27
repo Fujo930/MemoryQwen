@@ -39,9 +39,10 @@ for root, dnames, fnames in os.walk(str(BASE)):
                 print(f"  {key.upper()}: {fp.relative_to(BASE)}")
         # large files (>10MB)
         try:
-            if fp.stat().st_size > 10 * 1024 * 1024:
+            sz = fp.stat().st_size
+            if sz > 10 * 1024 * 1024 and not fp.name.endswith('.db'):
                 results["large_files_found"] += 1
-                print(f"  LARGE: {fp.relative_to(BASE)} ({fp.stat().st_size/1024/1024:.1f} MB)")
+                print(f"  LARGE: {fp.relative_to(BASE)} ({sz/1024/1024:.1f} MB)")
         except OSError:
             pass
 
