@@ -1,5 +1,7 @@
 # MemoryQwen v0.1 — Developer Preview
 
+🌐 [English](README_EN.md) | **中文**
+
 **本地 AI agent，你的家用 AI 工作站。**
 
 MemoryQwen 是一个运行在你自己的电脑上的 AI agent 系统。它不依赖云端，所有数据留在本地。
