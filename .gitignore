@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# User data (backup separately, not in git)
+memory/memoryqwen.db
+memory/tasks.db
+
+# Build
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Models
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth

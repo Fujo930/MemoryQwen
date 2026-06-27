@@ -1,0 +1,242 @@
+{
+  "run_id": "5f50b9e1",
+  "started_at": "2026-06-27T04:02:40.002726+00:00",
+  "completed_at": "2026-06-27T04:02:50.271001+00:00",
+  "total_questions": 5,
+  "correct": 0,
+  "partial": 0,
+  "wrong": 0,
+  "unjudged": 5,
+  "source_hit_rate": 0.0,
+  "guard_trigger_rate": 0.4,
+  "metadata": {},
+  "results": [
+    {
+      "question_id": "Q0552",
+      "topic": "01",
+      "question": "删除 inbox 里的原始文件后，MemoryQwen 是否会失去已经导入的知识？",
+      "expected_answer": "不会。已 ingest 的内容以 chunks 保存于 memory/memoryqwen.db 的 knowledge_store，原始文件归档于 memory/sources/。inbox 只是投喂入口。",
+      "expected_sources": [
+        "source_archive",
+        "memory/sources",
+        "memoryqwen.db"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "根据当前本地资料不能确定。\n\n不过，根据已有信息和相关文档，可以参考以下几点：\n\n- inbox 是临时投喂区。ingest 后文件被解析入库 [S2]、[S3]。\n- 删除 inbox 原文件不影响 chat 检索 [S4]。\n\n因此，删除 inbox 里的原始文件后，MemoryQwen 应该不会立即失去已经导入的知识，但具体机制可能依赖于 ingest 的完成情况。建议在实际操作中注意文档和相关提示。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_delete_inbox_ok.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "是否"
+        ],
+        "capability_guard_risk_level": "medium"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q8514",
+      "topic": "01",
+      "question": "只备份 memory/memoryqwen.db 够吗？",
+      "expected_answer": "不够。还需要备份 memory/sources/(原始资料归档) 和 memory/tasks.db(任务状态)。备份整个 memory/ 文件夹即可保留全部 AI 资产。",
+      "expected_sources": [
+        "source_archive",
+        "backup"
+      ],
+      "failure_type_if_wrong": "source_miss",
+      "guard_expected": false,
+      "answer": "根据备份策略和核心结论，memory/ 包含 sources(原始资料)、memoryqwen.db(记忆) 和 tasks.db(任务)。因此，仅备份 `memory/memoryqwen.db` 是不全面的，会导致丢失其他重要信息。\n\n正确做法是备份整个 `memory/` 目录，这样可以确保带走全部 AI 资产，包括知识库和任务记录。[S2] [S3] 提到备份=带走全部 AI 资产，模型可重下，memory 不能丢。[T1] 建议也强调了这一点。\n\n建议您备份 `memory/` 目录下的所有文件以确保完整性和后续使用。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_backup_memory.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q2549",
+      "topic": "01",
+      "question": "source archive 是不是全站爬虫 crawler？",
+      "expected_answer": "不是。source archive 是 ingest 后自动复制文件到 memory/sources/ 的归档功能。全站 crawler 是 v0.1 未实现功能。",
+      "expected_sources": [
+        "capability_boundary",
+        "source_archive"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\nsource archive 和 crawler 在本地资料中没有明确对应关系。source archive 通常指的是用于存储和归档源数据的机制，而 crawler 则是网络抓取工具。根据已注入的sources，我们无法确认 source archive 是否等同于全站爬虫 crawler。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "crawler",
+          "爬虫"
+        ],
+        "capability_guard_risk_level": "high"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6957",
+      "topic": "01",
+      "question": "删除 inbox 原文件后 chat 还能检索吗？为什么？",
+      "expected_answer": "能。ingest 后资料已存入 memoryqwen.db(切片)和 memory/sources/(原文)。inbox 是临时投喂区。",
+      "expected_sources": [
+        "source_archive"
+      ],
+      "failure_type_if_wrong": "source_miss",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料片段，删除 inbox 原文件后依然可以进行 chat 检索。原因如下：\n\n1. **ingest 后的处理**：在 ingest 之后，MemoryQwen 将文件解析并存入 memory/sources 和 memoryqwen.db 中。\n2. **不影响检索**：即使删除了 inbox 中的原文件，已摄入的内容依然存在于 memory/sources 和 memoryqwen.db 中，因此不会影响 chat 检索。\n\n总结来说，在进行 ingest 后，MemoryQwen 会确保资料被正确存储并归档，从而保证即便删除了 inbox 中的原始文件，依旧可以通过 chat 进行检索。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_delete_inbox_ok.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q8842",
+      "topic": "01",
+      "question": "备份 memory/ 代表什么？",
+      "expected_answer": "备份 memory/ = 带走全部 AI 资产：SQLite记忆(memoryqwen.db)、任务状态(tasks.db)、已导入原始资料(sources/)。模型可重下，记忆不能丢。",
+      "expected_sources": [
+        "source_archive",
+        "backup"
+      ],
+      "failure_type_if_wrong": "source_miss",
+      "guard_expected": false,
+      "answer": "备份 `memory/` 代表备份包含所有 AI 资产的文件夹，包括 `sources(原文)`、`memoryqwen.db(记忆)` 和 `tasks.db(任务)`。这确保了即使模型需要重新下载或更新，您的记忆和任务记录也不会丢失。[S2]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_backup_memory.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    }
+  ]
+}

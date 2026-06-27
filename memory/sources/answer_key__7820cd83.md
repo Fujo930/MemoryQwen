@@ -1,0 +1,11 @@
+# 07_source_archive_backup Answer Key
+
+- inbox 是投喂入口: inbox 是临时投喂区。ingest 后文件被解析入库。用户可清理 inbox，不影响已归档资料。
+- memory/sources 是原始资料归档: ingest 成功后原始文件自动复制到 memory/sources/。保留相对目录结构。source_hash 去重。
+- memory/memoryqwen.db 核心数据库: 存储 knowledge_store, chat_memory, error_store, strategy_store。所有消化后的记忆都在这里。
+- memory/tasks.db 任务状态: SQLiteTaskStore 持久化任务状态。包含 task_records 和 task_transitions 表。
+- source_hash 规则: ingest 时计算整个原始文件的 sha256。存储在 chunk metadata 中。用于归档去重。
+- archive_path 和 archived metadata: 每个 chunk metadata 包含 archive_path, archived(bool), source_hash。CLI memory stats 显示 archived_files。
+- 删除 inbox 不影响检索: ingest 后资料已存入 memory/sources 和 memoryqwen.db。删除 inbox 原文件不影响 chat 检索。
+- 备份 memory/ 的意义: memory/ 包含 sources(原文), memoryqwen.db(记忆), tasks.db(任务)。备份=带走全部 AI 资产。模型可重下，memory 不能丢。
+- 未来 rebuild from sources: v0.2 计划：从 memory/sources 重建 knowledge_store。数据库损坏时可从归档恢复。当前不实现。

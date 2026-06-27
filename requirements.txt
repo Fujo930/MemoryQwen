@@ -1,0 +1,43 @@
+# MemoryQwen 依赖
+# 核心
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+PyYAML>=6.0
+
+# 模型通信
+openai>=1.12.0
+
+# 记忆存储
+chromadb>=0.5.0
+SQLAlchemy>=2.0.25
+aiosqlite>=0.19.0
+
+# Embedding
+tiktoken>=0.6.0
+
+# 文档解析
+pypdf>=4.0.0
+python-docx>=1.1.0
+markdown>=3.5.0
+beautifulsoup4>=4.12.0
+
+# 文件监听
+watchdog>=4.0.0
+
+# 系统监控
+psutil>=5.9.0
+
+# 工具
+aiohttp>=3.9.0
+httpx>=0.27.0
+
+# 测试
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+pytest-cov>=4.1.0
+
+# 前端
+jinja2>=3.1.0
+python-multipart>=0.0.6

@@ -1,0 +1,169 @@
+# MemoryQwen 全局配置
+system:
+  name: "MemoryQwen"
+  version: "0.1.0"
+  data_dir: "./memory"
+  inbox_dir: "./inbox"
+  workspace_dir: "./workspace"
+  log_level: "INFO"
+  log_file: "./logs/memoryqwen.log"
+
+server:
+  host: "127.0.0.1"
+  port: 7860
+  reload: false
+  cors_origins: ["http://localhost:7860"]
+
+model:
+  default_provider: "ollama"
+  default_light_model: "qwen2.5-coder:3b"
+  default_deep_model: "qwen2.5-coder:3b"
+  embedding_model: "BAAI/bge-small-zh-v1.5"
+  embedding_device: "cpu"
+  embedding_dimension: 512
+  providers:
+    ollama:
+      base_url: "http://localhost:11434"
+      api_key: ""
+    lm_studio:
+      base_url: "http://localhost:1234"
+      api_key: ""
+    llamacpp:
+      base_url: "http://localhost:8080"
+      api_key: ""
+    openai:
+      base_url: ""
+      api_key: ""
+  profiles_dir: "./config/model_profiles"
+
+model_client:
+  provider: "ollama"
+  base_url: "http://localhost:11434"
+  api_key: ""
+  model: "qwen2.5:7b"                              # 默认推荐 7B；低资源可改 qwen2.5-coder:3b；deep mode 候选 qwen2.5:14b
+  timeout: 60
+  max_retries: 3
+  default_temperature: 0.7
+  default_max_tokens: 4096
+
+memory_store:
+  backend: sqlite
+  database_path: "memory/memoryqwen.db"
+
+memory:
+  retrieval:
+    top_k: 5
+    rrf_k: 60
+    vector_weight: 0.7
+    bm25_weight: 0.3
+    min_score: 0.3
+  retrieval_keyword:
+    enabled: true
+    default_top_k: 5
+    min_score: 0.0
+    tokenizer: "simple"
+  chunking:
+    max_tokens: 512
+    overlap_tokens: 32
+    strategy: "semantic"
+  chat:
+    max_history: 50
+    summary_interval: 20
+    summary_model: "light"
+
+ingestion:
+  inbox_path: "inbox"
+  supported_extensions:
+    - ".txt"
+    - ".md"
+  recursive: true
+  chunk_size: 800
+  chunk_overlap: 120
+  skip_hidden_files: true
+  archive_sources: true
+  source_archive_dir: "memory/sources"
+  watcher_enabled: false
+  watch_delay: 5
+  auto_index: true
+
+model_profile:
+  enabled: true
+  profile_path: "config/model_profiles/qwen_7b.yaml"
+  auto_detect: false
+
+agent:
+  system_prompt: |
+    你是 MemoryQwen，由用户部署在本地电脑上的个人 AI 助手。你不是 OpenAI、Google 或任何云服务的产品。
+
+    规则：
+    1. 你是 MemoryQwen，绝对不要自称 ChatGPT、OpenAI、Claude、Gemini 等。
+    2. 优先使用用户消息中提供的「本地资料片段」回答问题。
+    3. 如果资料不足，请如实说明不确定，不要编造。
+    4. 引用来源时使用 [S1]、[S2] 编号。
+    5. 使用中文回答。
+    6. 回答简洁清晰，直接给出有用信息。
+  default_top_k: 5
+  max_recent_messages: 10
+  cite_sources: true
+  save_chat_memory: true
+  use_error_memory: true
+  use_strategy_memory: true
+  enable_strategy_learning: true
+  error_memory_recent_fallback: true
+  strategy_memory_recent_fallback: true
+
+reasoner:
+  enable_multi_path: false
+  max_paths: 3
+  enable_verifier: true
+  task_classification: true
+  deep_model_triggers:
+    - "math"
+    - "reasoning"
+    - "planning"
+    - "analysis"
+    - "debug"
+    - "code"
+
+gpu_guardian:
+  enabled: true
+  provider: "nvidia_smi"
+  light_yield_vram_ratio: 0.55
+  full_yield_vram_ratio: 0.85
+  game_mode_gpu_util_percent: 70
+  game_process_names:
+    - "Cyberpunk2077.exe"
+    - "cs2.exe"
+    - "FortniteClient-Win64-Shipping.exe"
+    - "Minecraft.exe"
+    - "GenshinImpact.exe"
+    - "StarRail.exe"
+    - "eldenring.exe"
+  creative_process_names:
+    - "blender.exe"
+    - "resolve.exe"
+    - "Adobe Premiere Pro.exe"
+    - "AfterFX.exe"
+    - "UnrealEditor.exe"
+    - "Unity.exe"
+    - "obs64.exe"
+  full_yield_process_names: []
+
+task_runtime:
+  enabled: true
+  store: "sqlite"
+  database_path: "memory/tasks.db"
+  auto_resume_on_normal: false
+
+job_runner:
+  enabled: true
+  check_guardian_on_checkpoint: true
+
+backup:
+  auto_backup: false
+  backup_dir: "./backup"
+  backup_interval: 24
+  keep_backups: 7
+  include_dirs:
+    - "./memory"
+    - "./config"

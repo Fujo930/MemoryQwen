@@ -1,0 +1,220 @@
+{
+  "run_id": "f3558de8",
+  "started_at": "2026-06-27T03:33:28.441899+00:00",
+  "completed_at": "2026-06-27T03:33:41.130203+00:00",
+  "total_questions": 5,
+  "correct": 0,
+  "partial": 0,
+  "wrong": 1,
+  "unjudged": 4,
+  "source_hit_rate": 0.0,
+  "guard_trigger_rate": 0.0,
+  "metadata": {},
+  "results": [
+    {
+      "question_id": "Q0247",
+      "topic": "source_archive",
+      "question": "关于source_archive，第Q001题的验证问题是什么？",
+      "expected_answer": "expected-source_archive-1",
+      "expected_sources": [],
+      "failure_type_if_wrong": "",
+      "guard_expected": null,
+      "answer": "您提到的问题与 `source_archive` 有关，但当前提供的本地资料片段中并没有直接提及 `source_archive` 的内容。根据您的描述，资料主要集中在 MemoryQwen 的功能、架构和一些策略指导等方面。\n\n如果您能提供更多的相关信息或具体章节的内容，我可以帮助您查找并解答关于 `source_archive` 的相关验证问题。目前无法直接给出答案，请您提供更多细节以便于准确回答。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "",
+        "failure_type": "hallucination",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q3712",
+      "topic": "source_archive",
+      "question": "关于source_archive，第Q002题的验证问题是什么？",
+      "expected_answer": "expected-source_archive-2",
+      "expected_sources": [],
+      "failure_type_if_wrong": "",
+      "guard_expected": null,
+      "answer": "关于 source_archive 的第 Q002 题，根据提供的本地资料片段，没有直接提及具体的验证问题。不过，可以参考以下信息来推测：\n\n- MemoryQwen 支持 .md 和 .txt 文件导入（[S5]）。\n- memory_system.md 中提到的知识存储包括 knowledge_store、chat_memory、error_store 和 strategy_store（[S2]）。\n\n如果 Q002 题与 source_archive 有关，可能涉及这些知识存储或记忆系统的验证问题。例如：\n\n1. 可能是关于 memory_system 的不同存储类型（如 knowledge_store vs chat_memory）之间的区别。\n2. 或者是关于 error_store 中的 wrong_answer 是反例还是事实的问题。\n\n具体验证问题需要更多上下文信息，但可以先从这些方面着手思考。如果有更多信息或具体的背景，请进一步说明。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q4353",
+      "topic": "source_archive",
+      "question": "关于source_archive，第Q003题的验证问题是什么？",
+      "expected_answer": "expected-source_archive-3",
+      "expected_sources": [],
+      "failure_type_if_wrong": "",
+      "guard_expected": null,
+      "answer": "关于 `source_archive` 的第 Q003 题验证问题，您指的是在 `[S4]` 资料片段中提到的一系列陷阱问题中的第 3 个问题吗？\n\n陷阱问题如下：\n3. 陷阱：MemoryQwen 是否支持14B deep mode？（答案参考 source）\n\n请确认您的具体问题是关于这个陷阱问题的验证，还是有其他特定的问题需要解答。如果是想了解 `source_archive` 的相关验证问题，请提供更多信息或直接提问。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q9837",
+      "topic": "source_archive",
+      "question": "关于source_archive，第Q004题的验证问题是什么？",
+      "expected_answer": "expected-source_archive-4",
+      "expected_sources": [],
+      "failure_type_if_wrong": "",
+      "guard_expected": null,
+      "answer": "关于 `source_archive` 的第 Q004 题验证问题，您指的是MemoryQwen v0.1的功能边界部分吗？根据提供的资料片段，没有直接提到 `source_archive` 相关的具体验证问题。不过，从最近对话中可以看到，这类问题通常涉及 MemoryQwen 的功能、支持的文件格式以及系统的行为。\n\n建议您可以关注以下几点进行验证：\n1. **MemoryQwen v0.1 是否有 Web UI 和 CLI**：[S3] 提到过这一点。\n2. **MemoryQwen 支持哪些文件格式**：[S4] 中提到了 `.txt` 和 `.md` 格式的支持，但未提及 `source_archive` 的具体支持情况。\n\n如果需要更详细的验证问题或具体的测试方法，请提供更多信息或直接参考相关文档和资料片段。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5873",
+      "topic": "source_archive",
+      "question": "关于source_archive，第Q005题的验证问题是什么？",
+      "expected_answer": "expected-source_archive-5",
+      "expected_sources": [],
+      "failure_type_if_wrong": "",
+      "guard_expected": null,
+      "answer": "关于 `source_archive` 的第 Q005 题的验证问题，您指的是在训练资料中提到的问题吗？根据当前提供的本地资料片段，没有直接对应 `source_archive` 以及编号为 Q005 的具体验证问题。不过，从您给出的信息来看：\n\n1. 陷阱：MemoryQwen 是否支持3B 基础可运行？\n2. 陷阱：MemoryQwen 是否支持7B 推荐常驻？\n3. 陷阱：MemoryQwen 是否支持14B deep mode？\n4. 陷阱：MemoryQwen 是否支持32B+ 实验模式？\n\n这些是关于模型容量的问题。如果 `source_archive` 是指这些问题中的某个，那么可能需要更具体的信息来定位。\n\n对于您提到的 `source_archive` 和 Q005 题的具体问题，建议直接参考对应文件或资料片段以获取准确信息。如果有具体的选项或内容描述，请提供详细信息以便更好地帮助您确认。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low"
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    }
+  ]
+}
