@@ -157,18 +157,21 @@ class AgentChatService:
             for s in strategy_retrieved
         ]
 
-        # 4.4. TDR-v1 routing
-        routing_decision = None
+        # 4.4. ACE-v1 cognitive exoskeleton decision
+        ace_decision = None
         try:
-            from src.routing import TokenDifficultyRouter
-            tdr = TokenDifficultyRouter()
-            routing_decision = tdr.route(
+            from src.ace import ACEController
+            ace_ctrl = ACEController()
+            ace_decision = ace_ctrl.decide(
                 request.message,
+                deep_requested=getattr(request, "use_deep", False),
+                web_requested=getattr(request, "use_web", False),
+                web_enabled=self.config.web.enabled if hasattr(self.config, "web") and self.config.web else False,
                 capability_detected=bool(capability_registry_context),
                 web_need_detected=getattr(request, "use_web", False),
             )
         except Exception as e:
-            logger.warning("TDR routing failed: %s", e)
+            logger.warning("ACE controller failed: %s", e)
 
         # 4.5. 网页查询 (v0.1.5, only if --web + web signal)
         web_sources = []
@@ -208,6 +211,12 @@ class AgentChatService:
                 logger.warning("Web query failed: %s", e)
                 web_meta["error"] = str(e)
 
+        # Build ACE context from decision
+        ace_prompt_context = None
+        if ace_decision:
+            from src.ace import build_ace_prompt_injection
+            ace_prompt_context = build_ace_prompt_injection(ace_decision)
+
         # 5. 构建 prompt
         messages = self.prompt_builder.build(
             user_message=request.message,
@@ -215,14 +224,13 @@ class AgentChatService:
             recent_chat=recent_chat,
             error_cases=error_cases,
             strategy_cases=strategy_cases,
-            max_error_context_chars=self.config.agent.max_error_context_chars,
-            max_strategy_context_chars=self.config.agent.max_strategy_context_chars,
             capability_guard_result=cap_guard_result if cap_guard_result.is_capability_question else None,
+            ace_context=ace_prompt_context,
             web_sources=web_sources if web_sources else None,
             capability_registry_context=capability_registry_context,
         )
 
-        # 6. 调用模型 (with deep mode routing)
+        # 6. 调用模型
         actual_model_client = self.model_client
         if getattr(request, "use_deep", False) and self.config.agent.deep_mode_enabled:
             deep_model = self.config.agent.deep_mode_model
@@ -280,11 +288,33 @@ class AgentChatService:
             "retrieval_skipped": retrieval_skipped,
             "web": web_meta,
             "routing": {
-                "route": routing_decision.route if routing_decision else "shallow",
-                "deep_suggested": routing_decision.deep_suggested if routing_decision else False,
-                "judge_review_recommended": routing_decision.judge_review_recommended if routing_decision else False,
-                "manual_review_required": routing_decision.manual_review_required if routing_decision else False,
-            } if routing_decision else {},
+                "route": ace_decision.route if ace_decision else "shallow",
+                "deep_suggested": ace_decision.model_plan.deep_suggested if ace_decision else False,
+                "judge_review_recommended": ace_decision.review_plan.judge_review_recommended if ace_decision else False,
+                "manual_review_required": ace_decision.review_plan.manual_review_required if ace_decision else False,
+            } if ace_decision else {},
+            "ace": {
+                "enabled": True,
+                "route": ace_decision.route if ace_decision else "unknown",
+                "context_plan": {
+                    "use_capability_registry": ace_decision.context_plan.use_capability_registry if ace_decision else False,
+                    "use_memory_retrieval": ace_decision.context_plan.use_memory_retrieval if ace_decision else False,
+                    "use_web_context": ace_decision.context_plan.use_web_context if ace_decision else False,
+                    "use_guard": ace_decision.context_plan.use_guard if ace_decision else True,
+                    "include_deep_mode_hint": ace_decision.context_plan.include_deep_mode_hint if ace_decision else False,
+                } if ace_decision else {},
+                "model_plan": {
+                    "requested_mode": ace_decision.model_plan.requested_mode if ace_decision else "default",
+                    "selected_model_role": ace_decision.model_plan.selected_model_role if ace_decision else "daily",
+                    "selected_model": ace_decision.model_plan.selected_model if ace_decision else None,
+                    "deep_suggested": ace_decision.model_plan.deep_suggested if ace_decision else False,
+                    "auto_escalated": ace_decision.model_plan.auto_escalated if ace_decision else False,
+                } if ace_decision else {},
+                "review_plan": {
+                    "judge_review_recommended": ace_decision.review_plan.judge_review_recommended if ace_decision else False,
+                    "manual_review_required": ace_decision.review_plan.manual_review_required if ace_decision else False,
+                } if ace_decision else {},
+            } if ace_decision else {},
             "model_mode": "deep" if getattr(request, "use_deep", False) else "light",
             "deep_model_requested": getattr(request, "use_deep", False),
         }

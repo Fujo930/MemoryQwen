@@ -46,6 +46,8 @@ class PromptBuilder:
         capability_guard_result=None,
         web_sources: list | None = None,
         capability_registry_context: str | None = None,
+        ace_context: str | None = None,
+        deep_mode_hint: str | None = None,
     ) -> list[dict]:
         """构建 OpenAI-compatible messages list
 
@@ -73,6 +75,10 @@ class PromptBuilder:
 
         # 0.5. v0.1.5 capability reminder (concise)
         user_content += "【v0.1.5】支持 web search/fetch/ask 联网查询。[W]引用网页,[S]引用本地。\n"
+
+        # 0.6. ACE cognitive exoskeleton context (v0.2)
+        if ace_context:
+            user_content += ace_context + "\n"
 
         # 0.7. 最近对话 — MUST come after capability baseline but BEFORE local sources
         # This prevents retrieval results from crowding out conversation context

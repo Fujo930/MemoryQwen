@@ -130,6 +130,12 @@ def build_parser() -> argparse.ArgumentParser:
     route_in = route_sub.add_parser("inspect", help="检测问题难度")
     route_in.add_argument("question", help="要检测的问题")
 
+    # ace (v0.2 ACE-v1)
+    ace = sub.add_parser("ace", help="ACE-v1 认知外骨骼决策")
+    ace_sub = ace.add_subparsers(dest="ace_cmd", required=True)
+    ace_in = ace_sub.add_parser("inspect", help="查看完整认知计划")
+    ace_in.add_argument("question", help="要分析的问题")
+
     # eval
     ev = sub.add_parser("eval", help="验证评测")
     ev_sub = ev.add_subparsers(dest="eval_cmd", required=False)
@@ -852,6 +858,8 @@ async def main():
             await cmd_capability(args)
         elif args.command == "route":
             cmd_route(args)
+        elif args.command == "ace":
+            cmd_ace(args)
     finally:
         await store.close()
 
@@ -876,6 +884,45 @@ def cmd_route(args):
     for field, val in vars(decision.risk_scores).items():
         print(f"  {field}: {val:.2f}")
     print(f"\nReason: {decision.reason}")
+
+
+def cmd_ace(args):
+    """ACE-v1 cognitive exoskeleton inspect CLI."""
+    if args.ace_cmd != "inspect":
+        print("Usage: python -m src.cli ace inspect <question>")
+        return
+    from src.ace import ACEController
+    ctrl = ACEController()
+    decision = ctrl.decide(args.question)
+
+    print(f"ACE Decision")
+    print(f"Route: {decision.route}\n")
+
+    cp = decision.context_plan
+    print("Context plan:")
+    print(f"  - capability registry: {'yes' if cp.use_capability_registry else 'no'}")
+    print(f"  - memory retrieval: {'yes' if cp.use_memory_retrieval else 'no'}")
+    print(f"  - web context: {'yes' if cp.use_web_context else 'no'}")
+    print(f"  - guard: {'yes' if cp.use_guard else 'no'}")
+    print(f"  - deep mode hint: {'yes' if cp.include_deep_mode_hint else 'no'}\n")
+
+    mp = decision.model_plan
+    print("Model plan:")
+    print(f"  - requested mode: {mp.requested_mode}")
+    print(f"  - selected role: {mp.selected_model_role}")
+    print(f"  - selected model: {mp.selected_model}")
+    print(f"  - deep suggested: {mp.deep_suggested}")
+    print(f"  - auto escalated: {mp.auto_escalated}\n")
+
+    rp = decision.review_plan
+    print("Review plan:")
+    print(f"  - judge review: {rp.judge_review_recommended}")
+    print(f"  - manual review: {rp.manual_review_required}")
+
+    if decision.reasons:
+        print("\nReasons:")
+        for r in decision.reasons:
+            print(f"  - {r}")
 
 
 if __name__ == "__main__":
