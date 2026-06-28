@@ -35,13 +35,12 @@ SOURCE_ROOT_FILES = [
 DEVPACK_EXTRA = [
     "memory/sources/",
     "training_logs/",
+    "megatrain/",
     "docs/v0.1_checkpoint.md",
     "docs/release_notes_v0.1.0-dev.md",
 ]
-DEVPACK_OPTIONAL = [
-    "memory/memoryqwen.db",
-    "memory/tasks.db",
-]
+# DB files intentionally excluded from devpack — devpack is training asset pack, not runtime DB
+# DO NOT add memory/memoryqwen.db or memory/tasks.db here
 
 
 def should_exclude(path: str) -> bool:
@@ -106,9 +105,6 @@ print(f"Time: {datetime.now(timezone.utc).isoformat()}")
 source_paths = list(SOURCE_DIRS) + SOURCE_ROOT_FILES
 
 devpack_paths = list(SOURCE_DIRS) + SOURCE_ROOT_FILES + DEVPACK_EXTRA
-for opt in DEVPACK_OPTIONAL:
-    if (BASE / opt).exists():
-        devpack_paths.append(opt)
 
 result_source = build_zip(f"MemoryQwen-{VERSION}-source.zip", source_paths, "Source Package")
 result_devpack = build_zip(f"MemoryQwen-{VERSION}-devpack.zip", devpack_paths, "DevPack")

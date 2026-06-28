@@ -100,3 +100,16 @@ python -m src.cli profile show                  # 显示当前 profile
 python -m src.cli profile validate <path>       # 校验 profile 文件
 python -m src.cli profile eval --model-id qwen-test --dry-run  # 预览评估用例
 ```
+
+
+## Web Commands (v0.1.5)
+
+| Command | Writes memory | Description |
+|---------|:------------:|-------------|
+| `web search "query"` | no | Search the web |
+| `web fetch "url"` | no | Fetch a single page |
+| `web ask "question"` | no | Search + fetch + answer |
+| `web ingest "url"` | **yes** | Fetch and save to memory |
+| `chat "q" --web` | no | Chat with temporary web context |
+
+Use `--web` flag with chat to enable temporary web context.

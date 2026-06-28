@@ -1,0 +1,2547 @@
+{
+  "run_id": "4b554eac",
+  "started_at": "2026-06-28T01:21:18.218352+00:00",
+  "completed_at": "2026-06-28T01:22:42.915053+00:00",
+  "total_questions": 50,
+  "correct": 0,
+  "partial": 0,
+  "wrong": 15,
+  "unjudged": 35,
+  "source_hit_rate": 0.0,
+  "guard_trigger_rate": 0.32,
+  "metadata": {},
+  "results": [
+    {
+      "question_id": "Q5605",
+      "topic": "capability",
+      "question": "crawler 有吗？",
+      "expected_answer": "没有。source archive 是本地文件归档。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\n在提供的资料片段中没有明确提到 MemoryQwen v0.1 是否包含 crawler 相关功能。因此无法判断 MemoryQwen 是否支持 crawler。建议您查阅相关文档或源代码以获取更多信息。[T1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\strategies.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "crawler"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:crawler",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Cautious uncertainty aligns with expected uncertainty",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q9946",
+      "topic": "judge",
+      "question": "Judge v4 不能处理什么？",
+      "expected_answer": "复杂双重否定、temporal shift。需 v5/LLM。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料片段，MemoryQwen 并未直接提及 Judge v4 相关的信息。但是从 `error_store` 中的 `wrong_answer 是反例` 的描述来看，我们可以推断：\n\n- **Judge v4** 可能是一个或多个模型版本，它可能会将 `wrong_answer` 当作正确信息来复述。\n- 在与 Judge v4 交互时，需要用明确的语言告诉它哪些是错误示例 [S1]。\n\n具体来说，当用户询问 Judge v4 不能处理什么问题时，可以理解为模型在生成答案时可能存在的局限性：\n\n- **判断能力**：Judge v4 可能无法准确识别 `wrong_answer` 作为反例，从而将它们误认为正确信息。\n- **知识更新**：如果提供的资料不完整或有错误，Judge v4 可能会基于这些错误信息生成答案。\n\n建议在与 Judge v4 交互时，使用明确的 prompt 来指导它识别哪些是正确的，哪些是反例。这样可以减少错误信息被误用的可能性 [S1]。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\05_correction_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: wrong_answer as fact",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q5210",
+      "topic": "project",
+      "question": "v0.1.2 相对 v0.1.1 改进什么？",
+      "expected_answer": "Smart Retrieval Gate。不再每次都搜全部 store。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据当前本地资料不能确定。MemoryQwen 的具体改进内容可能包含在更新日志或其他文档中，但这些资料未被提供在此片段内。建议查看相关版本的更新日志或详细记录以获取准确信息。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\01_self_knowledge\\source_why_not_lora.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "v0.1"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q9946",
+      "topic": "judge",
+      "question": "Judge v4 不能处理什么？",
+      "expected_answer": "复杂双重否定、temporal shift。需 v5/LLM。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料片段，我们可以推断：\n\n- **Judge v4** 可能会将 `wrong_answer` 当作正确信息来复述。因此，在与 Judge v4 交互时，需要明确告诉它哪些是错误示例 [S1]。\n\n具体来说：\n- **判断能力**：Judge v4 可能无法准确识别 `wrong_answer` 作为反例，从而将它们误认为正确信息。\n- **知识更新**：如果提供的资料不完整或有错误，Judge v4 可能会基于这些错误信息生成答案。\n\n建议在与 Judge v4 交互时使用明确的语言来指导它区分正确和错误的信息。这样可以减少错误信息被误用的可能性 [S1]。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\05_correction_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: wrong_answer as fact",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q6847",
+      "topic": "trap",
+      "question": "wrong_answer 能当事实用吗？",
+      "expected_answer": "不能。wrong_answer 是反例。只能用 correct_answer。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "不能，wrong_answer 通常是指错误的答案或信息，并不适合当作事实使用。正确的信息和事实应当来自可靠来源。[S1]",
+      "sources": [],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 0,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "error_strategy_question",
+        "retrieval_gate_confidence": 0.9,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: wrong_answer as fact",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q1491",
+      "topic": "source_archive",
+      "question": "inbox 删除后 AI 会失忆吗？",
+      "expected_answer": "不会。数据在 memoryqwen.db 和 sources 中。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "不会，删除 inbox 中的原始文件不会影响 chat 检索能力。ingest 后资料已存入 `memoryqwen.db` 和 `memory/sources/` 目录中，这些地方存储了实际用于检索的知识内容。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_delete_inbox_ok.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Answer matches expected answer keywords",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q8150",
+      "topic": "trap",
+      "question": "source archive 会爬虫吗？",
+      "expected_answer": "不会。source archive 是本地文件归档。不是 web crawler。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\n不过，根据已有的信息，MemoryQwen v0.1 没有全站网页爬虫功能（crawler），Source Archive 只是本地文件归档。因此可以推测 source archive 不具备爬虫能力。[S2]、[S3] 和 [S4] 中提到的相关内容未涉及此功能的具体实现情况，但可以根据现有资料推断 MemoryQwen v0.1 没有 crawler 功能。[S1] 中也明确指出没有 crawler 是 v0.1 未实现的功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\14_validation_questions_expanded\\01_source_archive_80.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "爬虫"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:爬虫",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: Archive crawler confusion",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q1563",
+      "topic": "retrieval_gate",
+      "question": "\"支持 PDF 吗？\"会触发什么级别的检索？",
+      "expected_answer": "high 级别。检索 knowledge+error+strategy 全部 store。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\n不过，在 MemoryQwen v0.1 中，并未实现对 PDF 的支持。请参考[S4]中提到的未来计划功能列表，PDF 解析功能将在后续版本中添加。如果您有关于 .md 和 .txt 文件的支持问题，请告知，我可以提供相关信息。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\04_gpu_guardian.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "PDF",
+          "pdf"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:PDF",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: PDF overclaim",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q7036",
+      "topic": "trap",
+      "question": "32B 是默认推荐吗？",
+      "expected_answer": "不是。32B 不推荐默认。仅实验模式。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据提供的本地资料片段信息，qwen2.5:7b 是 v0.1 默认推荐的模型类型，但并未提到 32B 的具体信息。因此，目前没有足够的信息来判断 32B 是否为默认推荐。\n\n如果您有关于 qwen2.5 系列的具体版本或配置问题，可以提供更多资料，我会尽力帮助解答。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\source_qwen25_7b_default.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q0588",
+      "topic": "capability",
+      "question": "PDF ingestion 支持吗？",
+      "expected_answer": "不支持。只支持 .txt .md。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\n注：本地资料中明确指出 v0.1 不支持 PDF ingestion [S4]。但未提供具体证据证明这一点，因此严格来说无法直接确定。鉴于此，我们应选择“不确定”选项并要求用户提供更多上下文信息以进一步确认或否定这一结论。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "inbox\\test2.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_pdf.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\13_token_expansion\\01_sub\\doc_01.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "PDF",
+          "pdf"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:PDF",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: PDF overclaim",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q5529",
+      "topic": "future",
+      "question": "backup/rollback 命令存在吗？",
+      "expected_answer": "不存在。v0.1 没有备份 rollback CLI。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料，MemoryQwen v0.1 并未实现 `cli webui`, `cli pdf ingest` 和 `cli daemon start` 等命令。没有提到关于 `backup/rollback` 命令的信息。\n\n基于训练资料 [S4] 中的核心结论部分指出，在 MemoryQwen v0.1 版本中，确实没有任何与备份或回滚相关的真实 CLI 命令存在 [S4][S5]。因此，我们可以推断 `backup/rollback` 命令也不在当前版本的功能范围内。\n\n所以，`backup/rollback` 命令目前不存在于 MemoryQwen v0.1 中。[S4]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_commands.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: Fake CLI",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q0588",
+      "topic": "capability",
+      "question": "PDF ingestion 支持吗？",
+      "expected_answer": "不支持。只支持 .txt .md。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定 [S4]。建议您参考 [S3] 和其他相关文档，或者检查最新更新的资料，以获取更准确的信息。目前明确指出 v0.1 不支持 PDF ingestion [S4]，但没有更多具体证据直接证明这一点。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "inbox\\test2.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_pdf.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\13_token_expansion\\01_sub\\doc_01.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "PDF",
+          "pdf"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:PDF",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: PDF overclaim",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q0741",
+      "topic": "future",
+      "question": "HermesConnector 是什么？",
+      "expected_answer": "未来 agent connector 设计。不是 v0.1 当前功能。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据现有资料，我没有关于“HermesConnector”的具体信息。您提到的“HermesConnector”可能与MemoryQwen的功能或某些特定场景有关，但目前没有相关文档片段提及此术语。\n\n如果您能提供更多上下文或者详细描述它在您使用过程中所扮演的角色，我可以尝试帮助您更好地理解其功能和用途。[S1-S5]中的内容主要涉及CLI命令、功能边界以及一些关于MemoryQwen设计原则和技术架构的问题，并未提到“HermesConnector”。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7568",
+      "topic": "project",
+      "question": "当前完成了多少 issue？",
+      "expected_answer": "#0 到 #27。包含 M3 mega-training。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据本地资料片段 [S2] 和 [S3] 的信息，MemoryQwen v0.1 已完成 Issue 的类型为 training_source，并且已经更新至 2026-06-27。具体来说，“已完成Issue”中提到“#0~#17全部完成”，但并未详细列出具体的 Issue 数量和内容。\n\n因此，根据当前本地资料不能确定 MemoryQwen v0.1 具体完成了多少个 Issue。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\01_self_knowledge\\source_v01_issues.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\04_error_strategy\\source_wrong_answer_is_counterexample.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\07_common_errors.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "当前"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6847",
+      "topic": "trap",
+      "question": "wrong_answer 能当事实用吗？",
+      "expected_answer": "不能。wrong_answer 是反例。只能用 correct_answer。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "不能，wrong_answer 通常指的是错误的答案或信息，并不适合当作事实使用。正确的信息和事实应当来自可靠来源。[S1]",
+      "sources": [],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 0,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "error_strategy_question",
+        "retrieval_gate_confidence": 0.9,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: wrong_answer as fact",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q5529",
+      "topic": "future",
+      "question": "backup/rollback 命令存在吗？",
+      "expected_answer": "不存在。v0.1 没有备份 rollback CLI。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料，MemoryQwen v0.1 并未实现 `backup/rollback` 命令 [S4]。因此，我们可以得出结论：`backup/rollback` 命令目前不存在于 MemoryQwen v0.1 中。\n\n请确认您的需求是否可以通过其他方式满足。如果您有更多问题或需要进一步的帮助，请告诉我！[S4]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_commands.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q8150",
+      "topic": "trap",
+      "question": "source archive 会爬虫吗？",
+      "expected_answer": "不会。source archive 是本地文件归档。不是 web crawler。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\n不过，可以明确的是，MemoryQwen v0.1 没有全站网页爬虫功能（crawler），Source Archive 只是本地文件归档。因此可以推测 source archive 不具备爬虫能力。[S2]、[S3] 和 [S4] 中提到的相关内容未涉及此功能的具体实现情况，但根据现有资料可以判断 MemoryQwen v0.1 没有 crawler 功能，crawler 是 v0.1 未实现的功能。[S1] 中也明确指出没有 crawler 是 v0.1 未实现的功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\14_validation_questions_expanded\\01_source_archive_80.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "爬虫"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:爬虫",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: Archive crawler confusion",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q1491",
+      "topic": "source_archive",
+      "question": "inbox 删除后 AI 会失忆吗？",
+      "expected_answer": "不会。数据在 memoryqwen.db 和 sources 中。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "不会，删除 inbox 中的原始文件不会影响 chat 检索能力。ingest 后资料已存入 `memoryqwen.db` 和 `memory/sources/` 目录中，这些地方存储了实际用于检索的知识内容。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_delete_inbox_ok.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Answer matches expected answer keywords",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7440",
+      "topic": "future",
+      "question": "local edit 是当前功能吗？",
+      "expected_answer": "不是。v0.2 未来计划。当前 v0.1 不直接编辑文件。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据当前本地资料不能确定。请提供更多关于 \"local edit\" 的信息或背景，以便我能给出准确的回答。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_future_not_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "当前"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Cautious uncertainty aligns with expected uncertainty",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7036",
+      "topic": "trap",
+      "question": "32B 是默认推荐吗？",
+      "expected_answer": "不是。32B 不推荐默认。仅实验模式。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据提供的本地资料片段信息，qwen2.5:7b 是 v0.1 默认推荐的模型类型，并未提到 32B 的具体信息。因此，目前没有足够的信息来判断 32B 是否为默认推荐。\n\n如果您有关于 qwen2.5 系列的具体版本或配置问题，可以提供更多资料，我会尽力帮助解答。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\source_qwen25_7b_default.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3052",
+      "topic": "gpu",
+      "question": "GPU Guardian game_mode 做什么？",
+      "expected_answer": "检测游戏进程，推荐暂停后台任务。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "GPU Guardian 的 `game_mode` 优先级较高，在满足高优先级条件时会忽略低优先级条件。具体来说，当检测到的游戏进程（如 Cyberpunk2077.exe、Minecraft.exe 等）运行时，MemoryQwen 会进入 `game_mode` 模式以优化 GPU 资源分配，确保游戏性能。\n\n这种模式下的资源调度策略是为了在不影响游戏体验的前提下，尽可能地节省能耗和提高系统整体效率。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\04_gpu_guardian.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\05_gpu_guardian\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q0741",
+      "topic": "future",
+      "question": "HermesConnector 是什么？",
+      "expected_answer": "未来 agent connector 设计。不是 v0.1 当前功能。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据现有资料，我没有找到关于“HermesConnector”的具体信息。您提到的这个术语可能与MemoryQwen的功能或某些特定场景有关，但目前没有相关文档片段提及此术语。\n\n如果您能提供更多上下文或者详细描述它在您使用过程中所扮演的角色，我可以尝试帮助您更好地理解其功能和用途。[S1-S5]中的内容主要涉及CLI命令、功能边界以及一些关于MemoryQwen设计原则和技术架构的问题，并未提到“HermesConnector”。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5529",
+      "topic": "future",
+      "question": "backup/rollback 命令存在吗？",
+      "expected_answer": "不存在。v0.1 没有备份 rollback CLI。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料，MemoryQwen v0.1 并未实现 `backup/rollback` 命令 [S4]。\n\n基于训练资料 [S4] 中的核心结论部分指出，在 MemoryQwen v0.1 版本中，并没有与备份或回滚相关的 CLI 命令存在。因此，我们可以推断 `backup/rollback` 命令也不在当前版本的功能范围内。\n\n所以，`backup/rollback` 命令目前不存在于 MemoryQwen v0.1 中。[S4]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_commands.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 5,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5529",
+      "topic": "future",
+      "question": "backup/rollback 命令存在吗？",
+      "expected_answer": "不存在。v0.1 没有备份 rollback CLI。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料，MemoryQwen v0.1 并未实现 `cli webui`, `cli pdf ingest` 和 `cli daemon start` 等命令。没有提到关于 `backup/rollback` 命令的具体信息。\n\n基于训练资料 [S4] 中的核心结论部分指出，在 MemoryQwen v0.1 版本中，并没有与备份或回滚相关的 CLI 命令存在 [S4][S5]。因此，我们可以推断 `backup/rollback` 命令也不在当前版本的功能范围内。\n\n所以，`backup/rollback` 命令目前不存在于 MemoryQwen v0.1 中。您可以使用其他方式来实现备份和回滚需求。如果有更多问题或需要进一步的帮助，请随时告诉我！[S4]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_commands.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 7,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: Fake CLI",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q7568",
+      "topic": "project",
+      "question": "当前完成了多少 issue？",
+      "expected_answer": "#0 到 #27。包含 M3 mega-training。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据本地资料片段 [S2] 的信息，“已完成Issue”中提到“#0~#17全部完成”，但并未详细列出具体的 Issue 数量和内容。因此，无法确定 MemoryQwen v0.1 具体完成了多少个 Issue。根据当前本地资料不能确定具体数量。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\01_self_knowledge\\source_v01_issues.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\04_error_strategy\\source_wrong_answer_is_counterexample.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\07_common_errors.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "当前"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3927",
+      "topic": "capability",
+      "question": "Web UI 当前有吗？",
+      "expected_answer": "没有。v0.1 是 CLI only。Web UI 是 v0.2 计划。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定 Web UI 是否已实现。[S3] 中提到 v0.1 状态未实现 Web UI，并且 Web UI 是未来 v0.2 的计划功能。因此，可以明确回答 MemoryQwen v0.1 没有 Web UI 支持。[S1][S3]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_capability_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "web ui",
+          "Web UI"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:Web UI",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Cautious uncertainty aligns with expected uncertainty",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6827",
+      "topic": "retrieval_gate",
+      "question": "MemoryQwen 项目问题会检索哪些 store？",
+      "expected_answer": "knowledge_store + strategy_store。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "MemoryQwen 在处理项目相关问题时，会检索以下存储：\n\n1. **knowledge_store**：用于存放知识文档。\n2. **chat_memory**：记录与用户的对话历史。\n3. **error_store**：包含用户错误的回答或纠正信息。\n4. **strategy_store**：存储应对策略和方法。\n\n这些存储共同支持 MemoryQwen 的功能，确保在处理问题时能够调用相关的信息。[S3]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "inbox\\about.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\03_cli_usage.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Answer matches expected answer keywords",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5605",
+      "topic": "capability",
+      "question": "crawler 有吗？",
+      "expected_answer": "没有。source archive 是本地文件归档。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\n在提供的资料片段中没有明确提到 MemoryQwen v0.1 是否包含 crawler 相关功能。因此无法判断 MemoryQwen 是否支持 crawler。建议您查阅相关文档或源代码以获取更多信息。[T1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\strategies.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "crawler"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:crawler",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Cautious uncertainty aligns with expected uncertainty",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q0820",
+      "topic": "model_hardware",
+      "question": "3B 适合正式主力吗？",
+      "expected_answer": "不适合。仅 smoke test。64% 准确率。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "3B 版本（qwen2.5-coder:3b Q4_K_M 1.9GB）更适合用于 smoke test、CI 和低资源环境，而不是作为正式主力使用的推荐模型。它的 capability boundary 达到 64%，适合进行初步验证和持续集成测试，但可能在复杂任务上表现不足。\n\n建议您考虑使用 7B 版本（qwen2.5:7b Q4_K_M 4.7GB）作为正式主力模型，其 capability boundary 较高，达到 91%。[S3][S5] 提供了更多关于不同版本的信息。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\source_3b_smoke_test.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\source_qwen25_3b_smoke.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\source_14b_deep_mode.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5925",
+      "topic": "retrieval_gate",
+      "question": "检索门控能关闭吗？",
+      "expected_answer": "可以。设置 agent.use_retrieval_gate: false。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的资料片段，没有直接提到“检索门控”的相关信息。MemoryQwen 支持文档导入、关键词检索等功能，但关于“检索门控”是否可以关闭，并未在现有资料中提及。\n\n如果您是指 MemoryQwen 的搜索功能能否被关闭或限制，请明确说明您具体指的是哪方面的需求，这样我可以更准确地提供帮助。[S1] 提供的常见 Windows 问题和部署相关资料与此查询关联不大，可能需要进一步了解您的具体情况。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\source_common_win_issues.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\web\\web_test.md",
+        "inbox\\about.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5529",
+      "topic": "future",
+      "question": "backup/rollback 命令存在吗？",
+      "expected_answer": "不存在。v0.1 没有备份 rollback CLI。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料，MemoryQwen v0.1 并未实现 `backup/rollback` 命令 [S4]。\n\n基于训练资料 [S4] 中的核心结论部分指出，在 MemoryQwen v0.1 版本中，并没有与备份或回滚相关的 CLI 命令存在。因此，可以确定 `backup/rollback` 命令目前不存在于 MemoryQwen v0.1 中。\n\n如果您有其他需求或需要进一步的帮助，请告诉我！[S4]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_commands.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 9,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5529",
+      "topic": "future",
+      "question": "backup/rollback 命令存在吗？",
+      "expected_answer": "不存在。v0.1 没有备份 rollback CLI。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料，MemoryQwen v0.1 并未实现 `backup/rollback` 命令 [S4]。\n\n基于训练资料 [S4] 中的核心结论部分指出，在 MemoryQwen v0.1 版本中，并没有与备份或回滚相关的 CLI 命令存在。因此，可以确定 `backup/rollback` 命令目前不存在于 MemoryQwen v0.1 中。\n\n如果您有其他需求或需要进一步的帮助，请告诉我！[S4]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_commands.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 10,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6659",
+      "topic": "project",
+      "question": "M2 checkpoint 何时冻结？",
+      "expected_answer": "2026-06-27。5.12M tokens, 22K knowledge。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料片段，关于 `M2` checkpoint 的冻结时间没有直接提及。不过，我们可以参考 `Job checkpoint机制` 的相关内容来理解 checkpoint 的行为。\n\n检查点（checkpoint）会在以下情况下更新进度并检查状态：\n\n- `paused` 状态：会停止执行并返回 `paused`。\n- `cancelled` 状态：会停止执行并返回 `cancelled`。\n- `running` 状态：继续执行。\n\n因此，可以推测 `M2` checkpoint 的冻结时间可能与任务被暂停或取消的时间相关。具体冻结时间需要根据实际任务的暂停或取消操作来确定。如果任务被暂停或取消，checkpoint 会停止执行，并返回相应的状态（paused 或 cancelled）[S2]。\n\n如果有更多具体的信息或者其他上下文，请提供，以便给出更准确的回答。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\source_job_runner.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\source_job_checkpoint.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\source_ingestion_dir_job.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5618",
+      "topic": "source_archive",
+      "question": "memory/sources 是什么？",
+      "expected_answer": "已 ingest 文件的原文归档目录。长期 AI 资产。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "`memory/sources` 在 MemoryQwen v0.1 中指的是原始资料的归档存储位置。在这个版本中，这些原始资料是以档案形式保存的知识来源信息。[S1] 提供了相关的问题和讨论，但没有详细说明其具体实现细节。[S2] 和 [S3] 则更多涉及记忆存储、CLI 命令等方面的内容。\n\n如果您需要详细了解 `memory/sources` 的具体内容或功能，请提供更多背景信息或其他相关的本地资料片段。我会根据提供的信息给出最准确的答案。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3604",
+      "topic": "trap",
+      "question": "Judge v4 完全理解语义吗？",
+      "expected_answer": "不。v4 是 heuristic。复杂双重否定需要 manual review。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "MemoryQwen 无法直接判断 Judge v4 对语义的理解情况，因为没有具体的资料片段提供相关信息。请提供更多上下文或相关资料以帮助解答您的问题。\n\n您可以参考可复用策略 [T1] 来检查本地资料是否有关于 Judge v4 的详细信息。[S5] 中关于已完成 Issue 的记录可能包含一些有用的信息，但需要具体细节才能进一步分析。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\05_gpu_guardian\\source_full_yield_mode.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\04_gpu_guardian.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\05_gpu_guardian\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\01_self_knowledge\\source_v01_issues.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q4551",
+      "topic": "source_archive",
+      "question": "rebuild from sources 可用吗？",
+      "expected_answer": "不可用。v0.2 未来计划。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料片段，v0.2 计划从 `memory/sources` 重建 `knowledge_store`，但在当前版本（v0.1.0-dev）并不实现这项功能。因此，目前 `rebuild from sources` 不可用。\n\n请注意，这仅适用于 v0.1.0-dev 版本，未来可能有更新和改进。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_future_rebuild.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\strategies.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:rebuild from sources",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q0028",
+      "topic": "retrieval_gate",
+      "question": "检索门控在\"你好\"时会检索吗？",
+      "expected_answer": "不会。casual_skip 规则下普通问候跳过检索。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据现有资料，没有直接提到关于“检索门控”在特定关键词如“你好”时的行为。不过，MemoryQwen 支持文档导入和关键词检索等功能。如果有更多具体信息或相关配置，请提供详细说明以便进一步解答。当前资料中没有足够的信息来确定检索门控在“你好”时是否会进行检索操作。[S1]提及了部分模型的信息，但未涉及检索机制的详细描述。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\web\\web_test.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\05_correction_system.md",
+        "inbox\\about.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5210",
+      "topic": "project",
+      "question": "v0.1.2 相对 v0.1.1 改进什么？",
+      "expected_answer": "Smart Retrieval Gate。不再每次都搜全部 store。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据当前本地资料不能确定。MemoryQwen 的具体改进内容可能包含在更新日志或其他文档中，但这些资料未被提供在此片段内。建议查看相关版本的更新日志或详细记录以获取准确信息。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\01_self_knowledge\\source_why_not_lora.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "v0.1"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q0741",
+      "topic": "future",
+      "question": "HermesConnector 是什么？",
+      "expected_answer": "未来 agent connector 设计。不是 v0.1 当前功能。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据现有资料，我没有找到关于“HermesConnector”的具体信息。您提到的这个术语可能与MemoryQwen的功能或某些特定场景有关，但目前没有相关文档片段提及此术语。\n\n如果您能提供更多上下文或者详细描述它在您使用过程中所扮演的角色，我可以尝试帮助您更好地理解其功能和用途。[S1-S5]中的内容主要涉及CLI命令、功能边界以及一些关于MemoryQwen设计原则和技术架构的问题，并未提到“HermesConnector”。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 5,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q0820",
+      "topic": "model_hardware",
+      "question": "3B 适合正式主力吗？",
+      "expected_answer": "不适合。仅 smoke test。64% 准确率。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "3B 版本（qwen2.5-coder:3b Q4_K_M 1.9GB）更适合用于 smoke test、CI 和低资源环境，而不是作为正式主力使用的推荐模型。它的 capability boundary 达到 64%，适合进行初步验证和持续集成测试，但可能在复杂任务上表现不足。\n\n建议您考虑使用 7B 版本（qwen2.5:7b Q4_K_M 4.7GB）作为正式主力模型，其 capability boundary 较高，达到 91%。[S3][S5] 提供了更多关于不同版本的信息。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\source_3b_smoke_test.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\source_qwen25_3b_smoke.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\source_14b_deep_mode.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6282",
+      "topic": "capability",
+      "question": "embedding 有吗？",
+      "expected_answer": "没有。当前是 BM25 检索。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定您具体指的是哪方面的 embedding。MemoryQwen v0.1 的核心结论指出没有 embedding/vector DB，只有 BM25 搜索方式 [S4]。如果您是指的是文档嵌入或向量搜索功能，则 MemoryQwen v0.1 尚未实现相关功能 [T1, S3, S4]。\n\n如果您的问题是关于其他类型的 embedding，请提供更多详细信息以便准确回答。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_embedding.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "embedding"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:embedding",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: embedding overclaim",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q6282",
+      "topic": "capability",
+      "question": "embedding 有吗？",
+      "expected_answer": "没有。当前是 BM25 检索。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定您具体指的是哪方面的 embedding。MemoryQwen v0.1 的核心结论指出没有 embedding/vector DB，只有 BM25 搜索方式 [S4]。如果您是指的是文档嵌入或向量搜索功能，则 MemoryQwen v0.1 尚未实现相关功能 [T1, S3, S4]。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_embedding.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "embedding"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:embedding",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: embedding overclaim",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q4369",
+      "topic": "retrieval_gate",
+      "question": "常见问候跳过检索有哪些？",
+      "expected_answer": "你好 hi hello 谢谢 好的 拜拜 等。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料片段，没有直接提到“常见问候跳过检索”的相关内容。这可能是具体应用场景中的一个术语或设定，目前资料中并没有明确的描述。\n\n如果您是指在MemoryQwen中如何处理常见的问候语来避免不必要的匹配和响应，一般来说，这类功能可以通过以下方式实现：\n\n1. 在对话数据集中提前标注并过滤掉常见问候语。\n2. 通过自定义规则或者正则表达式识别并跳过这些特定词汇或短句。\n\n具体的实现细节需要根据MemoryQwen的系统架构来定。如果您有更多背景信息或其他相关资料，可以进一步提供给我查阅哦。[S1]提供的资料主要关注的是系统的功能模块、任务运行机制和记忆系统的结构化设计等方面的内容，并未涉及问候语处理的具体方法。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q0823",
+      "topic": "judge",
+      "question": "Judge v4 修了什么？",
+      "expected_answer": "修了简单否定 false positives。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "您的问题是关于 Judge v4 的修改内容，但提供的本地资料片段中没有直接提及 Judge v4 相关的信息。根据现有资料，可以提供一些一般性的建议和策略信息。\n\n如果您有关于 MemoryQwen 或其功能的问题，例如支持的文件格式、错误修复情况等，可以通过以下策略来获取帮助：\n\n1. **知识固定策略（Knowledge Fix）**：在回答文档格式相关问题时，请先检查本地资料。\n2. **中文路径 bug 策略（Chinese Path Bug）**：遇到涉及文件名的问题时，请参考正确的回答以避免错误。\n\n如果您能提供更多关于 Judge v4 的具体背景信息或相关资料，我可以更好地帮助您了解其修改内容。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\07_common_errors.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6827",
+      "topic": "retrieval_gate",
+      "question": "MemoryQwen 项目问题会检索哪些 store？",
+      "expected_answer": "knowledge_store + strategy_store。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "MemoryQwen 在处理项目相关问题时，会检索以下存储：\n\n1. **knowledge_store**：用于存放知识文档。\n2. **chat_memory**：记录与用户的对话历史。\n3. **error_store**：包含用户错误的回答或纠正信息。\n4. **strategy_store**：存储应对策略和方法。\n\n这些存储共同支持 MemoryQwen 的功能，确保在处理问题时能够调用相关的信息。[S3]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "inbox\\about.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\03_cli_usage.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Answer matches expected answer keywords",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7036",
+      "topic": "trap",
+      "question": "32B 是默认推荐吗？",
+      "expected_answer": "不是。32B 不推荐默认。仅实验模式。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据提供的本地资料片段信息，qwen2.5:7b 是 v0.1 默认推荐的模型类型，并未提到 32B 的具体信息。因此，目前没有足够的信息来判断 32B 是否为默认推荐。\n\n如果您有关于 qwen2.5 系列的具体版本或配置问题，请提供更多资料，我会尽力帮助解答。[S1]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\source_qwen25_7b_default.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\09_windows11_deployment\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 5,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6659",
+      "topic": "project",
+      "question": "M2 checkpoint 何时冻结？",
+      "expected_answer": "2026-06-27。5.12M tokens, 22K knowledge。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据提供的本地资料片段，关于 `M2` checkpoint 的冻结时间没有直接提及。不过，我们可以参考 `Job checkpoint机制` 的相关内容来理解 checkpoint 的行为。\n\n检查点（checkpoint）会在以下情况下更新进度并检查状态：\n\n- `paused` 状态：会停止执行并返回 `paused`。\n- `cancelled` 状态：会停止执行并返回 `cancelled`。\n- `running` 状态：继续执行。\n\n因此，可以推测 `M2` checkpoint 的冻结时间可能与任务被暂停或取消的时间相关。具体冻结时间需要根据实际任务的暂停或取消操作来确定。如果任务被暂停或取消，checkpoint 会停止执行，并返回相应的状态（paused 或 cancelled）[S2]。\n\n如果有更多具体的信息或者其他上下文，请提供，以便给出更准确的回答。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\source_job_runner.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\source_job_checkpoint.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\source_ingestion_dir_job.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q4714",
+      "topic": "source_archive",
+      "question": "source archive 会抓网页吗？",
+      "expected_answer": "不会。仅复制已导入的本地文件。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "MemoryQwen v0.1 不支持全站网页爬虫功能（crawler），因此 Source Archive 只能用于本地文件归档，不会自动抓取网页内容。[S2]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: Archive crawler confusion",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q0241",
+      "topic": "trap",
+      "question": "能不能编造 CLI 命令？",
+      "expected_answer": "不能。v0.1 不存在的命令：cli webui, cli pdf, cli daemon, cli crawler。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "根据当前本地资料不能确定。\n\n在提供的资料中，并没有明确说明 MemoryQwen 是否能够或不能够编造 CLI 命令。不过，考虑到资料片段 [S4] 中强调了“v0.1 没有：cli webui, cli pdf, cli daemon, cli model unload, cli crawler”，可以推断 v0.1 版本不应该包含这些不存在的命令。\n\n建议遵循资料中的指导原则，在使用或回答关于 CLI 命令的问题时，不要编造不存在的功能。[S4] 明确指出不能声称存在这些功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_commands.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\02_cli_mastery\\source_guardian.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "能不能"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: Fake CLI",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q2439",
+      "topic": "judge",
+      "question": "Judge v3 修了什么？",
+      "expected_answer": "修了 cautious uncertainty false negatives。",
+      "expected_sources": [],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "您的问题与提供的本地资料片段中的内容不符，资料中没有提到关于 Judge v3 的任何信息。您可能是想询问 MemoryQwen 相关的问题。\n\n如果您感兴趣的是 MemoryQwen 的相关更新或变更，请参考以下可测试问题：\n\n1. MemoryQwen 是什么？\n2. MemoryQwen 的核心设计原则有哪些？\n3. MemoryQwen 为什么不用 32B 模型做默认核心？\n4. MemoryQwen 的系统架构包含哪些模块？\n5. MemoryQwen 的记忆系统为什么独立于模型？\n6. MemoryQwen v0.1 完成了哪些功能？\n\n如果有具体的问题或需要了解更多关于 MemoryQwen 的信息，请提供更多详细内容，我会尽力为您解答。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\07_common_errors.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    }
+  ]
+}

@@ -50,6 +50,7 @@ def build_parser() -> argparse.ArgumentParser:
     chat.add_argument("--session", default="default", help="会话 ID")
     chat.add_argument("--model-tier", default="light", choices=["light", "deep"], help="模型层级")
     chat.add_argument("--debug-memory", action="store_true", help="显示记忆检索详情")
+    chat.add_argument("--web", action="store_true", dest="use_web", help="允许本次聊天使用临时网页查询")
 
     # memory
     memory = sub.add_parser("memory", help="记忆存储管理")
@@ -100,6 +101,20 @@ def build_parser() -> argparse.ArgumentParser:
     tresume.add_argument("task_id", help="任务 ID")
     tcancel = task_sub.add_parser("cancel", help="取消任务")
     tcancel.add_argument("task_id", help="任务 ID")
+
+    # web (v0.1.5)
+    web = sub.add_parser("web", help="网页查询 (v0.1.5 Internet Query)")
+    web_sub = web.add_subparsers(dest="web_cmd", required=True)
+    web_search = web_sub.add_parser("search", help="搜索网页")
+    web_search.add_argument("query", help="搜索关键词")
+    web_search.add_argument("--max-results", type=int, default=5, help="最大结果数")
+    web_fetch = web_sub.add_parser("fetch", help="抓取网页")
+    web_fetch.add_argument("url", help="网页 URL")
+    web_ask = web_sub.add_parser("ask", help="搜索+抓取并回答")
+    web_ask.add_argument("question", help="问题")
+    web_ask.add_argument("--max-results", type=int, default=3, help="最大抓取数")
+    web_ingest = web_sub.add_parser("ingest", help="抓取并存入知识库")
+    web_ingest.add_argument("url", help="网页 URL")
 
     # eval
     ev = sub.add_parser("eval", help="验证评测")
@@ -216,7 +231,7 @@ async def cmd_chat(config, store, model_client, args):
         print(f"use_strategy_memory: {config.agent.use_strategy_memory}")
         print("-" * 40)
 
-    request = ChatRequest(session_id=args.session, message=args.message)
+    request = ChatRequest(session_id=args.session, message=args.message, use_web=getattr(args, "use_web", False))
     response = await agent.chat(request)
 
     if debug:
@@ -664,6 +679,83 @@ async def cmd_eval(config, args):
         print("Usage: eval run|report|mark")
 
 
+async def cmd_web(config, args):
+    """v0.1.5 Internet Query CLI handler."""
+    from src.web.web_service import WebQueryService
+    from src.web.web_context import build_web_search_display, build_web_context
+
+    svc = WebQueryService(config)
+    cmd = args.web_cmd
+
+    if cmd == "search":
+        results = svc.search(args.query, max_results=args.max_results)
+        if not results:
+            print("No results.")
+            return
+        print(build_web_search_display([
+            type("WebSource", (), {
+                "source_id": f"W{i}",
+                "title": r.title,
+                "url": r.url,
+                "snippet": r.snippet,
+                "text": "",
+                "fetched_at": "",
+                "rank": r.rank,
+            })()
+            for i, r in enumerate(results, 1)
+        ]))
+
+    elif cmd == "fetch":
+        ws = svc.fetch(args.url)
+        if ws.text.startswith("[Error:"):
+            print(ws.text)
+        else:
+            print(f"Title: {ws.title}")
+            print(f"URL: {ws.url}")
+            print(f"Fetched: {ws.fetched_at}")
+            print(f"\n{ws.text[:500]}")
+
+    elif cmd == "ask":
+        result = svc.ask(args.question, max_results=args.max_results)
+        if result.error:
+            print(f"Error: {result.error}")
+            return
+        print(f"Query: {result.query}")
+        print(f"Sources: {len(result.sources)} ({result.elapsed_ms}ms)")
+        if result.warnings:
+            for w in result.warnings:
+                print(f"  ⚠ {w}")
+        ctx = build_web_context(result.sources, max_per_source_chars=500)
+        print(f"\n{ctx[:2000]}")
+
+    elif cmd == "ingest":
+        from src.web.web_ingest import WebIngestService
+        svc_ingest = WebIngestService(config)
+        result = svc_ingest.ingest_url(args.url)
+        if result.error:
+            print(f"Ingest failed: {result.error}")
+            return
+        if result.duplicated:
+            print("Web source already archived")
+            print(f"  URL: {result.url_safe}")
+            print(f"  Existing hash: {result.source_hash}")
+            print(f"  Chunks added: 0")
+            return
+        print("Web ingest complete")
+        print(f"  URL: {result.url_safe}")
+        print(f"  Saved: {result.saved_path}")
+        print(f"  Title: {result.title}")
+        print(f"  Source hash: {result.source_hash}")
+        print(f"  Chunks added: {result.chunks_added}")
+        print(f"  Truncated: {'yes' if result.truncated else 'no'}")
+        if result.warnings:
+            for w in result.warnings:
+                print(f"  ⚠ {w}")
+
+    else:
+        print(f"Unknown web command: {cmd}")
+
+
 async def main():
     parser = build_parser()
     args = parser.parse_args()
@@ -697,6 +789,8 @@ async def main():
             await cmd_task(config, args)
         elif args.command == "eval":
             await cmd_eval(config, args)
+        elif args.command == "web":
+            await cmd_web(config, args)
     finally:
         await store.close()
 

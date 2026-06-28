@@ -1,0 +1,371 @@
+# Eval Run Report
+
+## Summary
+- run_id: c691abdb
+- total_questions: 30
+- correct: 0
+- partial: 0
+- wrong: 5
+- unjudged: 25
+- source_hit_rate: 0.0%
+- guard_trigger_rate: 26.7%
+
+## Topic Breakdown
+
+| topic | total | correct | partial | wrong | unjudged |
+|-------|-------|---------|---------|-------|----------|
+| eval | 1 | 0 | 0 | 0 | 1 |
+| cli_hallucination | 6 | 0 | 0 | 3 | 3 |
+| model_hardware | 7 | 0 | 0 | 0 | 7 |
+| anti_hallucination | 5 | 0 | 0 | 2 | 3 |
+| capability_boundary | 4 | 0 | 0 | 0 | 4 |
+| source_archive | 6 | 0 | 0 | 0 | 6 |
+| mixed_trap | 1 | 0 | 0 | 0 | 1 |
+
+## Results
+
+### Q2242 (eval)
+- question: eval run 会自动执行 correct 吗？
+- expected: 不会。eval run 只生成报告。correct 需要人工审查后手动执行。不写 error_store。
+- answer: `eval run` 命令不会自动执行 `correct`。它用于运行批量评测任务，并不会在执行过程中自动调用 `correct` 子命令来处理错误或进行策略学习。
+
+如果你需要在 `eval run` 的过程中引入纠错机制，你需要手动指定相关选项或者编写脚本来配合使用 `correct` 命令。如果有更多具体需求或场景，请详细说明一下。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\05_gpu_guardian\source_guardian_positioning.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\07_common_errors.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q0849 (cli_hallucination)
+- question: 列出至少 5 个真实 CLI 命令
+- expected: health, ingest, job ingest, chat, correct, memory stats, guardian status, guardian json, task list, task status, task pause, task resume, task cancel, profile show, eval run, eval report, eval mark, eval export-corrections
+- answer: 根据本地资料片段提供的信息，以下是五个真实 CLI 命令：
+
+1. `python -m src.cli job ingest inbox/`：创建并运行 ingestion 任务。
+2. `python -m src.cli task list`：列出所有任务。
+3. `python -m src.cli task status <id>`：查看指定任务的详情。
+4. `python -m src.cli guardian status`：查看 GPU 让路状态。
+5. `python -m src.cli task pause <id>`：暂停指定任务。
+
+这些命令是基于本地资料片段中提供
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\06_task_runtime.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\strategies.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\03_cli_usage.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q9956 (model_hardware)
+- question: 7B 是什么定位？
+- expected: MemoryQwen v0.1 默认推荐常驻模型。qwen2.5:7b Q4_K_M 4.7GB，准确率约 91%。
+- answer: 7B模型在MemoryQwen v0.1中的定位是推荐常驻模式使用。[S1] 中提到的相关信息如下：
+
+- 关于7B模型：推荐常驻，MemoryQwen v0.1的实际情况是什么？
+
+具体来说，7B模型被设计为一个较为平衡的选择，适合日常使用和频繁调用。不过，请注意这只是一个规划中的定位，在实际版本中可能还会根据具体情况进行调整。[S1] [T2]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\01_project_overview.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\02_memory_system.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q6386 (anti_hallucination)
+- question: error_store 的 wrong_answer 能当事实吗？
+- expected: 绝对不能。wrong_answer 是反例，只能避免错误。用 correct_answer 和 strategy。
+- answer: 不能将 `error_store` 中的 `wrong_answer` 当作事实。这些信息是错误或不准确的答案，不应作为可靠的事实依据使用。
+
+建议策略为：在获取任何信息时，应先验证其准确性，避免依赖于已知错误的答案。[T1]
+- sources: 
+- source_hit: False
+- guard_triggered: False
+- judgement: wrong (Overclaim detected: wrong_answer as fact)
+
+### Q6122 (capability_boundary)
+- question: MemoryQwen v0.1 会 kill 进程吗？
+- expected: 不会。GPU Guardian 只做检测和建议，不执行 kill。
+- answer: 根据当前本地资料不能确定。MemoryQwen 当前不会 kill …，但具体是否会杀掉进程需要更多信息才能判断。请提供更多背景或具体情况。[S1] 提到了关于 MemoryQwen 是否会 kill 的问题，但没有明确的答案。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\strategies.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\answer_key.md
+- source_hit: False
+- guard_triggered: True
+- judgement: partial_candidate (Cautious answer; missing key facts from expected answer)
+
+### Q8241 (model_hardware)
+- question: GPU Guardian game_mode 下应启用 14B 吗？
+- expected: 不应该。game_mode 检测到游戏时推荐 prefer_7B。14B 占用额外 VRAM 影响帧率。
+- answer: 在 GPU Guardian 的 game_mode 下，默认情况下会暂停后台任务并优先处理较低推理需求的任务，以确保游戏或创作软件的流畅运行。具体到 14B 模式（假设您指的是较高计算要求的推理模式），是否启用它取决于当前的 GPU 负载和是否有活动的游戏或创作进程。
+
+根据优先级规则 [S1]：
+
+- `full_yield > game_mode > light_yield > normal`
+
+在满足 game_mode 条件时，会忽略 lower priority 的条件。游戏/创作进程或 GPU 利用率>=70% 会触发 game_mode [T3]。因此，在这种模式下，建议暂停占
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\04_gpu_guardian.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\05_gpu_guardian\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\04_gpu_guardian.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\05_gpu_guardian\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\05_gpu_guardian\source_game_mode.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q8619 (anti_hallucination)
+- question: sources 没命中能编答案吗？
+- expected: 不能。必须承认资料不足。基于常识的内容要标注推测。
+- answer: 资料不足，无法确定 sources 未命中的情况下是否可以编造答案。根据规则，在没有明确依据的情况下，不应编造信息。请严格遵循现有指导原则，避免在资料不足时给出不确定的答案。[S3]、[S4]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\03_capability_boundaries\source_webui.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\08_advanced_behavior.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_05_anti_hallucination\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\03_capability_boundaries\source_embedding.md
+- source_hit: False
+- guard_triggered: False
+- judgement: correct_candidate (Cautious uncertainty aligns with expected uncertainty)
+
+### Q6253 (source_archive)
+- question: source_hash 和 content_hash 有什么区别？
+- expected: source_hash 是整文件哈希（归档去重），content_hash 是单 chunk 哈希（ingestion 去重）。
+- answer: 根据你提供的资料片段，没有直接涉及到 `source_hash` 和 `content_hash` 的信息。但从常见数据处理的角度来看：
+
+- `source_hash` 可能代表数据来源的哈希值。
+- `content_hash` 则可能是内容本身的哈希值。
+
+因此可以推测：
+- **source_hash** 通常用于标识数据的原始来源，比如文件路径、URL等。
+- **content_hash** 通常用于唯一标识数据的内容本身，即使内容发生变化，只要其哈希值不变，则认为是同一条记录。
+
+不过这些解释基于一般情况，并未直接参考本地资料片段。如果你有更多具体背景或定义，请提供更多细节以便给
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\02_memory_system.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\06_task_runtime.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\08_advanced_behavior.md, C:\Users\hooya\AppData\Local\Temp\tmpauijfhrh\hash.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q5902 (anti_hallucination)
+- question: 未来计划能说成当前已实现吗？
+- expected: 不能。Web UI、FastAPI、PDF、embedding 都是 v0.2 计划。必须说 v0.1 未实现。
+- answer: 不能，根据当前本地资料不能确定某项功能是已实现的。如果某项功能属于未来计划，则必须明确指出它尚未在 v0.1 中实现。请参考相关文档以获取准确信息。[S1][S2][S3]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_capability_now.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_future_not_now.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\03_capability_boundaries\source_future.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_uncertainty_expression.md
+- source_hit: False
+- guard_triggered: True
+- judgement: correct_candidate (Cautious uncertainty aligns with expected uncertainty)
+
+### Q8307 (source_archive)
+- question: tasks.db 保存什么？
+- expected: task_records（任务主表）和 task_transitions（状态变更记录）。不保存知识数据。
+- answer: `tasks.db` 在 MemoryQwen v0.1 中用于持久化任务状态。具体来说，它存储了任务的执行记录和状态信息，包括但不限于任务的创建时间、当前状态（如pending、running、paused等）以及可能的结果或错误信息。[S4]中提到的这些状态信息对于理解和管理MemoryQwen的内部任务流程是非常重要的。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_01_source_archive\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\01_self_knowledge\source_agent_service.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\02_memory_system.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\questions.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q7494 (source_archive)
+- question: 只备份 inbox 有什么风险？
+- expected: inbox 可能被用户清理。如果数据库损坏且无 sources 归档，则无法恢复。
+- answer: 根据提供的资料片段，MemoryQwen v0.1 中的inbox投喂入口主要用于创建和运行ingestion任务。如果仅备份inbox而不备份其他重要组件如memory/sources、memoryqwen.db以及tasks.db等，则可能面临数据不完整或丢失的风险。
+
+具体来说：
+- `inbox` 主要用于输入新的资料，但这些资料需要被正确地处理并存储在`memory/sources`中。
+- `memoryqwen.db` 存储了消化后的知识和信息。
+- `tasks.db` 持久化了任务的状态。
+
+因此，如果仅备份了`inbox`而没有同步其他关键组件的状态，可能会导致新输入的资料
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_01_source_archive\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\06_task_runtime.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\07_source_archive_backup\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\02_memory_system.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_high_risk_template.md
+- source_hit: False
+- guard_triggered: False
+- judgement: correct_candidate (Answer matches expected answer keywords)
+
+### Q9260 (cli_hallucination)
+- question: MemoryQwen 有 cli webui 命令吗？
+- expected: 没有。v0.1 没有 Web UI，也没有 cli webui 命令。这是常见幻觉。
+- answer: MemoryQwen v0.1 并不支持 `cli webui` 这个命令。根据本地资料[S2]，没有 WebUI，也就意味着没有 `cli webui` 命令。[S1] 和 [S3] 中提到的其他不存在的命令如 `cli pdf ingest` 以及 `cli daemon start` 同样不适用于 MemoryQwen v0.1。请查阅相关文档以获取准确信息。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\03_capability_boundaries\source_webui.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\06_task_runtime\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\02_cli_mastery\source_correct.md
+- source_hit: False
+- guard_triggered: False
+- judgement: wrong (Overclaim detected: PDF overclaim)
+
+### Q5109 (capability_boundary)
+- question: MemoryQwen v0.1 支持 LoRA 或微调吗？
+- expected: 不支持。AutoModelAdapter 是轻量评估工具，不是 LoRA。v0.1 不改模型权重。
+- answer: 根据当前本地资料不能确定。请参考相关训练手册或直接询问开发者以获取准确信息。记忆Qwen v0.1 当前的实现细节中没有提及关于 LoRA 或模型微调的具体内容。[S2] [T1]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\08_advanced_behavior.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\08_advanced_behavior.md
+- source_hit: False
+- guard_triggered: True
+- judgement: correct_candidate (Cautious uncertainty aligns with expected uncertainty)
+
+### Q7937 (capability_boundary)
+- question: 列举 3 个 v0.1 已实现功能
+- expected: CLI、ingest .txt/.md、chat、correct、guardian status、task management、eval runner、source archive
+- answer: 根据当前本地资料不能确定具体的三个已实现功能，但可以根据已有的信息推断一些可能的功能。目前的已知信息显示 MemoryQwen v0.1 支持以下类型的功能：
+
+1. **命令行接口（CLI）**：包括文件导入、聊天处理等功能。
+2. **错误存储与管理**：能够记录和处理错误，如 `wrong_answer` 的管理。
+3. **任务状态机**：可能包含任务的运行状态管理和转换逻辑。
+
+请注意，这些结论是基于已提供的资料片段推断的，并非直接确认的具体实现。具体功能详情请查阅更详细的文档或源代码。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\08_advanced_behavior.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\03_capability_boundaries\source_implemented.md
+- source_hit: False
+- guard_triggered: True
+- judgement: partial_candidate (Cautious answer; missing key facts from expected answer)
+
+### Q0346 (mixed_trap)
+- question: 22K chunks 下每次聊天都全搜？
+- expected: 不需要。v0.1.2 Smart Retrieval Gate 按需检索。
+- answer: 在 MemoryQwen 的当前版本中，没有具体提到针对22K chunks的特殊搜索策略。MemoryQwen 的记忆系统由 MemoryBus 统一管理，包含四种独立存储：knowledge_store（知识库）、chat_memory（对话历史）、error_store（错误日志）和strategy_store（策略存储）。每种存储有不同的用途，但没有明确指出会对22K chunks进行全搜操作。
+
+如果需要针对特定chunk的搜索优化或配置，建议查阅最新的项目文档或代码实现以获取准确信息。[S1] 提供的信息中并未提及具体的搜索机制细节。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\02_memory_system.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\05_correction_system.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\03_cli_usage.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\06_task_runtime\source_task_transition.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q6386 (anti_hallucination)
+- question: error_store 的 wrong_answer 能当事实吗？
+- expected: 绝对不能。wrong_answer 是反例，只能避免错误。用 correct_answer 和 strategy。
+- answer: 不能将 `error_store` 中的 `wrong_answer` 当作事实。这些信息是错误或不准确的答案，不应作为可靠的事实依据使用。
+
+建议策略为：在获取任何信息时，应先验证其准确性，避免依赖于已知错误的答案。[T1]
+- sources: 
+- source_hit: False
+- guard_triggered: False
+- judgement: wrong (Overclaim detected: wrong_answer as fact)
+
+### Q8307 (source_archive)
+- question: tasks.db 保存什么？
+- expected: task_records（任务主表）和 task_transitions（状态变更记录）。不保存知识数据。
+- answer: `tasks.db` 在 MemoryQwen v0.1 中用于持久化任务状态，具体存储了任务的执行记录和状态信息，包括但不限于任务的创建时间、当前状态（如pending、running、paused等）以及可能的结果或错误信息。这些状态信息对于理解和管理MemoryQwen的内部任务流程非常重要。[S4] 提到的任务状态有 pending、running、paused、completed、failed 和 cancelled，其中完成态、失败态和取消态是终态，不能再转换。[T3] 中也有相关说明可以参考。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_01_source_archive\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\01_self_knowledge\source_agent_service.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\02_memory_system.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\questions.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q7671 (cli_hallucination)
+- question: cli fastapi 命令存在吗？
+- expected: 不存在。FastAPI server 是 v0.2 计划。
+- answer: 根据当前本地资料不能确定 "cli fastapi" 命令是否存在。请查阅相关文档或源代码以获取准确信息。[S1][S2][S3][S4] 中提到的功能和命令列表中没有包含 "cli fastapi"，因此我们假设该命令尚未实现于 MemoryQwen v0.1 中。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\strategies.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_no_fake_commands.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\06_task_runtime\trap_questions.md
+- source_hit: False
+- guard_triggered: True
+- judgement: correct_candidate (Cautious uncertainty aligns with expected uncertainty)
+
+### Q7129 (model_hardware)
+- question: 12GB VRAM 推荐配置？
+- expected: 7B 常驻(5GB) + 可选 14B deep(9GB)。不推荐 32B(需19GB+)。
+- answer: 根据本地资料[S4]中的信息，对于配备有8-12GB VRAM的GPU（如GTX系列到RTX 3080），推荐使用qwen2.5:7b Q4或更小量化模型。请检查具体硬件与模型之间的适配情况以获得最佳性能和效率。
+
+如果有更多问题或者需要进一步的帮助，请随时告诉我！
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\09_windows11_deployment\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\09_windows11_deployment\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\09_windows11_deployment\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\09_windows11_deployment\source_ollama_config.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\source_gtx_to_3080.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q5022 (model_hardware)
+- question: 16GB VRAM 能跑 32B 吗？
+- expected: 不能。32B Q4 需约 19GB。16GB 可舒适运行 7B，勉强运行 14B。
+- answer: 根据提供的本地资料片段，16GB 的 VRAM 并不足以运行 32B 模型。资料中提到的模型参数量与所需 VRAM 如下：
+
+- 3B 模型：约需 1.9GB VRAM。
+- 7B 模型：约需 4.7GB VRAM。
+- 14B 深度模式：约需 8GB VRAM。
+
+因此，16GB 的 VRAM 虽然可以运行较大的模型，但不足以支持 32B（假设这是指16B或更高参数量的模型）的需求。具体可用的模型取决于实际硬件配置和软件优化情况。[S1][S2]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\trap_questions.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q5902 (anti_hallucination)
+- question: 未来计划能说成当前已实现吗？
+- expected: 不能。Web UI、FastAPI、PDF、embedding 都是 v0.2 计划。必须说 v0.1 未实现。
+- answer: 不能，根据当前本地资料不能确定某项功能是已实现的。如果某项功能属于未来计划，则必须明确指出它尚未在 v0.1 中实现。请参考相关文档以获取准确信息。[S1][S2][S3]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_capability_now.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\09_capability_boundaries.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_future_not_now.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\03_capability_boundaries\source_future.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_uncertainty_expression.md
+- source_hit: False
+- guard_triggered: True
+- judgement: correct_candidate (Cautious uncertainty aligns with expected uncertainty)
+
+### Q5022 (model_hardware)
+- question: 16GB VRAM 能跑 32B 吗？
+- expected: 不能。32B Q4 需约 19GB。16GB 可舒适运行 7B，勉强运行 14B。
+- answer: 根据提供的本地资料片段，16GB 的 VRAM 并不足以运行 32B 模型。资料中提到的模型参数量与所需 VRAM 如下：
+
+- 3B 模型：约需 1.9GB VRAM。
+- 7B 模型：约需 4.7GB VRAM。
+- 14B 深度模式：约需 8GB VRAM。
+
+因此，16GB 的 VRAM 虽然可以运行较大的模型，但不足以支持 32B（假设这是指16B或更高参数量的模型）的需求。具体可用的模型取决于实际硬件配置和软件优化情况。[S1][S2]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\trap_questions.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q0455 (capability_boundary)
+- question: v0.1 的 CapabilityBoundaryGuard 的三种风险等级？
+- expected: high (PDF/WebUI/daemon 等)、medium (是否/支持/当前/已实现)、low (不确定)。
+- answer: 根据当前本地资料不能确定。CapabilityBoundaryGuard 的具体风险等级信息未在提供的资料片段中提及。建议参考相关文档或直接咨询开发团队获取准确信息。[T1]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_high_risk_template.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_05_anti_hallucination\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_05_anti_hallucination\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_05_anti_hallucination\strategies.md
+- source_hit: False
+- guard_triggered: True
+- judgement: partial_candidate (Cautious answer; missing key facts from expected answer)
+
+### Q3417 (source_archive)
+- question: memory/sources 的 archive_path 是什么？
+- expected: chunk metadata 中指向归档后原文位置的路径，用于溯源和备份验证。
+- answer: 根据提供的本地资料片段，并没有直接提到 `archive_path` 相关的信息。不过，从 `memory/sources` 这部分来看，“原始资料归档”可能指的是存储外部数据或文件的地方。
+
+在 MemoryQwen v0.1 中，关于 `memory/sources` 原始资料归档的具体实现情况，我们可以参考以下假设：
+
+- 通常情况下，`archive_path` 可能是指存储原始资料的本地路径。
+- 在实际版本中，MemoryQwen 支持 `.txt` 和 `.md` 文件导入 [T1]。
+
+因此，可以推测 `memory/sources` 的归档路径可能是某些配置文件或代码中的设定
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_01_source_archive\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\02_memory_system.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_04_capability_boundary\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\01_project_overview.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q3502 (model_hardware)
+- question: MemoryQwen 靠模型越大越聪明吗？
+- expected: 不是。核心能力来自外部记忆系统和工作流（MemoryBus + error/strategy store）。
+- answer: MemoryQwen 不靠单纯堆砌大模型来提升智能。我们的核心结论是，外部记忆和流程的优化能带来更大的提升效果。具体来说，7B 参数量加上 MemoryBus 和 error/strategy 系统工程的效果通常优于32B 的裸跑模型[S1]。
+
+因此，在MemoryQwen v0.1中，我们推荐使用7B参数量的模型，并结合外部记忆和策略来提升整体性能。大模型的确能够处理更复杂的任务，但并不意味着更大就是更好。相反，合理的优化可以带来更高效的智能表现。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\source_why_not_big.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\questions.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q8069 (cli_hallucination)
+- question: cli rebuild 命令存在吗？
+- expected: 不存在。rebuild from sources 是 v0.2 计划。v0.1 没有 rebuild CLI 命令。
+- answer: 根据本地资料片段[S4]和[1]中的内容，MemoryQwen v0.1 并没有实现 `cli rebuild` 这个命令。因此，关于 `cli rebuild` 的命令不存在。
+
+建议您在使用时直接参考当前版本的功能列表，避免依赖未实现的命令。如果有其他具体需求或功能想知道是否支持，请随时告诉我。[S4] [T1]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\strategies.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_no_fake_commands.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\06_task_runtime\trap_questions.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q9801 (source_archive)
+- question: 只备份 memoryqwen.db 够吗？
+- expected: 不够。缺少 memory/sources 的原文归档，也缺少 tasks.db。必须备份完整 memory/。
+- answer: 根据提供的本地资料，memory/ 包含三个重要的文件夹或数据库：sources（原始资料）、memoryqwen.db（消化后的知识）和 tasks.db（任务状态）。备份 `memoryqwen.db` 能保留你与 MemoryQwen 交互生成的知识，但不包括原始资料或任务的状态。
+
+因此，只备份 memoryqwen.db 可能不够全面。为了确保你的所有互动信息都被保存，建议一起备份这些文件：sources、memoryqwen.db 和 tasks.db。这样可以保证带走全部 AI 资产，避免重要数据的丢失 [S3][S4]。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\07_source_archive_backup\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_01_source_archive\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_01_source_archive\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\07_source_archive_backup\source_backup_memory.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_01_source_archive\strategies.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q0664 (cli_hallucination)
+- question: MemoryQwen 有 cli pdf ingest 命令吗？
+- expected: 没有。v0.1 不支持 PDF，没有 cli pdf 命令。只支持 .txt/.md。
+- answer: 根据当前本地资料不能确定。[S1] 和 [S2] 指出 MemoryQwen v0.1 尚未实现与不存在的命令相关功能，但并未明确说明关于 `cli pdf ingest` 命令的具体情况。因此，无法判断该命令是否已实现或计划在未来实现。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\strategies.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\06_task_runtime\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\02_cli_mastery\source_ingest.md
+- source_hit: False
+- guard_triggered: True
+- judgement: wrong (Overclaim detected: Fake CLI)
+
+### Q4808 (model_hardware)
+- question: 3B 适合什么用途？
+- expected: smoke test 和低资源验证。capability boundary 准确率约 64%。不适合正式主力。
+- answer: 根据本地资料片段 [S1] 和 [S3] 的信息，3B 基础可运行的 Qwen2.5-coder:3b 版本约需 1.9GB 内存，其能力边界为 64%，适合用于 smoke test、CI 测试以及低资源环境。[S1] 和 [S3] 中均提到这一点。
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\inbox\training\06_task_runtime.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\answer_key.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\08_model_hardware_routes\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_02_model_hardware\questions.md
+- source_hit: False
+- guard_triggered: False
+- judgement: unjudged
+
+### Q8158 (cli_hallucination)
+- question: MemoryQwen 有 cli model unload 命令吗？
+- expected: 没有。v0.1 没有模型卸载功能。
+- answer: MemoryQwen v0.1 没有实现 `cli model unload` 这个命令。根据本地资料，v0.1 版本中并未包含此功能。[S4] [T1] [T2]
+- sources: C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\trap_questions.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\megatrain\m1_pack_03_cli_traps\strategies.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\10_anti_hallucination\source_no_fake_commands.md, C:\Users\hooya\Desktop\新建文件夹\MemoryQwen\training_packs\02_cli_mastery\source_health.md
+- source_hit: False
+- guard_triggered: False
+- judgement: wrong (Overclaim detected: Fake CLI)
+

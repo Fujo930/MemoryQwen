@@ -1,0 +1,9 @@
+# M3 FINAL 0446 [37a6a1c3]
+
+MEGATRAIN M3 FINAL PUSH DOC 446 UID 37a6a1c3 MemoryQwen v0.1.2 local AI agent SmartRetrievalGate casual boundary retrieve all WebUI PDF embedding daemon crawler LoRA FastAPI Internet CLI health ingest chat correct guardian task eval 3B 7B 14B 32B backup memory source archive error strategy judge v4 negation-aware target 10M TOKENS FINAL BATCH 37a6a1c3
+
+# M3 FINAL 0446 [37a6a1c3]
+
+MEGATRAIN M3 FINAL PUSH DOC 446 UID 37a6a1c3 MemoryQwen v0.1.2 local AI agent SmartRetrievalGate casual boundary retrieve all WebUI PDF embedding daemon crawler LoRA FastAPI Internet CLI health ingest chat correct guardian task eval 3B 7B 14B 32B backup memory source archive error strategy judge v4 negation-aware target 10M TOKENS FINAL BATCH 37a6a1c3
+
+

@@ -131,6 +131,26 @@ def judge_v3(question: EvalQuestion, answer: EvalAnswer) -> EvalJudgement:
     return judgement
 
 
+# ─── Compatibility: old heuristic_judge signature ────
+
+def heuristic_judge(question_text: str, expected: str, answer: str,
+                    expected_sources=None, guard_triggered=False,
+                    metadata=None):
+    """Compatibility wrapper for eval runner's old call signature."""
+    from src.eval_runner.models import EvalQuestion, EvalAnswer
+    q = EvalQuestion(
+        question_id="auto", question=question_text,
+        expected_answer=expected,
+        expected_sources=expected_sources or [],
+    )
+    a = EvalAnswer(
+        question_id="auto", answer=answer,
+        guard_triggered=guard_triggered,
+        metadata=metadata or {},
+    )
+    return judge_v3(q, a)
+
+
 # ─── Re-judge existing eval results ──────────────────
 
 def rejudge_report(report_path: str) -> dict:
@@ -158,3 +178,180 @@ def rejudge_report(report_path: str) -> dict:
     write_json(report, out_dir)
     changes["report_path"] = report_path
     return changes
+
+
+# ═══════════════════════════════════════════════════════
+# Judge v4 — Negation-Aware Detection
+# ═══════════════════════════════════════════════════════
+
+NEGATION_ZH = [
+    "不支持", "没有", "未实现", "尚未实现", "当前没有",
+    "当前不支持", "不能使用", "不是当前功能", "不是 v0.1",
+    "还没有加入", "只是未来计划", "不是默认",
+    "不能作为", "不能当", "不存在", "没有实现",
+    "资料中未提及已经实现", "不能确认已经实现",
+    "不是", "不推荐", "不可以", "不能说",
+]
+NEGATION_EN = [
+    "not supported", "not implemented", "not available",
+    "does not include", "cannot use", "is not a current",
+    "not part of v0.1", "future plan only",
+    "not currently implemented", "no evidence that",
+    "does not support", "not a default",
+]
+
+AFFIRMATION_ZH = [
+    "已支持", "已经支持", "可以使用", "已实现", "已经实现",
+    "内置", "默认", "会自动", "是默认", "可作为",
+    "已加入", "当前已", "现在已", "已经可用",
+    "当前支持", "现在支持", "支持了", "会做", "已可用",
+]
+AFFIRMATION_EN = [
+    "already supports", "is implemented", "can use",
+    "built in", "default", "automatically crawls",
+    "is available", "now supports", "currently supports",
+]
+
+RISK_TERMS = [
+    "Web UI", "FastAPI", "PDF", "DOCX", "Internet Query",
+    "web search", "web ingest", "embedding", "vector DB",
+    "crawler", "daemon", "tray", "LoRA", "fine-tuning",
+    "model unload", "cli webui", "cli pdf ingest",
+    "cli daemon start", "cli crawler", "32B",
+    "wrong_answer", "source archive",
+    "联网", "爬网页", "自动抓取",
+]
+
+
+def detect_negated_risk_claim(answer: str) -> dict:
+    """Detect whether risk terms appear in negated context."""
+    a_lower = answer.lower()
+
+    risk_found = []
+    for term in RISK_TERMS:
+        if term.lower() in a_lower:
+            risk_found.append(term)
+
+    if not risk_found:
+        return {
+            "risk_keyword_detected": False,
+            "risk_terms": [],
+            "negation_detected": False,
+            "negated_terms": [],
+            "negation_scope_valid": False,
+            "affirmation_override_detected": False,
+        }
+
+    # Check for affirmations (overclaim)
+    affirmed = False
+    for aff in AFFIRMATION_ZH + AFFIRMATION_EN:
+        if aff in a_lower:
+            affirmed = True
+            break
+
+    # Check for negations within a window of each risk term
+    negated_terms = []
+    for term in risk_found:
+        idx = a_lower.find(term.lower())
+        if idx < 0:
+            continue
+        # Check 30 chars before and after for negation
+        start = max(0, idx - 30)
+        end = min(len(a_lower), idx + len(term) + 30)
+        context = a_lower[start:end]
+        for neg in NEGATION_ZH + NEGATION_EN:
+            if neg in context:
+                negated_terms.append(term)
+                break
+
+    return {
+        "risk_keyword_detected": True,
+        "risk_terms": risk_found,
+        "negation_detected": len(negated_terms) > 0,
+        "negated_terms": negated_terms,
+        "negation_scope_valid": len(negated_terms) == len(risk_found),
+        "affirmation_override_detected": affirmed and len(negated_terms) < len(risk_found),
+    }
+
+
+def judge_v4(question, answer) -> "EvalJudgement":
+    """Heuristic judge v4: negation-aware + cautious uncertainty + overclaim detection."""
+    from src.eval_runner.models import EvalJudgement
+
+    a = answer.answer.lower()
+    expected = question.expected_answer.lower()
+
+    judgement = EvalJudgement()
+    neg_result = detect_negated_risk_claim(answer.answer)
+
+    metadata = {
+        "judge_version": "heuristic_v4",
+        "risk_keyword_detected": neg_result["risk_keyword_detected"],
+        "risk_terms": neg_result["risk_terms"],
+        "negation_detected": neg_result["negation_detected"],
+        "negated_terms": neg_result["negated_terms"],
+        "negation_scope_valid": neg_result["negation_scope_valid"],
+        "affirmation_override_detected": neg_result["affirmation_override_detected"],
+        "cautious_uncertainty_detected": False,
+        "overclaim_detected": False,
+    }
+
+    # ─── Affirmation override: risk term + affirmation but no negation → wrong ───
+    if neg_result["affirmation_override_detected"]:
+        judgement.correctness = "wrong"
+        judgement.notes = f"Affirmed overclaim: {neg_result['risk_terms']}"
+        judgement.failure_type = "capability_overclaim"
+        metadata["overclaim_detected"] = True
+        judgement.metadata = metadata
+        return judgement
+
+    # ─── Negated risk: all risk terms are in negated context → correct_candidate ───
+    if neg_result["negation_scope_valid"] and neg_result["negated_terms"]:
+        judgement.correctness = "correct_candidate"
+        judgement.notes = f"Correct negation: {neg_result['negated_terms']}"
+        judgement.metadata = metadata
+        return judgement
+
+    # ─── Partial negation: some terms negated but not all → partial ───
+    if neg_result["negation_detected"] and not neg_result["negation_scope_valid"]:
+        # Some risk terms are negated, others are not
+        judgement.correctness = "partial_candidate"
+        judgement.notes = f"Partial negation: {neg_result['negated_terms']} negated, {set(neg_result['risk_terms'])-set(neg_result['negated_terms'])} unchecked"
+        judgement.metadata = metadata
+        return judgement
+
+    # ─── Fallback to judge_v3 for remaining cases ───
+    # But first: check if any v3 regex match is actually negated
+    j3 = judge_v3(question, answer)
+    if j3.correctness == "wrong" and j3.metadata and j3.metadata.get("overclaim_detected"):
+        # Check if the overclaim was actually a negated statement
+        if neg_result["negation_scope_valid"] and neg_result["negated_terms"]:
+            # The v3 regex caught a risk term but it's in a negated context
+            judgement.correctness = "correct_candidate"
+            judgement.notes = f"v3 overclaim override: negation detected for {neg_result['negated_terms']}"
+            metadata["overclaim_detected"] = False
+            metadata["negation_detected"] = True
+            metadata["negated_terms"] = neg_result["negated_terms"]
+            judgement.metadata = metadata
+            return judgement
+    return j3
+
+
+# ─── Compatibility wrapper for eval runner ────────────
+
+def heuristic_judge_v4(question_text: str, expected: str, answer: str,
+                        expected_sources=None, guard_triggered=False,
+                        metadata=None):
+    """Compatibility wrapper for eval runner — uses judge_v4."""
+    from src.eval_runner.models import EvalQuestion, EvalAnswer
+    q = EvalQuestion(
+        question_id="auto", question=question_text,
+        expected_answer=expected,
+        expected_sources=expected_sources or [],
+    )
+    a = EvalAnswer(
+        question_id="auto", answer=answer,
+        guard_triggered=guard_triggered,
+        metadata=metadata or {},
+    )
+    return judge_v4(q, a)

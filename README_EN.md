@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.0--dev-blue" alt="version">
+  <img src="https://img.shields.io/badge/version-0.1.5-blue" alt="version">
   <img src="https://img.shields.io/badge/python-3.11+-blue" alt="python">
-  <img src="https://img.shields.io/badge/tests-429%2F429-brightgreen" alt="tests">
+  <img src="https://img.shields.io/badge/tests-631%2F631-brightgreen" alt="tests">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-lightgrey" alt="platform">
 </p>
@@ -88,7 +88,8 @@ python -m src.cli chat "What is the API endpoint?" --debug-memory
 | 📋 Strategy | Error patterns → reusable strategies | ✅ |
 | 🎮 GPU | GPU detection + auto-yield for games/rendering | ✅ |
 | 📊 Tasks | Task queue + pause/resume + persistent state | ✅ |
-| 🧪 Evaluation | 130 eval questions + heuristic judge + auto-export | ✅ |
+| 🧪 Evaluation | 396 eval questions + heuristic judge + auto-export | ✅ |
+| 🌐 Web | Internet Query: web search/fetch/ask, [W] citations | ✅ v0.1.5 |
 | 🛡️ Guard | Capability boundary guard prevents hallucination | ✅ |
 | 🏷️ Archive | Source file archive → memory/sources/ with citations | ✅ |
 
@@ -102,11 +103,11 @@ python -m src.cli chat "What is the API endpoint?" --debug-memory
 
 | Metric | Value |
 |--------|-------|
-| 🧪 pytest | **429/429** (100%) |
+| 🧪 pytest | **631/631** (100%) |
 | 📚 Knowledge chunks | **395** |
 | 🐛 Error cases | **17** |
 | 📋 Strategies | **11** |
-| 📝 Eval questions | **130** real, 0 placeholder |
+| 📝 Eval questions | **396** real, 0 placeholder |
 | 🛡️ Safety scan | **0** issues |
 
 ## 🧠 Model Recommendations

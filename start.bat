@@ -1,6 +1,6 @@
 @echo off
 echo ============================================
-echo   MemoryQwen v0.1.0 — Developer Preview
+echo   MemoryQwen v0.1.5 — Developer Preview
 echo ============================================
 echo.
 echo Requirements:
@@ -33,7 +33,7 @@ set /p "MSG=You > "
 if /i "%MSG%"=="/exit" goto end
 if "%MSG%"=="" goto loop
 echo.
-python -m src.cli chat "%MSG%"
+python -m src.cli chat "%MSG%" --web
 echo.
 goto loop
 

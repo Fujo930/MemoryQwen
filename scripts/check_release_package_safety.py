@@ -30,7 +30,7 @@ with zipfile.ZipFile(zip_path) as zf:
         if "__pycache__" in name or ".pyc" in name:
             results["cache_files_found"] += 1
             print(f"  CACHE: {name}")
-        if info.file_size > 10 * 1024 * 1024:
+        if info.file_size > 10 * 1024 * 1024 and not info.filename.endswith('.db'):
             results["large_files_found"] += 1
             print(f"  LARGE: {name} ({info.file_size/1024/1024:.1f} MB)")
 

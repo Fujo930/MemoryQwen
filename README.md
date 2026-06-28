@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.0--dev-blue" alt="version">
+  <img src="https://img.shields.io/badge/version-0.1.5-blue" alt="version">
   <img src="https://img.shields.io/badge/python-3.11+-blue" alt="python">
-  <img src="https://img.shields.io/badge/tests-429%2F429-brightgreen" alt="tests">
+  <img src="https://img.shields.io/badge/tests-631%2F631-brightgreen" alt="tests">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
   <img src="https://img.shields.io/badge/platform-Windows%2010%2F11-lightgrey" alt="platform">
 </p>
@@ -90,23 +90,24 @@ python -m src.cli chat "API 地址是什么？" --debug-memory
 | 📊 任务 | 任务队列 + 暂停/恢复 + 持久化 | ✅ |
 | 🧪 评估 | 130 道评估题 + 启发式判定器 + 自动导出纠正 | ✅ |
 | 🛡️ 边界 | 能力边界守卫，防止模型幻觉夸大功能 | ✅ |
+| 🌐 联网 | Internet Query：web search/fetch/ask，[W] 引用，不是 crawler | ✅ v0.1.5 |
 | 🏷️ 来源 | 文件归档 → memory/sources/，聊天时精确引用 | ✅ |
 
 ## v0.1 尚未实现
 
 > Web UI · PDF/DOCX · embedding/向量检索 · daemon 后台 · tray 图标 · 爬虫 · LoRA 微调 · 一键安装 exe
 
-*这些在 v0.2+ 路线图中。v0.1 是 Developer Preview，面向会用命令行的开发者。*
+*这些在 v0.2+ 路线图中。v0.1.5 已支持受控联网查询。*
 
 ## 📊 当前真实数据
 
 | 指标 | 数值 |
 |------|------|
-| 🧪 pytest 测试 | **429/429** (100%) |
-| 📚 知识片段 | **395** chunks |
+| 🧪 pytest 测试 | **631/631** (100%) |
+| 📚 知识片段 | **43,645** chunks |
 | 🐛 错误案例 | **17** cases |
 | 📋 策略 | **11** strategies |
-| 📝 评估题目 | **130** real, 0 placeholder |
+| 📝 评估题目 | **396** real (M3 312 + web 84) |
 | 🛡️ 安全扫描 | **0** issues |
 
 ## 🧠 模型推荐
@@ -162,7 +163,7 @@ xcopy memory memory_backup_%date% /E /I
 ## 🗺️ 路线图
 
 - **v0.1** (当前) — Developer Preview，CLI 形态
-- **v0.1.5** — Internet Query (联网搜索 + [W] 引用)
+- **v0.1.5** ✅ — Internet Query (联网查询 + [W] 引用)
 - **v0.2** — Web UI 图形界面
 - **v0.3** — Embedding 向量检索 + 混合搜索
 

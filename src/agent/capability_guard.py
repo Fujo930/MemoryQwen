@@ -40,7 +40,8 @@ MEDIUM_RISK_TERMS_EN = [
 
 FORCED_INSTRUCTIONS = [
     "只根据本地资料、能力边界资料和已注入 sources 回答。",
-    "如果功能在\"未实现\"列表中，必须明确说\"v0.1 尚未实现\"。",
+    "v0.1.5 已实现 Internet Query（受控联网查询：web search/fetch/ask 获取临时网页资料，不是 crawler）。如果用户问联网功能，如实说明 v0.1.5 支持。",
+    "如果功能在\"未实现\"列表中（Web UI、PDF/DOCX、daemon、crawler、LoRA、embedding），必须明确说\"v0.1 尚未实现\"。",
     "不能把未来计划说成当前能力。",
     "不能把 CLI 说成 Web UI。",
     "不能把 GPU Guardian status detection 说成 daemon/tray/自动卸载。",

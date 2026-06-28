@@ -60,7 +60,11 @@ class KeywordRetriever(BaseRetriever):
                 continue
 
             try:
-                all_records = await self.store.list(store_type, limit=100000)
+                # 限制首次加载数量，避免 22K+ docs 导致超时
+                mem_cfg = getattr(self.config, "memory", None)
+                retrieval_sec = getattr(mem_cfg, "retrieval", None) if mem_cfg else None
+                idx_limit = getattr(retrieval_sec, "index_load_limit", 5000) if retrieval_sec else 5000
+                all_records = await self.store.list(store_type, limit=idx_limit)
             except Exception as e:
                 logger.warning("Failed to load %s: %s", store_type, e)
                 continue

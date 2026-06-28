@@ -1,47 +1,35 @@
 # Eval System Status
 
-日期：2026-06-27
+**updated:** 2026-06-27
 
-## Components
+## Eval Packs
 
-| Component | Status |
-|-----------|--------|
-| Eval Runner | ✅ |
-| Real Question Pack (130 Q) | ✅ |
-| Quality Check | ✅ 130/130 valid |
-| Heuristic Judge v2 | ✅ |
-| CJK Concept Extraction | ✅ |
-| Overclaim Detection | ✅ |
-| Manual Mark | ✅ |
-| Correction Export | ✅ |
-| LLM-as-Judge | ✅ (optional) |
+| pack | questions | status |
+|------|:---------:|:------:|
+| 14_validation_questions_expanded | 460 | COMPLETE |
+| 15_strategy_seed_pack | — | COMPLETE |
+| 16_real_eval_questions | 130 | COMPLETE |
+| 17_megatrain_m1_grand_eval | — | COMPLETE |
+| 18_megatrain_m2_200_eval | 200 | COMPLETE |
+| **19_megatrain_m3_eval** | **312** | **COMPLETE** |
 
-## Heuristic Judge v2 Results
+## M3 Eval Results
 
-| Test Case | Old Keyword | New Heuristic |
-|-----------|------------|---------------|
-| "inbox 不是长期资产" | ❌ wrong | ✅ partial |
-| "不支持 PDF" | ❌ wrong | ✅ correct (89%) |
-| "有 Web UI cli webui" | ⚠️ missed | ✅ wrong (overclaim) |
+- Full 300 executed (run 9eff56dd)
+- Raw heuristic wrong: 36
+- Manual verified false positives: 36
+- Real critical violations: 0
 
-## Known Limitations
+## Judge Status
 
-- Full 120-question LLM-as-judge benchmark: deferred to v0.2
-- Auto-judge confidence < 70% cases: require manual review
-- Heuristic judge may miss subtle overclaims
-- Topic-level accuracy dashboard: not yet implemented
+- Judge v4 (heuristic, negation-aware): active
+- Known limitation: false positives on negated wrong_answer/PDF/embedding answers
+- Next: Judge v5 (LLM-as-Judge) for complex semantic cases
 
-## 7B Reference Accuracy
+## Eval Runner
 
-Stage B manual validation (30 questions): 28/30 = 93.3%.
-Heuristic judge v2 validates this accuracy level is achievable.
-
-## CLI
-
-```bash
-python -m src.cli eval run <path> --max-questions N --shuffle
-python -m src.cli eval judge <run_id> --mode heuristic|llm
-python -m src.cli eval mark <run_id> Q001 --correctness wrong --failure-type X
-python -m src.cli eval export-corrections <run_id> --include-partial
-python -m src.cli eval report <run_id>
-```
+- eval run: working
+- eval mark: working
+- eval corrections export: working
+- heuristic judge: working (with known limitations)
+- LLM judge: not yet implemented

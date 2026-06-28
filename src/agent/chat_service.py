@@ -134,6 +134,30 @@ class AgentChatService:
             for s in strategy_retrieved
         ]
 
+        # 4.5. 网页查询 (v0.1.5, only if --web + web signal)
+        web_sources = []
+        web_meta = {"enabled_for_chat": False, "queried": False, "reason": "web_not_enabled"}
+        if getattr(request, "use_web", False):
+            web_meta["enabled_for_chat"] = True
+            try:
+                from src.web.web_need_detector import WebNeedDetector
+                from src.web.web_service import WebQueryService
+                detector = WebNeedDetector()
+                decision = detector.should_use_web(request.message, web_enabled=True)
+                web_meta["reason"] = decision.reason
+                if decision.should_query_web:
+                    svc = WebQueryService(self.config)
+                    result = svc.ask(request.message, max_results=3)
+                    web_sources = result.sources
+                    web_meta["queried"] = True
+                    web_meta["source_count"] = len(web_sources)
+                    web_meta["elapsed_ms"] = result.elapsed_ms
+                    web_meta["sources"] = [getattr(s, "source_id", f"W{i}") for i, s in enumerate(web_sources, 1)]
+                    memory_used.append("web")
+            except Exception as e:
+                logger.warning("Web query failed: %s", e)
+                web_meta["error"] = str(e)
+
         # 5. 构建 prompt
         messages = self.prompt_builder.build(
             user_message=request.message,
@@ -144,6 +168,7 @@ class AgentChatService:
             max_error_context_chars=self.config.agent.max_error_context_chars,
             max_strategy_context_chars=self.config.agent.max_strategy_context_chars,
             capability_guard_result=cap_guard_result if cap_guard_result.is_capability_question else None,
+            web_sources=web_sources if web_sources else None,
         )
 
         # 6. 调用模型
@@ -190,6 +215,7 @@ class AgentChatService:
             "retrieval_gate_confidence": gate_decision.confidence,
             "retrieval_gate_risk_level": gate_decision.risk_level,
             "retrieval_skipped": retrieval_skipped,
+            "web": web_meta,
         }
         if cap_guard_result.is_capability_question:
             memory_used.append("capability_guard")

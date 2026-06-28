@@ -158,6 +158,21 @@ class JobRunnerConfig(BaseModel):
     check_guardian_on_checkpoint: bool = True
 
 
+class WebConfig(BaseModel):
+    """v0.1.5 Internet Query: controlled web access."""
+    enabled: bool = False
+    provider: str = "mock"
+    search_max_results: int = 5
+    fetch_timeout_seconds: int = 10
+    fetch_max_bytes: int = 500_000
+    fetch_max_chars: int = 12_000
+    user_agent: str = "MemoryQwen/0.1.5"
+    allow_private_network: bool = False
+    allow_file_urls: bool = False
+    default_ingest: bool = False
+    require_explicit_ingest: bool = True
+
+
 class BackupConfig(BaseModel):
     auto_backup: bool = False
     backup_dir: str = "./backup"
@@ -198,6 +213,7 @@ class AppConfig(BaseModel):
     task_runtime: TaskRuntimeConfig = TaskRuntimeConfig()
     job_runner: JobRunnerConfig = JobRunnerConfig()
     backup: BackupConfig = BackupConfig()
+    web: WebConfig = WebConfig()
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> "AppConfig":
