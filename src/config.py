@@ -105,6 +105,10 @@ class AgentConfig(BaseModel):
     retrieval_gate_min_confidence: float = 0.4
     retrieval_gate_casual_skip: bool = True
     retrieval_gate_max_top_k: int = 5
+    deep_mode_enabled: bool = True
+    deep_mode_model: str = "qwen2.5:14b"
+    deep_mode_fallback_model: str = "qwen2.5:7b"
+    auto_escalate_to_deep: bool = False
 
 
 class IngestionConfig(BaseModel):

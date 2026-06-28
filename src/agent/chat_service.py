@@ -171,9 +171,21 @@ class AgentChatService:
             web_sources=web_sources if web_sources else None,
         )
 
-        # 6. 调用模型
+        # 6. 调用模型 (with deep mode routing)
+        actual_model_client = self.model_client
+        if getattr(request, "use_deep", False) and self.config.agent.deep_mode_enabled:
+            deep_model = self.config.agent.deep_mode_model
+            try:
+                from src.model_client.factory import create_model_client
+                from copy import deepcopy
+                deep_cfg = deepcopy(self.config)
+                deep_cfg.model_client.model = deep_model
+                actual_model_client = create_model_client(deep_cfg)
+                logger.info("Deep mode: using %s", deep_model)
+            except Exception as e:
+                logger.warning("Deep mode fallback to 7B: %s", e)
         try:
-            model_response = await self.model_client.chat(messages=messages)
+            model_response = await actual_model_client.chat(messages=messages)
         except Exception as e:
             logger.error("Model call failed: %s", e)
             raise
@@ -216,6 +228,8 @@ class AgentChatService:
             "retrieval_gate_risk_level": gate_decision.risk_level,
             "retrieval_skipped": retrieval_skipped,
             "web": web_meta,
+            "model_mode": "deep" if getattr(request, "use_deep", False) else "light",
+            "deep_model_requested": getattr(request, "use_deep", False),
         }
         if cap_guard_result.is_capability_question:
             memory_used.append("capability_guard")

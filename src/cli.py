@@ -51,6 +51,7 @@ def build_parser() -> argparse.ArgumentParser:
     chat.add_argument("--model-tier", default="light", choices=["light", "deep"], help="模型层级")
     chat.add_argument("--debug-memory", action="store_true", help="显示记忆检索详情")
     chat.add_argument("--web", action="store_true", dest="use_web", help="允许本次聊天使用临时网页查询")
+    chat.add_argument("--deep", action="store_true", dest="use_deep", help="使用 deep mode (14B)")
 
     # memory
     memory = sub.add_parser("memory", help="记忆存储管理")
@@ -231,7 +232,7 @@ async def cmd_chat(config, store, model_client, args):
         print(f"use_strategy_memory: {config.agent.use_strategy_memory}")
         print("-" * 40)
 
-    request = ChatRequest(session_id=args.session, message=args.message, use_web=getattr(args, "use_web", False))
+    request = ChatRequest(session_id=args.session, message=args.message, use_web=getattr(args, "use_web", False), use_deep=getattr(args, "use_deep", False))
     response = await agent.chat(request)
 
     if debug:

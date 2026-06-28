@@ -1,0 +1,2 @@
+# 01 Internet Query Capability
+你可以联网吗？你能联网吗？你支持联网吗？你能上网查资料吗？你可以 web search 吗？你是 crawler 吗？web ask 会写入记忆吗？chat --web 会自动存网页吗？web ingest 和 web ask 有什么区别？web search 和 web fetch 有什么区别？v0.1 能联网吗？v0.1.5 能联网吗？web.enabled 默认值是什么？start.bat 默认带 --web 吗？Internet Query 会自动学习网页内容吗？

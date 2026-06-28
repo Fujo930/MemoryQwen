@@ -15,6 +15,7 @@ class ChatRequest:
     include_recent: bool = True
     max_recent_messages: int = 10
     use_web: bool = False
+    use_deep: bool = False
 
 
 @dataclass
