@@ -58,7 +58,27 @@ class AgentChatService:
         error_retrieved = []
         strategy_retrieved = []
 
-        # 1.5 能力边界检测
+        
+        # 1.4. Capability Registry (authoritative capability source)
+        capability_registry_context = None
+        try:
+            from src.agent.capability_need_detector import CapabilityNeedDetector
+            detector = CapabilityNeedDetector()
+            capability_need = detector.detect(request.message)
+        except Exception as e:
+            logger.warning("Capability need detector failed: %s", e)
+            capability_need = None
+
+        if capability_need and capability_need.is_capability_question:
+            try:
+                from src.capabilities.registry import get_registry
+                registry = get_registry()
+                capability_registry_context = registry.to_prompt_context()
+                # memory_used appended later after it's defined
+            except Exception as e:
+                logger.warning("Capability registry failed: %s", e)
+
+# 1.5 能力边界检测
         cap_guard_result = CapabilityGuardResult()
         memory_used = []
         try:
@@ -169,6 +189,7 @@ class AgentChatService:
             max_strategy_context_chars=self.config.agent.max_strategy_context_chars,
             capability_guard_result=cap_guard_result if cap_guard_result.is_capability_question else None,
             web_sources=web_sources if web_sources else None,
+            capability_registry_context=capability_registry_context,
         )
 
         # 6. 调用模型 (with deep mode routing)

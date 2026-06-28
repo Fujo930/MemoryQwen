@@ -1,0 +1,83 @@
+version: "0.1.6"
+
+implemented:
+  internet_query:
+    status: true
+    since: "0.1.5"
+    summary: "Controlled Internet Query is supported."
+    commands:
+      - "web search"
+      - "web fetch"
+      - "web ask"
+      - "web ingest"
+      - "chat --web"
+    caveats:
+      - "controlled web access"
+      - "web.enabled defaults to false"
+      - "normal chat does not use web unless --web flag is set"
+      - "web ask uses temporary web context and does not write to memory"
+      - "web ingest is the only explicit web-to-memory path"
+      - "web sources are untrusted external content"
+      - "not a crawler"
+      - "no recursive crawling"
+      - "no JavaScript/browser rendering"
+      - "no PDF/DOCX web ingestion"
+
+  deep_mode:
+    status: true
+    since: "0.1.6"
+    summary: "Optional 14B deep mode is supported."
+    default_deep_model: "qwen2.5:14b"
+    caveats:
+      - "optional enhancement"
+      - "not required for base MemoryQwen"
+      - "7B remains the default daily model"
+      - "auto escalation is disabled by default"
+      - "use chat --deep for explicit deep mode"
+      - "14B is not a required dependency"
+
+not_implemented:
+  web_ui:
+    status: false
+    notes:
+      - "planned for later v0.2.x or v0.3"
+
+  pdf_ingestion:
+    status: false
+    notes:
+      - "not supported in current version"
+
+  docx_ingestion:
+    status: false
+    notes:
+      - "not supported in current version"
+
+  embedding_vector_db:
+    status: false
+    notes:
+      - "not supported in current version"
+      - "BM25 keyword retrieval is the current search method"
+
+  crawler:
+    status: false
+    notes:
+      - "Internet Query is not crawler behavior"
+      - "no recursive crawling"
+      - "no bulk site scraping"
+
+  lora_training:
+    status: false
+
+  model_weight_finetuning:
+    status: false
+
+  daemon_tray:
+    status: false
+
+  automatic_model_unload:
+    status: false
+
+  local_edit_agent:
+    status: false
+    notes:
+      - "planned for v0.2"

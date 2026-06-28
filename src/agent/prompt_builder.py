@@ -45,6 +45,7 @@ class PromptBuilder:
         max_strategy_context_chars: int = 1000,
         capability_guard_result=None,
         web_sources: list | None = None,
+        capability_registry_context: str | None = None,
     ) -> list[dict]:
         """构建 OpenAI-compatible messages list
 
@@ -56,6 +57,10 @@ class PromptBuilder:
         strategy_cases = strategy_cases or []
 
         user_content = ""
+
+        # -1. Capability Registry (highest priority for capability questions)
+        if capability_registry_context:
+            user_content += capability_registry_context + "\n\n"
 
         # 0. 能力边界检查（优先插入）
         if capability_guard_result and capability_guard_result.is_capability_question:

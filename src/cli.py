@@ -117,6 +117,13 @@ def build_parser() -> argparse.ArgumentParser:
     web_ingest = web_sub.add_parser("ingest", help="抓取并存入知识库")
     web_ingest.add_argument("url", help="网页 URL")
 
+    # capability (v0.1.6)
+    cap = sub.add_parser("capability", help="能力注册表查询")
+    cap_sub = cap.add_subparsers(dest="cap_cmd", required=True)
+    cap_sub.add_parser("list", help="列出所有能力")
+    cap_show = cap_sub.add_parser("show", help="查看指定能力")
+    cap_show.add_argument("name", help="能力名称")
+
     # eval
     ev = sub.add_parser("eval", help="验证评测")
     ev_sub = ev.add_subparsers(dest="eval_cmd", required=False)
@@ -757,6 +764,49 @@ async def cmd_web(config, args):
         print(f"Unknown web command: {cmd}")
 
 
+async def cmd_capability(args):
+    """Capability Registry CLI handler."""
+    from src.capabilities.registry import load_registry
+
+    registry = load_registry()
+    cmd = args.cap_cmd
+
+    if cmd == "list":
+        print(f"Capability Registry v{registry.data.version}")
+        print(f"\nImplemented ({registry.implemented_count()}):")
+        for name, entry in registry.data.implemented.items():
+            since = f" (since v{entry.since})" if entry.since else ""
+            print(f"  ✅ {name}{since} — {entry.summary}")
+        print(f"\nNot Implemented ({registry.not_implemented_count()}):")
+        for name, entry in registry.data.not_implemented.items():
+            notes = entry.notes[0] if entry.notes else ""
+            print(f"  ❌ {name} — {notes}")
+
+    elif cmd == "show":
+        entry = registry.lookup(args.name)
+        print(f"Capability: {entry.name}")
+        print(f"Status: {entry.status}")
+        if entry.since:
+            print(f"Since: v{entry.since}")
+        if entry.summary:
+            print(f"Summary: {entry.summary}")
+        if entry.commands:
+            print(f"Commands: {', '.join(entry.commands)}")
+        if entry.caveats:
+            print("Caveats:")
+            for c in entry.caveats:
+                print(f"  • {c}")
+        if entry.notes:
+            print("Notes:")
+            for n in entry.notes:
+                print(f"  • {n}")
+        if entry.status == "unknown":
+            print("(This capability is not registered — treat as unknown.)")
+
+    else:
+        print(f"Unknown capability command: {cmd}")
+
+
 async def main():
     parser = build_parser()
     args = parser.parse_args()
@@ -792,6 +842,8 @@ async def main():
             await cmd_eval(config, args)
         elif args.command == "web":
             await cmd_web(config, args)
+        elif args.command == "capability":
+            await cmd_capability(args)
     finally:
         await store.close()
 
