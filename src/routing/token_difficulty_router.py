@@ -88,7 +88,7 @@ class TokenDifficultyRouter:
         judge_review = False
         manual_review = False
 
-        if unknown_capability or has_source_conflict or scores.source_conflict_risk >= 0.8:
+        if unknown_capability or has_source_conflict or scores.source_conflict_risk >= 0.7:
             route = "manual_review"
             manual_review = True
             reason = "unknown_capability" if unknown_capability else "source_conflict"
@@ -106,7 +106,7 @@ class TokenDifficultyRouter:
             route = "deep_suggested"
             deep_suggested = True
             reason = f"planning_depth_{scores.planning_depth:.2f}"
-        elif len(msg) > 6:
+        elif len(msg) > 5:
             route = "memory"
             reason = "substantive_question_default_memory"
         else:
