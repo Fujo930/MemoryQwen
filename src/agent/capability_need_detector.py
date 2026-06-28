@@ -5,8 +5,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 _CAPABILITY_KEYWORDS = [
-    "支持", "可以", "能不能", "有没有", "是否已经实现",
-    "当前版本", "最新版本",
+    "支持", "可以", "能不能", "有没有", "是否已经实现", "是否支持",
+    "当前版本", "最新版本", "版本", "现在",
     "联网", "web", "webui", "web ui",
     "pdf", "docx", "embedding", "vector", "crawler", "爬虫",
     "lora", "fine-tuning", "微调",
