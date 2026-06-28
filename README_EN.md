@@ -32,21 +32,13 @@
 ## ⚡ 5-Minute Quick Start
 
 ```bash
-# 1. Install
 git clone https://github.com/Fujo930/MemoryQwen
 cd MemoryQwen
 pip install -r requirements.txt
-
-# 2. Pull a model (Ollama)
 ollama pull qwen2.5:7b
-
-# 3. Import your documents
 mkdir inbox
 echo "# Project Docs" > inbox/test.md
-echo "API endpoint: http://localhost:8080" >> inbox/test.md
 python -m src.cli job ingest inbox/
-
-# 4. Start chatting
 python -m src.cli chat "What is the API endpoint?" --debug-memory
 ```
 
@@ -76,38 +68,36 @@ python -m src.cli chat "What is the API endpoint?" --debug-memory
 └─────────────────────────────────────────────────────┘
 ```
 
-## ✅ v0.1 Features
+## ✅ v0.1.5 Features
 
 | Module | Feature | Status |
 |--------|---------|:------:|
 | 📥 Ingestion | Document import (.txt/.md) → SQLite | ✅ |
 | 🔍 Retrieval | BM25 keyword search, multi-store | ✅ |
-| 💬 Chat | Local model (Ollama/LM Studio) + source citations | ✅ |
+| 💬 Chat | Local model + source citations | ✅ |
+| 🌐 Web | Internet Query: web search/fetch/ask, [W] citations, not a crawler | ✅ v0.1.5 |
 | 🧠 Memory | Persistent chat history + knowledge base | ✅ |
 | 🐛 Correction | User correction → auto-learning → never repeats | ✅ |
 | 📋 Strategy | Error patterns → reusable strategies | ✅ |
 | 🎮 GPU | GPU detection + auto-yield for games/rendering | ✅ |
 | 📊 Tasks | Task queue + pause/resume + persistent state | ✅ |
 | 🧪 Evaluation | 396 eval questions + heuristic judge + auto-export | ✅ |
-| 🌐 Web | Internet Query: web search/fetch/ask, [W] citations | ✅ v0.1.5 |
 | 🛡️ Guard | Capability boundary guard prevents hallucination | ✅ |
-| 🏷️ Archive | Source file archive → memory/sources/ with citations | ✅ |
+| 🏷️ Archive | Source file archive → memory/sources/ | ✅ |
 
 ## Not Yet Implemented
 
 > Web UI · PDF/DOCX · embedding/vector search · daemon · tray icon · crawler · LoRA fine-tuning · one-click installer
-
-*These are on the v0.2+ roadmap. v0.1 is a Developer Preview for CLI users.*
 
 ## 📊 Live Stats
 
 | Metric | Value |
 |--------|-------|
 | 🧪 pytest | **631/631** (100%) |
-| 📚 Knowledge chunks | **395** |
+| 📚 Knowledge chunks | **43,645** |
 | 🐛 Error cases | **17** |
 | 📋 Strategies | **11** |
-| 📝 Eval questions | **396** real, 0 placeholder |
+| 📝 Eval questions | **396** real (M3 312 + web 84) |
 | 🛡️ Safety scan | **0** issues |
 
 ## 🧠 Model Recommendations
@@ -120,23 +110,27 @@ python -m src.cli chat "What is the API endpoint?" --debug-memory
 
 > 💡 **3B to run, 7B as default, 14B for depth, 32B+ experimental.**
 
-## 🛠️ Common Commands
+## 🧱 Dev Challenges & Known Bottlenecks
 
-```bash
-python -m src.cli health              # health check
-python -m src.cli job ingest inbox/   # import documents
-python -m src.cli chat "question"     # chat with auto-retrieval
-python -m src.cli correct \           # correction learning
-  --wrong "wrong answer" \
-  --correct "right answer" \
-  --strategy "rule to remember"
-python -m src.cli memory stats        # storage statistics
-python -m src.cli guardian status     # GPU yield status
-python -m src.cli task list           # task list
-python -m src.cli eval run training_packs/  # run evaluation
-```
+Honest status — no sugarcoating.
 
-📖 [Full CLI Reference](docs/cli_reference.md)
+### 🚧 The Reasoning Wall
+
+The 7B model cannot reliably reason when sources conflict. The system prompt says "v0.1.5 supports web search" but 43K training chunks say "v0.1 has no web" — the model **oscillates randomly** between both answers. Same question, three tries, three different answers.
+
+**This is not fixable with prompt engineering.** It needs 14B+ parameters or a new reasoning architecture. RTX 4080 can run 14B: `ollama pull qwen2.5:14b`.
+
+### ⚖️ Heuristic Judge Keyword Hypersensitivity
+
+The v4 heuristic judge misclassifies correct answers. Model says "v0.1 does **not** support PDF" — judge sees "PDF" and flags overclaim. In the M3 300-question eval, **100% of "wrong" verdicts were judge false positives** (36/36). Zero real violations. Needs Judge v5 (LLM-as-Judge).
+
+### 🔍 Retrieval Quality Bottleneck
+
+BM25 favors high-frequency old documents among 43K chunks. New M3 batch docs (30 chunks) are completely drowned out. Eval source_hit rate: **0%** — not because answers are wrong, but because retrieval can't find the right docs. Needs Retrieval Quality v2.
+
+### 🧩 Solo Development
+
+All code, docs, tests, training data, and eval maintained by one person. Contributors welcome.
 
 ## ⚠️ Backup Your Memory
 
@@ -148,35 +142,46 @@ xcopy memory memory_backup_%date% /E /I
 
 See [Memory Backup Guide](docs/memory_backup.md)
 
+## 🛠️ Common Commands
+
+```bash
+python -m src.cli health              # health check
+python -m src.cli job ingest inbox/   # import documents
+python -m src.cli chat "question"     # chat with auto-retrieval
+python -m src.cli web search "query"  # web search (v0.1.5)
+python -m src.cli correct --wrong "wrong" --correct "right"
+python -m src.cli memory stats        # storage statistics
+python -m src.cli guardian status     # GPU yield status
+python -m src.cli eval run training_packs/  # run evaluation
+```
+
+📖 [Full CLI Reference](docs/cli_reference.md)
+
 ## 📖 Documentation
 
 | Doc | Description |
 |-----|-------------|
 | [Windows 11 Quick Start](docs/windows11_quickstart.md) | Setup from scratch |
+| [Internet Query](docs/internet_query.md) | Web access guide |
 | [CLI Reference](docs/cli_reference.md) | All commands |
 | [Config Reference](docs/config_reference.md) | YAML config options |
 | [Architecture](docs/architecture.md) | Technical architecture |
+| [Security Model](docs/security_model.md) | Security design |
 | [Memory Backup](docs/memory_backup.md) | Backup strategy |
-| [Troubleshooting](docs/troubleshooting.md) | Common issues |
-| [Release Notes](docs/release_notes_v0.1.0-dev.md) | v0.1 changelog |
 
 ## 🗺️ Roadmap
 
-- **v0.1** (current) — Developer Preview, CLI only
-- **v0.1.5** — Internet Query (web search + [W] citations)
+- **v0.1** ✅ — CLI Developer Preview
+- **v0.1.5** ✅ — Internet Query (web search + [W] citations)
 - **v0.2** — Web UI
 - **v0.3** — Embedding + hybrid search
 
 ## 🤝 Contributing
 
-v0.1 is a Developer Preview. Issues and PRs welcome!
+Issues and PRs welcome.
 
 ```bash
-# Run tests
 python -m pytest tests/ -q --basetemp=/tmp/mqwen-pytest
-
-# Format
-pip install black && black src/ tests/
 ```
 
 ## 📄 License
