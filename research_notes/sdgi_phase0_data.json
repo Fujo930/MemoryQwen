@@ -1,0 +1,920 @@
+{
+  "collected_at": "2026-06-28T18:14:13.786644",
+  "total_questions": 27,
+  "signals": [
+    {
+      "question": "你可以联网吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "联网"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.6,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "你可以联网吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "你能联网吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "联网"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.6,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "你能联网吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "你支持联网吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "支持",
+        "联网"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "你支持联网吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "你能上网查资料吗",
+      "route": "memory",
+      "trigger_tokens": [],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "你能上网查资料吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "你可以 web search 吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "web search",
+        "web"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "你可以",
+        "web",
+        "search",
+        "吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "你是 crawler 吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "crawler"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.6,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "你是",
+        "crawler",
+        "吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "web ask 会写入记忆吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "web ask",
+        "web"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "web",
+        "ask",
+        "会写入记忆吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "chat --web 会自动存网页吗",
+      "route": "judge_review",
+      "trigger_tokens": [
+        "web",
+        "自动"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.6,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.6
+      },
+      "deep_suggested": false,
+      "judge_review": true,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "chat",
+        "web",
+        "会自动存网页吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "web ingest 和 web ask 有什么区别",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "web ask",
+        "web ingest",
+        "web"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.8,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "web",
+        "ingest",
+        "和",
+        "web",
+        "ask",
+        "有什么区别"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "v0.1 和 v0.1.5 有什么区别",
+      "route": "memory",
+      "trigger_tokens": [],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "v",
+        "和",
+        "v",
+        "有什么区别"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "v0.1.5 改变了 v0.1 的能力吗",
+      "route": "memory",
+      "trigger_tokens": [],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "v",
+        "改变了",
+        "v",
+        "的能力吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "旧资料说没有联网，新资料说 v0.1.5 有受控联网，到底有没有",
+      "route": "manual_review",
+      "trigger_tokens": [
+        "有没有",
+        "联网",
+        "资料说",
+        "到底有没有"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.8,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": true,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "旧资料说没有联网",
+        "新资料说",
+        "v",
+        "有受控联网",
+        "到底有没有"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "支持 PDF 吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "支持",
+        "PDF"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "支持",
+        "PDF",
+        "吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "有 Web UI 吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "Web UI",
+        "web"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "有",
+        "Web",
+        "UI",
+        "吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "支持 embedding 向量数据库吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "支持",
+        "embedding"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "支持",
+        "embedding",
+        "向量数据库吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "source archive 是爬虫吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "爬虫"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.6,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "source",
+        "archive",
+        "是爬虫吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "memory/sources 存什么",
+      "route": "memory",
+      "trigger_tokens": [],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "memory",
+        "sources",
+        "存什么"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "帮我规划 v0.2 外骨骼算法",
+      "route": "deep_suggested",
+      "trigger_tokens": [
+        "规划",
+        "算法",
+        "外骨骼"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.4,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.8,
+        "model_upgrade_need": 0.5,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": true,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "帮我规划",
+        "v",
+        "外骨骼算法"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "如何设计 token 分层路由",
+      "route": "deep_suggested",
+      "trigger_tokens": [
+        "设计",
+        "token",
+        "分层"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.4,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.8,
+        "model_upgrade_need": 0.5,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": true,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "如何设计",
+        "token",
+        "分层路由"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "如果 Web UI 搁置 v0.2 怎么定位",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "Web UI",
+        "web"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "如果",
+        "Web",
+        "UI",
+        "搁置",
+        "v",
+        "怎么定位"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "wrong_answer 可以当事实吗",
+      "route": "judge_review",
+      "trigger_tokens": [
+        "wrong_answer",
+        "当事实"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.7
+      },
+      "deep_suggested": false,
+      "judge_review": true,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "wrong",
+        "answer",
+        "可以当事实吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "fake CLI 命令能用吗",
+      "route": "judge_review",
+      "trigger_tokens": [
+        "fake CLI"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.0,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.6
+      },
+      "deep_suggested": false,
+      "judge_review": true,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "fake",
+        "CLI",
+        "命令能用吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "绕过 guard 可以吗",
+      "route": "judge_review",
+      "trigger_tokens": [
+        "可以吗",
+        "绕过 guard",
+        "绕过"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.6,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.7
+      },
+      "deep_suggested": false,
+      "judge_review": true,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "绕过",
+        "guard",
+        "可以吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "14B deep mode 是必须的吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "14B",
+        "deep mode"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "B",
+        "deep",
+        "mode",
+        "是必须的吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "7B 够用吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "7B"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.6,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "B",
+        "够用吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "v0.1.5 支持 crawler 吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "支持",
+        "crawler"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "v",
+        "支持",
+        "crawler",
+        "吗"
+      ],
+      "notes": ""
+    },
+    {
+      "question": "MemoryQwen 有 Web UI 吗",
+      "route": "capability_registry",
+      "trigger_tokens": [
+        "Web UI",
+        "web"
+      ],
+      "risk_scores": {
+        "capability_risk": 0.7,
+        "version_conflict_risk": 0.0,
+        "web_need": 0.0,
+        "source_conflict_risk": 0.0,
+        "planning_depth": 0.0,
+        "model_upgrade_need": 0.0,
+        "hallucination_risk": 0.0
+      },
+      "deep_suggested": false,
+      "judge_review": false,
+      "manual_review": false,
+      "answer_7b": "",
+      "latency_7b": 0.0,
+      "consistent_7b": null,
+      "answer_14b": "",
+      "latency_14b": 0.0,
+      "had_14b": false,
+      "tokens_in_question": [
+        "MemoryQwen",
+        "有",
+        "Web",
+        "UI",
+        "吗"
+      ],
+      "notes": ""
+    }
+  ],
+  "analysis": {
+    "total_questions": 27,
+    "route_distribution": {
+      "capability_registry": 16,
+      "memory": 4,
+      "judge_review": 4,
+      "deep_suggested": 2,
+      "manual_review": 1
+    },
+    "top_trigger_tokens": {
+      "web": 7,
+      "联网": 4,
+      "支持": 4,
+      "Web UI": 3,
+      "crawler": 2,
+      "web ask": 2,
+      "web search": 1,
+      "自动": 1,
+      "web ingest": 1,
+      "有没有": 1,
+      "资料说": 1,
+      "到底有没有": 1,
+      "PDF": 1,
+      "embedding": 1,
+      "爬虫": 1,
+      "规划": 1,
+      "算法": 1,
+      "外骨骼": 1,
+      "设计": 1,
+      "token": 1
+    },
+    "deep_suggested_tokens": [
+      "规划",
+      "算法",
+      "分层",
+      "外骨骼",
+      "token",
+      "设计"
+    ],
+    "judge_review_tokens": [
+      "可以吗",
+      "web",
+      "绕过",
+      "自动",
+      "当事实",
+      "wrong_answer",
+      "fake CLI",
+      "绕过 guard"
+    ],
+    "high_capability_risk_tokens": [
+      "web ask",
+      "web",
+      "web ingest"
+    ]
+  }
+}
