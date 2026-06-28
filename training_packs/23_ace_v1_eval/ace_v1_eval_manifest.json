@@ -1,0 +1,14 @@
+{
+  "name": "ACE-v1 Eval Pack",
+  "version": "1.0",
+  "total_questions": 120,
+  "route_distribution": {
+    "shallow": 15,
+    "capability_registry": 34,
+    "memory": 15,
+    "web": 15,
+    "deep_suggested": 21,
+    "judge_review": 13,
+    "manual_review": 7
+  }
+}

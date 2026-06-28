@@ -88,8 +88,7 @@ class TokenDifficultyRouter:
         judge_review = False
         manual_review = False
 
-        # Determine route by highest-priority match
-        if unknown_capability or has_source_conflict:
+        if unknown_capability or has_source_conflict or scores.source_conflict_risk >= 0.8:
             route = "manual_review"
             manual_review = True
             reason = "unknown_capability" if unknown_capability else "source_conflict"
@@ -107,9 +106,12 @@ class TokenDifficultyRouter:
             route = "deep_suggested"
             deep_suggested = True
             reason = f"planning_depth_{scores.planning_depth:.2f}"
-        elif triggers:
+        elif len(msg) > 6:
             route = "memory"
-            reason = "low_risk_with_signals"
+            reason = "substantive_question_default_memory"
+        else:
+            route = "shallow"
+            reason = "no difficulty signals detected"
 
         return RoutingDecision(
             route=route,

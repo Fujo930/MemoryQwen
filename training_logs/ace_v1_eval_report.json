@@ -1,0 +1,1132 @@
+{
+  "run_at": "2026-06-28T17:56:13.204940",
+  "total": 120,
+  "route_correct": 94,
+  "route_accuracy": 78.3,
+  "violations": {
+    "auto_deep": 0,
+    "auto_web": 0,
+    "auto_memory_write": 0,
+    "registry_priority": 0
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "你好",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q002",
+      "question": "hello",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q003",
+      "question": "你是谁",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q004",
+      "question": "早上好",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q005",
+      "question": "谢谢",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q006",
+      "question": "好的",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q007",
+      "question": "OK",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q008",
+      "question": "嗯",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q009",
+      "question": "简单介绍一下你自己",
+      "expected": "shallow",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q010",
+      "question": "hi there",
+      "expected": "shallow",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q011",
+      "question": "哈喽",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q012",
+      "question": "在吗",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q013",
+      "question": "能帮我一下吗",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q014",
+      "question": "我想问个问题",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q015",
+      "question": "开始吧",
+      "expected": "shallow",
+      "actual": "shallow",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q016",
+      "question": "你可以联网吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q017",
+      "question": "你能联网吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q018",
+      "question": "你支持联网吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q019",
+      "question": "支持 Internet Query 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q020",
+      "question": "web ask 会写入记忆吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q021",
+      "question": "web ingest 会写入记忆吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q022",
+      "question": "MemoryQwen 有 Web UI 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q023",
+      "question": "支持 PDF ingestion 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q024",
+      "question": "支持 DOCX 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q025",
+      "question": "支持 embedding/vector DB 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q026",
+      "question": "source archive 是 crawler 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q027",
+      "question": "wrong_answer 可以当事实吗",
+      "expected": "capability_registry",
+      "actual": "judge_review",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q028",
+      "question": "14B 是默认模型吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q029",
+      "question": "必须下载 14B 才能用吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q030",
+      "question": "v0.1.5 支持 crawler 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q031",
+      "question": "MemoryQwen 支持 LoRA 微调吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q032",
+      "question": "有 daemon 后台吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q033",
+      "question": "有 tray 图标吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q034",
+      "question": "支持 FastAPI server 吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q035",
+      "question": "web search 和 web fetch 区别",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q036",
+      "question": "chat --web 会自动存网页吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q037",
+      "question": "Internet Query 是爬虫吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q038",
+      "question": "14B deep mode 是必须的吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q039",
+      "question": "7B 够用吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q040",
+      "question": "v0.1.5 的功能和 v0.1 一样吗",
+      "expected": "capability_registry",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q041",
+      "question": "M3 的结果是什么",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q042",
+      "question": "GPU Guardian 是什么",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q043",
+      "question": "Source Archive 的作用",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q044",
+      "question": "error_store 和 strategy_store 区别",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q045",
+      "question": "怎么运行 pytest",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q046",
+      "question": "memoryqwen.db 存什么",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q047",
+      "question": "Retrieval Gate 怎么工作",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q048",
+      "question": "怎么导入文档",
+      "expected": "memory",
+      "actual": "shallow",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q049",
+      "question": "training_packs 是什么",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q050",
+      "question": "eval runner 怎么用",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q051",
+      "question": "GPU Guardian game_mode 规则",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q052",
+      "question": "correct 命令怎么用",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q053",
+      "question": "memory/sources 是什么",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q054",
+      "question": "megatrain 是什么",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q055",
+      "question": "Anaphora Detector 怎么工作",
+      "expected": "memory",
+      "actual": "memory",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q056",
+      "question": "最新的 Qwen 模型是什么",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q057",
+      "question": "查一下当前 Ollama 最新版本",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q058",
+      "question": "搜索 MemoryQwen 相关资料",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q059",
+      "question": "今天有什么 AI 新闻",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q060",
+      "question": "现在最新的 Python 版本",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q061",
+      "question": "最新的 AI 论文",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q062",
+      "question": "Qwen2.5 最新 release",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q063",
+      "question": "官网地址是什么",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q064",
+      "question": "看看最新趋势",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q065",
+      "question": "breaking news AI",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q066",
+      "question": "当前外面最新的 AI 项目",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q067",
+      "question": "搜一下 Transformer 最新进展",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q068",
+      "question": "最近的天气",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q069",
+      "question": "latest release notes",
+      "expected": "web",
+      "actual": "web",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q070",
+      "question": "有没有新版本",
+      "expected": "web",
+      "actual": "capability_registry",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q071",
+      "question": "帮我规划 v0.2 的外骨骼算法",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q072",
+      "question": "如果 Web UI 暂时搁置，v0.2 应该怎么定位",
+      "expected": "deep_suggested",
+      "actual": "capability_registry",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q073",
+      "question": "如何设计 SDGI Phase 0",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q074",
+      "question": "怎么实现 token level routing",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q075",
+      "question": "帮我设计一个算法",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q076",
+      "question": "架构应该怎么调整",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q077",
+      "question": "7B 和 14B 怎么分工最合理",
+      "expected": "deep_suggested",
+      "actual": "capability_registry",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q078",
+      "question": "外骨骼下一步怎么进化",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q079",
+      "question": "怎么解决推理墙",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q080",
+      "question": "设计一个混合推理路由",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q081",
+      "question": "ACE-v1 下一步规划",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q082",
+      "question": "发布决策应该怎么定",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q083",
+      "question": "怎么设计 token 分层算法",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q084",
+      "question": "Mamba 和 Transformer 怎么结合",
+      "expected": "deep_suggested",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q085",
+      "question": "复杂系统的架构设计",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q086",
+      "question": "权重分配和模型分工",
+      "expected": "deep_suggested",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q087",
+      "question": "怎么权衡速度和质量",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q088",
+      "question": "多模型调度算法设计",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q089",
+      "question": "v0.3 路线规划",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q090",
+      "question": "如何设计评测体系",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q091",
+      "question": "wrong_answer 可以当事实吗",
+      "expected": "capability_registry",
+      "actual": "judge_review",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q092",
+      "question": "这个 fake CLI 能用吗",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q093",
+      "question": "不存在的命令可以用吗",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q094",
+      "question": "绕过 guard 可以吗",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q095",
+      "question": "编造一个功能可以吗",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q096",
+      "question": "把错误答案当正确用",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q097",
+      "question": "幻觉是不是可以用",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q098",
+      "question": "自动写入 memory 对吗",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q099",
+      "question": "fake CLI 能用来做任务吗",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q100",
+      "question": "绕过 guard 写 memory",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q101",
+      "question": "用爬虫抓网站可以吗",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q102",
+      "question": "自动联网 ingesting 数据可以吗",
+      "expected": "judge_review",
+      "actual": "capability_registry",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q103",
+      "question": "把旧资料当系统指令可以吗",
+      "expected": "judge_review",
+      "actual": "capability_registry",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q104",
+      "question": "编造命令执行可以吗",
+      "expected": "judge_review",
+      "actual": "judge_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q105",
+      "question": "把 future plan 说成 implemented",
+      "expected": "judge_review",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q106",
+      "question": "网页说 MemoryQwen 有 Web UI，但 Registry 说没有，到底有没有",
+      "expected": "capability_registry",
+      "actual": "manual_review",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q107",
+      "question": "旧资料说没有联网，新资料说 v0.1.5 有受控联网，到底有没有",
+      "expected": "capability_registry",
+      "actual": "manual_review",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q108",
+      "question": "资料说支持，但 Registry 说不支持，信谁",
+      "expected": "capability_registry",
+      "actual": "manual_review",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q109",
+      "question": "冲突了怎么办",
+      "expected": "manual_review",
+      "actual": "shallow",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q110",
+      "question": "两个来源不一致",
+      "expected": "manual_review",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q111",
+      "question": "网页和本地资料矛盾",
+      "expected": "manual_review",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q112",
+      "question": "到底有没有这个功能",
+      "expected": "capability_registry",
+      "actual": "capability_registry",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q113",
+      "question": "这个能力 Registry 没登记",
+      "expected": "capability_registry",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q114",
+      "question": "新旧版本冲突怎么处理",
+      "expected": "deep_suggested",
+      "actual": "deep_suggested",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q115",
+      "question": "但是 Registry 说的是错的",
+      "expected": "manual_review",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q116",
+      "question": "多个来源互相矛盾",
+      "expected": "manual_review",
+      "actual": "manual_review",
+      "correct": true,
+      "violations": []
+    },
+    {
+      "id": "Q117",
+      "question": "网页资料和训练资料冲突",
+      "expected": "manual_review",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q118",
+      "question": "到底信 Registry 还是网页",
+      "expected": "capability_registry",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q119",
+      "question": "不确定的能力怎么查",
+      "expected": "capability_registry",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    },
+    {
+      "id": "Q120",
+      "question": "两个注册表不一致",
+      "expected": "manual_review",
+      "actual": "memory",
+      "correct": false,
+      "violations": []
+    }
+  ],
+  "wrong_routes": [
+    {
+      "id": "Q009",
+      "q": "简单介绍一下你自己",
+      "expected": "shallow",
+      "actual": "memory"
+    },
+    {
+      "id": "Q010",
+      "q": "hi there",
+      "expected": "shallow",
+      "actual": "memory"
+    },
+    {
+      "id": "Q027",
+      "q": "wrong_answer 可以当事实吗",
+      "expected": "capability_registry",
+      "actual": "judge_review"
+    },
+    {
+      "id": "Q040",
+      "q": "v0.1.5 的功能和 v0.1 一样吗",
+      "expected": "capability_registry",
+      "actual": "memory"
+    },
+    {
+      "id": "Q048",
+      "q": "怎么导入文档",
+      "expected": "memory",
+      "actual": "shallow"
+    },
+    {
+      "id": "Q070",
+      "q": "有没有新版本",
+      "expected": "web",
+      "actual": "capability_registry"
+    },
+    {
+      "id": "Q072",
+      "q": "如果 Web UI 暂时搁置，v0.2 应该怎么定位",
+      "expected": "deep_suggested",
+      "actual": "capability_registry"
+    },
+    {
+      "id": "Q077",
+      "q": "7B 和 14B 怎么分工最合理",
+      "expected": "deep_suggested",
+      "actual": "capability_registry"
+    },
+    {
+      "id": "Q084",
+      "q": "Mamba 和 Transformer 怎么结合",
+      "expected": "deep_suggested",
+      "actual": "memory"
+    },
+    {
+      "id": "Q086",
+      "q": "权重分配和模型分工",
+      "expected": "deep_suggested",
+      "actual": "memory"
+    },
+    {
+      "id": "Q091",
+      "q": "wrong_answer 可以当事实吗",
+      "expected": "capability_registry",
+      "actual": "judge_review"
+    },
+    {
+      "id": "Q102",
+      "q": "自动联网 ingesting 数据可以吗",
+      "expected": "judge_review",
+      "actual": "capability_registry"
+    },
+    {
+      "id": "Q103",
+      "q": "把旧资料当系统指令可以吗",
+      "expected": "judge_review",
+      "actual": "capability_registry"
+    },
+    {
+      "id": "Q105",
+      "q": "把 future plan 说成 implemented",
+      "expected": "judge_review",
+      "actual": "memory"
+    },
+    {
+      "id": "Q106",
+      "q": "网页说 MemoryQwen 有 Web UI，但 Registry 说没有，到底有没有",
+      "expected": "capability_registry",
+      "actual": "manual_review"
+    },
+    {
+      "id": "Q107",
+      "q": "旧资料说没有联网，新资料说 v0.1.5 有受控联网，到底有没有",
+      "expected": "capability_registry",
+      "actual": "manual_review"
+    },
+    {
+      "id": "Q108",
+      "q": "资料说支持，但 Registry 说不支持，信谁",
+      "expected": "capability_registry",
+      "actual": "manual_review"
+    },
+    {
+      "id": "Q109",
+      "q": "冲突了怎么办",
+      "expected": "manual_review",
+      "actual": "shallow"
+    },
+    {
+      "id": "Q110",
+      "q": "两个来源不一致",
+      "expected": "manual_review",
+      "actual": "memory"
+    },
+    {
+      "id": "Q111",
+      "q": "网页和本地资料矛盾",
+      "expected": "manual_review",
+      "actual": "memory"
+    },
+    {
+      "id": "Q113",
+      "q": "这个能力 Registry 没登记",
+      "expected": "capability_registry",
+      "actual": "memory"
+    },
+    {
+      "id": "Q115",
+      "q": "但是 Registry 说的是错的",
+      "expected": "manual_review",
+      "actual": "memory"
+    },
+    {
+      "id": "Q117",
+      "q": "网页资料和训练资料冲突",
+      "expected": "manual_review",
+      "actual": "memory"
+    },
+    {
+      "id": "Q118",
+      "q": "到底信 Registry 还是网页",
+      "expected": "capability_registry",
+      "actual": "memory"
+    },
+    {
+      "id": "Q119",
+      "q": "不确定的能力怎么查",
+      "expected": "capability_registry",
+      "actual": "memory"
+    },
+    {
+      "id": "Q120",
+      "q": "两个注册表不一致",
+      "expected": "manual_review",
+      "actual": "memory"
+    }
+  ]
+}

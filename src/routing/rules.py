@@ -18,16 +18,17 @@ CAPABILITY_TOKENS: list[str] = [
     "支持", "能不能", "可以吗", "有没有", "是否已经实现",
     "当前版本", "联网", "web ask", "web ingest", "Web UI",
     "PDF", "DOCX", "embedding", "vector", "crawler", "爬虫",
-    "默认模型", "必须下载", "14B", "deep mode",
-    "internet query", "web search", "web fetch",
+    "默认模型", "必须下载", "14B", "7B", "deep mode",
+    "internet query", "web search", "web fetch", "web",
     "loRA", "微调", "daemon", "tray", "托盘",
 ]
 
 # ── Web-need trigger tokens ───────────────────────────────
 WEB_TOKENS: list[str] = [
-    "最新", "现在", "查一下", "搜索", "新闻", "官网",
+    "最新", "最近", "现在", "查一下", "搜索", "新闻", "官网",
     "当前外部版本", "release", "news", "latest",
     "trending", "weather", "price", "stock",
+    "今天", "当前", "外面",
 ]
 
 # ── Deep-suggested trigger tokens ─────────────────────────
@@ -48,5 +49,6 @@ JUDGE_TOKENS: list[str] = [
 # ── Manual-review trigger conditions ──────────────────────
 MANUAL_TOKENS: list[str] = [
     "网页说", "资料说", "但是 Registry", "到底有没有",
-    "冲突", "不一致", "矛盾",
+    "冲突", "不一致", "矛盾", "互相矛盾", "信谁",
+    "信哪个", "哪个对",
 ]
