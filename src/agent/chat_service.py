@@ -157,6 +157,19 @@ class AgentChatService:
             for s in strategy_retrieved
         ]
 
+        # 4.4. TDR-v1 routing
+        routing_decision = None
+        try:
+            from src.routing import TokenDifficultyRouter
+            tdr = TokenDifficultyRouter()
+            routing_decision = tdr.route(
+                request.message,
+                capability_detected=bool(capability_registry_context),
+                web_need_detected=getattr(request, "use_web", False),
+            )
+        except Exception as e:
+            logger.warning("TDR routing failed: %s", e)
+
         # 4.5. 网页查询 (v0.1.5, only if --web + web signal)
         web_sources = []
         web_meta = {"enabled_for_chat": False, "queried": False, "reason": "web_not_enabled"}
@@ -266,6 +279,12 @@ class AgentChatService:
             "retrieval_gate_risk_level": gate_decision.risk_level,
             "retrieval_skipped": retrieval_skipped,
             "web": web_meta,
+            "routing": {
+                "route": routing_decision.route if routing_decision else "shallow",
+                "deep_suggested": routing_decision.deep_suggested if routing_decision else False,
+                "judge_review_recommended": routing_decision.judge_review_recommended if routing_decision else False,
+                "manual_review_required": routing_decision.manual_review_required if routing_decision else False,
+            } if routing_decision else {},
             "model_mode": "deep" if getattr(request, "use_deep", False) else "light",
             "deep_model_requested": getattr(request, "use_deep", False),
         }

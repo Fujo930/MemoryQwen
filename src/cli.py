@@ -124,6 +124,12 @@ def build_parser() -> argparse.ArgumentParser:
     cap_show = cap_sub.add_parser("show", help="查看指定能力")
     cap_show.add_argument("name", help="能力名称")
 
+    # route (v0.2 TDR-v1)
+    route = sub.add_parser("route", help="TDR-v1 路由检测")
+    route_sub = route.add_subparsers(dest="route_cmd", required=True)
+    route_in = route_sub.add_parser("inspect", help="检测问题难度")
+    route_in.add_argument("question", help="要检测的问题")
+
     # eval
     ev = sub.add_parser("eval", help="验证评测")
     ev_sub = ev.add_subparsers(dest="eval_cmd", required=False)
@@ -844,8 +850,32 @@ async def main():
             await cmd_web(config, args)
         elif args.command == "capability":
             await cmd_capability(args)
+        elif args.command == "route":
+            cmd_route(args)
     finally:
         await store.close()
+
+
+def cmd_route(args):
+    """TDR-v1 route inspect CLI."""
+    if args.route_cmd != "inspect":
+        print("Usage: python -m src.cli route inspect <question>")
+        return
+    from src.routing import TokenDifficultyRouter
+    router = TokenDifficultyRouter()
+    decision = router.route(args.question)
+    print(f"Route: {decision.route}")
+    print(f"Deep suggested: {decision.deep_suggested}")
+    print(f"Judge review: {decision.judge_review_recommended}")
+    print(f"Manual review: {decision.manual_review_required}")
+    if decision.trigger_tokens:
+        print("\nTrigger tokens:")
+        for tt in decision.trigger_tokens:
+            print(f"  - {tt.token}: {tt.risk_type}")
+    print("\nRisk scores:")
+    for field, val in vars(decision.risk_scores).items():
+        print(f"  {field}: {val:.2f}")
+    print(f"\nReason: {decision.reason}")
 
 
 if __name__ == "__main__":
