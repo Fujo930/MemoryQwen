@@ -145,4 +145,5 @@ class TestStrategyContext:
         msgs = builder.build("问题", retrieved=retrieved, error_cases=error_cases,
                               strategy_cases=strategy_cases, recent_chat=recent)
         content = msgs[1]["content"]
-        assert content.index("本地资料") < content.index("过去类似错误") < content.index("可复用策略") < content.index("最近对话") < content.index("用户问题")
+        # 最近对话 now comes right after capability baseline, before local sources
+        assert content.index("最近对话") < content.index("本地资料") < content.index("过去类似错误") < content.index("可复用策略") < content.index("用户问题")
