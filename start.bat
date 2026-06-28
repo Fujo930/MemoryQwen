@@ -33,7 +33,7 @@ set /p "MSG=You > "
 if /i "%MSG%"=="/exit" goto end
 if "%MSG%"=="" goto loop
 echo.
-python -m src.cli chat "%MSG%" --web
+python -m src.cli chat "%MSG%" --web --session startbat
 echo.
 goto loop
 
