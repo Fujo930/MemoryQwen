@@ -33,6 +33,16 @@ class TokenDifficultyRouter:
         triggers: list[TriggerToken] = []
         scores = RiskScores()
 
+        # 0. Explicit casual patterns — force shallow (whole-word matching)
+        _CASUAL_WORDS = ["你好", "hello", "早上好", "晚上好", "谢谢",
+            "好的", "嗯", "在吗", "打招呼", "哈喽",
+            "帮我一下", "开始吧", "hi there", "hey there"]
+        msg_words = set(msg.split())
+        if any(w in msg_words for w in _CASUAL_WORDS) or any(
+            msg.startswith(w) or msg.endswith(w) for w in _CASUAL_WORDS):
+            if len(msg) <= 20:
+                return RoutingDecision(route="shallow", reason="casual_greeting")
+
         # 1. Capability tokens
         cap_hits = [t for t in CAPABILITY_TOKENS if t.lower() in msg]
         if cap_hits:

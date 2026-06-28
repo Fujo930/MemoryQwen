@@ -42,8 +42,9 @@ DEEP_TOKENS: list[str] = [
 # ── Judge-review trigger tokens ───────────────────────────
 JUDGE_TOKENS: list[str] = [
     "fake CLI", "不存在的命令", "wrong_answer", "错误答案",
-    "当事实", "自动写入", "绕过 guard",
-    "绕过", "编造", "幻觉",
+    "当事实", "自动写入", "绕过 guard", "future plan",
+    "绕过", "编造", "幻觉", "自动", "指令",
+    "偷偷",
 ]
 
 # ── Manual-review trigger conditions ──────────────────────

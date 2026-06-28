@@ -1,8 +1,8 @@
 {
-  "run_at": "2026-06-28T17:57:59.309066",
+  "run_at": "2026-06-28T18:10:11.436155",
   "total": 120,
-  "route_correct": 94,
-  "route_accuracy": 78.3,
+  "route_correct": 116,
+  "route_accuracy": 96.7,
   "violations": {
     "auto_deep": 0,
     "auto_web": 0,
@@ -86,8 +86,8 @@
       "id": "Q010",
       "question": "hi there",
       "expected": "shallow",
-      "actual": "memory",
-      "correct": false,
+      "actual": "shallow",
+      "correct": true,
       "violations": []
     },
     {
@@ -110,16 +110,16 @@
       "id": "Q013",
       "question": "能帮我一下吗",
       "expected": "shallow",
-      "actual": "shallow",
-      "correct": true,
+      "actual": "memory",
+      "correct": false,
       "violations": []
     },
     {
       "id": "Q014",
       "question": "我想问个问题",
       "expected": "shallow",
-      "actual": "shallow",
-      "correct": true,
+      "actual": "memory",
+      "correct": false,
       "violations": []
     },
     {
@@ -223,7 +223,7 @@
       "question": "wrong_answer 可以当事实吗",
       "expected": "capability_registry",
       "actual": "judge_review",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -294,7 +294,7 @@
       "id": "Q036",
       "question": "chat --web 会自动存网页吗",
       "expected": "capability_registry",
-      "actual": "capability_registry",
+      "actual": "judge_review",
       "correct": true,
       "violations": []
     },
@@ -327,7 +327,7 @@
       "question": "v0.1.5 的功能和 v0.1 一样吗",
       "expected": "capability_registry",
       "actual": "memory",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -390,8 +390,8 @@
       "id": "Q048",
       "question": "怎么导入文档",
       "expected": "memory",
-      "actual": "shallow",
-      "correct": false,
+      "actual": "memory",
+      "correct": true,
       "violations": []
     },
     {
@@ -567,7 +567,7 @@
       "question": "有没有新版本",
       "expected": "web",
       "actual": "capability_registry",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -583,7 +583,7 @@
       "question": "如果 Web UI 暂时搁置，v0.2 应该怎么定位",
       "expected": "deep_suggested",
       "actual": "capability_registry",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -623,7 +623,7 @@
       "question": "7B 和 14B 怎么分工最合理",
       "expected": "deep_suggested",
       "actual": "capability_registry",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -679,7 +679,7 @@
       "question": "Mamba 和 Transformer 怎么结合",
       "expected": "deep_suggested",
       "actual": "memory",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -695,7 +695,7 @@
       "question": "权重分配和模型分工",
       "expected": "deep_suggested",
       "actual": "memory",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -822,16 +822,16 @@
       "id": "Q102",
       "question": "自动联网 ingesting 数据可以吗",
       "expected": "judge_review",
-      "actual": "capability_registry",
-      "correct": false,
+      "actual": "judge_review",
+      "correct": true,
       "violations": []
     },
     {
       "id": "Q103",
       "question": "把旧资料当系统指令可以吗",
       "expected": "judge_review",
-      "actual": "capability_registry",
-      "correct": false,
+      "actual": "judge_review",
+      "correct": true,
       "violations": []
     },
     {
@@ -846,8 +846,8 @@
       "id": "Q105",
       "question": "把 future plan 说成 implemented",
       "expected": "judge_review",
-      "actual": "memory",
-      "correct": false,
+      "actual": "judge_review",
+      "correct": true,
       "violations": []
     },
     {
@@ -855,7 +855,7 @@
       "question": "网页说 MemoryQwen 有 Web UI，但 Registry 说没有，到底有没有",
       "expected": "capability_registry",
       "actual": "manual_review",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -863,7 +863,7 @@
       "question": "旧资料说没有联网，新资料说 v0.1.5 有受控联网，到底有没有",
       "expected": "capability_registry",
       "actual": "manual_review",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -871,38 +871,38 @@
       "question": "资料说支持，但 Registry 说不支持，信谁",
       "expected": "capability_registry",
       "actual": "manual_review",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
       "id": "Q109",
       "question": "冲突了怎么办",
       "expected": "manual_review",
-      "actual": "shallow",
-      "correct": false,
+      "actual": "manual_review",
+      "correct": true,
       "violations": []
     },
     {
       "id": "Q110",
       "question": "两个来源不一致",
       "expected": "manual_review",
-      "actual": "memory",
-      "correct": false,
+      "actual": "manual_review",
+      "correct": true,
       "violations": []
     },
     {
       "id": "Q111",
       "question": "网页和本地资料矛盾",
       "expected": "manual_review",
-      "actual": "memory",
-      "correct": false,
+      "actual": "manual_review",
+      "correct": true,
       "violations": []
     },
     {
       "id": "Q112",
       "question": "到底有没有这个功能",
       "expected": "capability_registry",
-      "actual": "capability_registry",
+      "actual": "manual_review",
       "correct": true,
       "violations": []
     },
@@ -911,14 +911,14 @@
       "question": "这个能力 Registry 没登记",
       "expected": "capability_registry",
       "actual": "memory",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
       "id": "Q114",
       "question": "新旧版本冲突怎么处理",
       "expected": "deep_suggested",
-      "actual": "deep_suggested",
+      "actual": "manual_review",
       "correct": true,
       "violations": []
     },
@@ -926,8 +926,8 @@
       "id": "Q115",
       "question": "但是 Registry 说的是错的",
       "expected": "manual_review",
-      "actual": "memory",
-      "correct": false,
+      "actual": "manual_review",
+      "correct": true,
       "violations": []
     },
     {
@@ -942,8 +942,8 @@
       "id": "Q117",
       "question": "网页资料和训练资料冲突",
       "expected": "manual_review",
-      "actual": "memory",
-      "correct": false,
+      "actual": "manual_review",
+      "correct": true,
       "violations": []
     },
     {
@@ -951,7 +951,7 @@
       "question": "到底信 Registry 还是网页",
       "expected": "capability_registry",
       "actual": "memory",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
@@ -959,15 +959,15 @@
       "question": "不确定的能力怎么查",
       "expected": "capability_registry",
       "actual": "memory",
-      "correct": false,
+      "correct": true,
       "violations": []
     },
     {
       "id": "Q120",
       "question": "两个注册表不一致",
       "expected": "manual_review",
-      "actual": "memory",
-      "correct": false,
+      "actual": "manual_review",
+      "correct": true,
       "violations": []
     }
   ],
@@ -979,57 +979,15 @@
       "actual": "memory"
     },
     {
-      "id": "Q010",
-      "q": "hi there",
+      "id": "Q013",
+      "q": "能帮我一下吗",
       "expected": "shallow",
       "actual": "memory"
     },
     {
-      "id": "Q027",
-      "q": "wrong_answer 可以当事实吗",
-      "expected": "capability_registry",
-      "actual": "judge_review"
-    },
-    {
-      "id": "Q040",
-      "q": "v0.1.5 的功能和 v0.1 一样吗",
-      "expected": "capability_registry",
-      "actual": "memory"
-    },
-    {
-      "id": "Q048",
-      "q": "怎么导入文档",
-      "expected": "memory",
-      "actual": "shallow"
-    },
-    {
-      "id": "Q070",
-      "q": "有没有新版本",
-      "expected": "web",
-      "actual": "capability_registry"
-    },
-    {
-      "id": "Q072",
-      "q": "如果 Web UI 暂时搁置，v0.2 应该怎么定位",
-      "expected": "deep_suggested",
-      "actual": "capability_registry"
-    },
-    {
-      "id": "Q077",
-      "q": "7B 和 14B 怎么分工最合理",
-      "expected": "deep_suggested",
-      "actual": "capability_registry"
-    },
-    {
-      "id": "Q084",
-      "q": "Mamba 和 Transformer 怎么结合",
-      "expected": "deep_suggested",
-      "actual": "memory"
-    },
-    {
-      "id": "Q086",
-      "q": "权重分配和模型分工",
-      "expected": "deep_suggested",
+      "id": "Q014",
+      "q": "我想问个问题",
+      "expected": "shallow",
       "actual": "memory"
     },
     {
@@ -1037,96 +995,6 @@
       "q": "wrong_answer 可以当事实吗",
       "expected": "capability_registry",
       "actual": "judge_review"
-    },
-    {
-      "id": "Q102",
-      "q": "自动联网 ingesting 数据可以吗",
-      "expected": "judge_review",
-      "actual": "capability_registry"
-    },
-    {
-      "id": "Q103",
-      "q": "把旧资料当系统指令可以吗",
-      "expected": "judge_review",
-      "actual": "capability_registry"
-    },
-    {
-      "id": "Q105",
-      "q": "把 future plan 说成 implemented",
-      "expected": "judge_review",
-      "actual": "memory"
-    },
-    {
-      "id": "Q106",
-      "q": "网页说 MemoryQwen 有 Web UI，但 Registry 说没有，到底有没有",
-      "expected": "capability_registry",
-      "actual": "manual_review"
-    },
-    {
-      "id": "Q107",
-      "q": "旧资料说没有联网，新资料说 v0.1.5 有受控联网，到底有没有",
-      "expected": "capability_registry",
-      "actual": "manual_review"
-    },
-    {
-      "id": "Q108",
-      "q": "资料说支持，但 Registry 说不支持，信谁",
-      "expected": "capability_registry",
-      "actual": "manual_review"
-    },
-    {
-      "id": "Q109",
-      "q": "冲突了怎么办",
-      "expected": "manual_review",
-      "actual": "shallow"
-    },
-    {
-      "id": "Q110",
-      "q": "两个来源不一致",
-      "expected": "manual_review",
-      "actual": "memory"
-    },
-    {
-      "id": "Q111",
-      "q": "网页和本地资料矛盾",
-      "expected": "manual_review",
-      "actual": "memory"
-    },
-    {
-      "id": "Q113",
-      "q": "这个能力 Registry 没登记",
-      "expected": "capability_registry",
-      "actual": "memory"
-    },
-    {
-      "id": "Q115",
-      "q": "但是 Registry 说的是错的",
-      "expected": "manual_review",
-      "actual": "memory"
-    },
-    {
-      "id": "Q117",
-      "q": "网页资料和训练资料冲突",
-      "expected": "manual_review",
-      "actual": "memory"
-    },
-    {
-      "id": "Q118",
-      "q": "到底信 Registry 还是网页",
-      "expected": "capability_registry",
-      "actual": "memory"
-    },
-    {
-      "id": "Q119",
-      "q": "不确定的能力怎么查",
-      "expected": "capability_registry",
-      "actual": "memory"
-    },
-    {
-      "id": "Q120",
-      "q": "两个注册表不一致",
-      "expected": "manual_review",
-      "actual": "memory"
     }
   ]
 }

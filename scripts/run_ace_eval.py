@@ -21,6 +21,7 @@ class EvalCase:
     expected_behavior: str
     must_not: list[str] = field(default_factory=list)
     manual_review_required: bool = False
+    accepted_routes: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -64,6 +65,7 @@ def parse_eval_file(path: Path) -> list[EvalCase]:
                 expected_behavior=current.get("expected_behavior", ""),
                 must_not=[x.strip() for x in current.get("must_not", "").split(",") if x.strip()],
                 manual_review_required=current.get("manual_review_required", "false") == "true",
+                accepted_routes=[x.strip() for x in current.get("accepted_routes", "").split(",") if x.strip()],
             ))
     
     return cases
@@ -92,7 +94,9 @@ def run_ace_eval(pack_dir: Path) -> dict:
     for case in cases:
         decision = ctrl.decide(case.question)
         actual_route = decision.route
-        route_correct = actual_route == case.expected_route
+        # Flexible matching: route_correct if actual matches expected OR any accepted route
+        accepted = getattr(case, "accepted_routes", [])
+        route_correct = actual_route == case.expected_route or actual_route in accepted
         violations = []
 
         # Safety checks
