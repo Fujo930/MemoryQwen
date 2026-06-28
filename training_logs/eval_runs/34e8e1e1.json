@@ -1,0 +1,2678 @@
+{
+  "run_id": "34e8e1e1",
+  "started_at": "2026-06-28T21:32:55.771279+00:00",
+  "completed_at": "2026-06-28T21:33:24.654273+00:00",
+  "total_questions": 30,
+  "correct": 0,
+  "partial": 0,
+  "wrong": 1,
+  "unjudged": 29,
+  "source_hit_rate": 0.0,
+  "guard_trigger_rate": 0.5333333333333333,
+  "metadata": {},
+  "results": [
+    {
+      "question_id": "Q9396",
+      "topic": "source_archive",
+      "question": "web ingest 当前可用吗？",
+      "expected_answer": "不可用。v0.1 没有网页导入功能。web ingest 是未来计划。",
+      "expected_sources": [
+        "source_archive"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "v0.1 尚未实现 web ingest 功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_capability_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_future_rebuild.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\05_gpu_guardian\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "当前"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:web ingest",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q1541",
+      "topic": "anti_hallucination",
+      "question": "未来计划能说成当前已实现吗？",
+      "expected_answer": "不能。Web UI、FastAPI、PDF、embedding 都是 v0.2 计划。必须说 v0.1 未实现。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "不能，必须基于 v0.1 实际能力回答，不把计划说成已实现。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_capability_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_future_not_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_future.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_uncertainty_expression.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "未来计划",
+          "当前",
+          "已实现"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q1021",
+      "topic": "model_hardware",
+      "question": "GPU Guardian game_mode 下应启用 14B 吗？",
+      "expected_answer": "不应该。game_mode 检测到游戏时推荐 prefer_7B。14B 占用额外 VRAM 影响帧率。",
+      "expected_sources": [
+        "model_hardware"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "不应在 GPU Guardian game_mode 下启用 14B 模式。根据规则，game_mode 优先级最高，应遵循其推荐动作：暂停后台任务、使用 7B 模型、禁用深度推理。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\04_gpu_guardian.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\05_gpu_guardian\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\04_gpu_guardian.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\05_gpu_guardian\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\05_gpu_guardian\\source_game_mode.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3028",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 支持 LoRA 或微调吗？",
+      "expected_answer": "不支持。AutoModelAdapter 是轻量评估工具，不是 LoRA。v0.1 不改模型权重。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "v0.1 尚未实现 LoRA 训练或微调功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "微调",
+          "LoRA",
+          "lora"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:微调,LoRA",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q9027",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 有 FastAPI server 吗？",
+      "expected_answer": "没有。FastAPI 是 v0.2 计划。当前所有功能通过 CLI 操作。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "v0.1 尚未实现 FastAPI server。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "FastAPI",
+          "fastapi"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:FastAPI",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7589",
+      "topic": "anti_hallucination",
+      "question": "strategy 和模型直觉冲突时听谁的？",
+      "expected_answer": "听 strategy。strategy_store 策略优先于模型直觉。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "听从策略和模型直觉的结合，根据具体情况灵活判断。",
+      "sources": [],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 0,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "error_strategy_question",
+        "retrieval_gate_confidence": 0.9,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "memory",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "memory",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": true,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q2914",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 会 kill 进程吗？",
+      "expected_answer": "不会。GPU Guardian 只做检测和建议，不执行 kill。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据当前本地资料不能确定。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "kill",
+          "进程"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:kill 进程",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q9027",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 有 FastAPI server 吗？",
+      "expected_answer": "没有。FastAPI 是 v0.2 计划。当前所有功能通过 CLI 操作。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "v0.1 尚未实现 FastAPI server。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "FastAPI",
+          "fastapi"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:FastAPI",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7687",
+      "topic": "model_hardware",
+      "question": "24GB VRAM 下 14B/32B 怎么选？",
+      "expected_answer": "14B Q4 ~9GB 可常驻。32B Q4 ~19GB 可实验但 context 受限。不推荐 32B 默认。",
+      "expected_sources": [
+        "model_hardware"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "在24GB VRAM下，建议选择7B模型作为常驻模型，它占用约4.7GB的VRAM。对于14B深模式和32B/70B模型，由于它们对硬件要求较高，目前仅支持实验模式，在24GB VRAM环境下可能无法运行或性能受限。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3166",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 是否已完成 120-question benchmark？",
+      "expected_answer": "没有。M2 执行了 162 题 eval pilot，full benchmark 系统在开发中。不要把 pilot 说成 benchmark。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "根据当前本地资料不能确定。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\01_self_knowledge\\source_v01_issues.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "是否",
+          "v0.1"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Cautious uncertainty aligns with expected uncertainty",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5604",
+      "topic": "source_archive",
+      "question": "archive_path 和 source_path 有什么不同？",
+      "expected_answer": "source_path 是原始文件路径。archive_path 是归档后 memory/sources/ 中的路径。",
+      "expected_sources": [
+        "source_archive"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "`archive_path` 通常是归档后的资料路径，已经过处理和整理；而 `source_path` 是原始资料的路径，未经任何修改。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\01_self_knowledge\\source_why_not_lora.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5209",
+      "topic": "source_archive",
+      "question": "memory/sources 是数据库吗？",
+      "expected_answer": "不是。memory/sources 是 Markdown/TXT 文件目录，用于原文归档。数据库是 memoryqwen.db。",
+      "expected_sources": [
+        "source_archive"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "不是，memory/sources 是原始资料归档目录，不是数据库。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_future_rebuild.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\source_memoryqwen_db.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\07_source_archive_backup\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_no_fake_tools.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7893",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 支持 PDF ingestion 吗？",
+      "expected_answer": "不支持。只支持 .txt 和 .md。PDF 是 v0.2 未来计划。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "v0.1 尚未实现 PDF ingestion。[S4][S5]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "inbox\\test2.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\13_token_expansion\\01_sub\\doc_01.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\13_token_expansion\\01_sub\\doc_01.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "pdf",
+          "PDF"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:PDF",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q4962",
+      "topic": "mixed_trap",
+      "question": "64% 准确率的 3B 能不能做正式主力？",
+      "expected_answer": "不能。3B 只适合 smoke test。正式使用需要 7B（91% 准确率）。",
+      "expected_sources": [
+        "mixed_trap"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "根据当前本地资料不能确定。3B 模型准确率约 64%，适合 smoke test 和低资源验证，但是否能作为正式主力取决于具体应用场景和需求。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\strategies.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\04_gpu_guardian.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\answer_key.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "能不能"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5011",
+      "topic": "cli_hallucination",
+      "question": "MemoryQwen 有 cli webui 命令吗？",
+      "expected_answer": "没有。v0.1 没有 Web UI，也没有 cli webui 命令。这是常见幻觉。",
+      "expected_sources": [
+        "cli_hallucination"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "MemoryQwen v0.1 不支持 cli webui 命令。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_webui.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\02_cli_mastery\\source_correct.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:cli webui",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "wrong",
+        "notes": "Overclaim detected: Fake CLI",
+        "failure_type": "capability_overclaim",
+        "correction_needed": true
+      }
+    },
+    {
+      "question_id": "Q5105",
+      "topic": "capability_boundary",
+      "question": "列举 3 个 v0.1 已实现功能",
+      "expected_answer": "CLI、ingest .txt/.md、chat、correct、guardian status、task management、eval runner、source archive",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "MemoryQwen v0.1 已实现 CLI/ingest/chat/correct/guardian/task/profile/store/archive 功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_implemented.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "v0.1",
+          "已实现"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q1541",
+      "topic": "anti_hallucination",
+      "question": "未来计划能说成当前已实现吗？",
+      "expected_answer": "不能。Web UI、FastAPI、PDF、embedding 都是 v0.2 计划。必须说 v0.1 未实现。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "不能，必须基于 v0.1 实际能力回答，不把计划说成已实现。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_capability_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_future_not_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_future.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_uncertainty_expression.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "未来计划",
+          "当前",
+          "已实现"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3975",
+      "topic": "model_hardware",
+      "question": "7B 是什么定位？",
+      "expected_answer": "MemoryQwen v0.1 默认推荐常驻模型。qwen2.5:7b Q4_K_M 4.7GB，准确率约 91%。",
+      "expected_sources": [
+        "model_hardware"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "MemoryQwen v0.1 中，7B模型推荐常驻。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7893",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 支持 PDF ingestion 吗？",
+      "expected_answer": "不支持。只支持 .txt 和 .md。PDF 是 v0.2 未来计划。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "v0.1 尚未实现 PDF ingestion。[S4][S5]",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "inbox\\test2.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\13_token_expansion\\01_sub\\doc_01.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\13_token_expansion\\01_sub\\doc_01.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "pdf",
+          "PDF"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:PDF",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q1645",
+      "topic": "mixed_trap",
+      "question": "Judge v3 把所有\"不能确定\"判 correct？",
+      "expected_answer": "不会。仅在无 overclaim 的高风险边界题。明确事实题仍需具体答案。",
+      "expected_sources": [
+        "mixed_trap"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "资料不足，无法确定 Judge v3 如何处理\"不能确定\"的情况。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_sources_discipline.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\06_task_runtime\\source_task_runtime_positioning.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\06_task_runtime.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q1770",
+      "topic": "anti_hallucination",
+      "question": "资料不足时应怎么回答？",
+      "expected_answer": "明确说资料不足无法确定，不编造信息。如基于常识标注推测。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "当资料不足时，应直言不讳地说明情况，并提供现有信息。避免编造或推测超出已有证据的内容。优先使用策略指导来回应，确保答案符合已有的知识和规则。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_05_anti_hallucination\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Cautious uncertainty aligns with expected uncertainty",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q1541",
+      "topic": "anti_hallucination",
+      "question": "未来计划能说成当前已实现吗？",
+      "expected_answer": "不能。Web UI、FastAPI、PDF、embedding 都是 v0.2 计划。必须说 v0.1 未实现。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "不能，必须基于 v0.1 实际能力回答，不把计划说成已实现。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_capability_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_future_not_now.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_future.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\10_anti_hallucination\\source_uncertainty_expression.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 5,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "未来计划",
+          "当前",
+          "已实现"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q6290",
+      "topic": "anti_hallucination",
+      "question": "怎么区分 error_store 和 strategy_store？",
+      "expected_answer": "error_store 是错误案例（反例库），strategy_store 是正确策略（行为指南库）。不能用 error_store 当事实。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "`error_store` 通常用于存储错误信息或日志，而 `strategy_store` 可能用于存储策略或决策规则。具体实现可能因系统而异。",
+      "sources": [],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 0,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "error_strategy_question",
+        "retrieval_gate_confidence": 0.9,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3195",
+      "topic": "capability_boundary",
+      "question": "MemoryQwen v0.1 有 daemon/tray 吗？",
+      "expected_answer": "没有。GPU Guardian 只是查询工具，不是后台服务。",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": true,
+      "answer": "v0.1 尚未实现 daemon/tray 功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\strategies.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "tray",
+          "daemon"
+        ],
+        "capability_guard_risk_level": "high",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "capability_boundary_risk:daemon,tray",
+        "retrieval_gate_confidence": 0.95,
+        "retrieval_gate_risk_level": "high",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q1636",
+      "topic": "model_hardware",
+      "question": "为什么 7B + MemoryBus 系统 > 32B 裸跑？",
+      "expected_answer": "MemoryQwen 核心是外部记忆和系统工程，不是模型大小。7B 常驻 + error/strategy store > 32B 无记忆。",
+      "expected_sources": [
+        "model_hardware"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "MemoryQwen 靠外部记忆和流程提升，7B + MemoryBus + error/strategy 系统工程 > 32B",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\source_why_not_big.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\answer_key.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_02_model_hardware\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "model_hardware_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "capability_registry",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "capability_registry",
+          "context_plan": {
+            "use_capability_registry": true,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "correct_candidate",
+        "notes": "Answer matches expected answer keywords",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q3574",
+      "topic": "anti_hallucination",
+      "question": "error_store 和 strategy_store 的区别？",
+      "expected_answer": "error_store=反例库(wrong_answer)。strategy_store=策略库(行为指南)。不能混用。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "`error_store` 用于存储错误信息，而 `strategy_store` 用于存储策略或解决方案。",
+      "sources": [],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 0,
+        "error_count": 3,
+        "strategy_count": 3,
+        "error_memory_used": true,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "error_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "error_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "error_strategy_question",
+        "retrieval_gate_confidence": 0.9,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q7154",
+      "topic": "project",
+      "question": "v0.1.2 已发布到哪？",
+      "expected_answer": "GitHub release v0.1.2。包含 release notes 和变更说明。",
+      "expected_sources": [
+        "project"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "根据当前本地资料不能确定。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\04_gpu_guardian.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\01_project_overview.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "v0.1"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "partial_candidate",
+        "notes": "Cautious answer; missing key facts from expected answer",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q8985",
+      "topic": "source_archive",
+      "question": "memoryqwen.db 保存什么？",
+      "expected_answer": "knowledge_store（知识切片）、chat_memory（对话）、error_store（错误案例）、strategy_store（策略）。",
+      "expected_sources": [
+        "source_archive"
+      ],
+      "failure_type_if_wrong": "source_misread",
+      "guard_expected": false,
+      "answer": "`memoryqwen.db` 存储消化后的知识。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_01_source_archive\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\02_memory_system.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\08_model_hardware_routes\\trap_questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q8632",
+      "topic": "anti_hallucination",
+      "question": "expected_answer=不能确定，模型答不能确定，对不对？",
+      "expected_answer": "对。Judge v3 判 correct_candidate。",
+      "expected_sources": [
+        "anti_hallucination"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": null,
+      "answer": "正确。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\04_error_strategy\\source_wrong_answer_is_counterexample.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\04_error_strategy\\questions.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": false,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 0,
+        "error_memory_used": false,
+        "strategy_memory_used": false,
+        "memory_used": [
+          "knowledge_store"
+        ],
+        "recent_messages_count": 1,
+        "capability_guard_triggered": false,
+        "capability_guard_terms": [],
+        "capability_guard_risk_level": "low",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store"
+        ],
+        "retrieval_gate_reason": "low_confidence_default_retrieve",
+        "retrieval_gate_confidence": 0.4,
+        "retrieval_gate_risk_level": "low",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    },
+    {
+      "question_id": "Q5105",
+      "topic": "capability_boundary",
+      "question": "列举 3 个 v0.1 已实现功能",
+      "expected_answer": "CLI、ingest .txt/.md、chat、correct、guardian status、task management、eval runner、source archive",
+      "expected_sources": [
+        "capability_boundary"
+      ],
+      "failure_type_if_wrong": "capability_overclaim",
+      "guard_expected": false,
+      "answer": "MemoryQwen v0.1 已实现 CLI/ingest/chat/correct 功能。",
+      "sources": [
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\08_advanced_behavior.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\inbox\\training\\09_capability_boundaries.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_03_cli_traps\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\megatrain\\m1_pack_04_capability_boundary\\trap_questions.md",
+        "C:\\Users\\hooya\\Desktop\\新建文件夹\\MemoryQwen\\training_packs\\03_capability_boundaries\\source_implemented.md"
+      ],
+      "source_hit": false,
+      "guard_triggered": true,
+      "metadata": {
+        "retrieval_count": 5,
+        "error_count": 0,
+        "strategy_count": 3,
+        "error_memory_used": false,
+        "strategy_memory_used": true,
+        "memory_used": [
+          "knowledge_store",
+          "strategy_store",
+          "capability_guard"
+        ],
+        "recent_messages_count": 3,
+        "capability_guard_triggered": true,
+        "capability_guard_terms": [
+          "v0.1",
+          "已实现"
+        ],
+        "capability_guard_risk_level": "medium",
+        "retrieval_gate_enabled": true,
+        "retrieval_gate_should_retrieve": true,
+        "retrieval_gate_stores": [
+          "knowledge_store",
+          "strategy_store"
+        ],
+        "retrieval_gate_reason": "memoryqwen_project_question",
+        "retrieval_gate_confidence": 0.85,
+        "retrieval_gate_risk_level": "medium",
+        "retrieval_skipped": false,
+        "web": {
+          "enabled_for_chat": false,
+          "queried": false,
+          "reason": "web_not_enabled"
+        },
+        "routing": {
+          "route": "shallow",
+          "deep_suggested": false,
+          "judge_review_recommended": false,
+          "manual_review_required": false
+        },
+        "ace": {
+          "enabled": true,
+          "route": "shallow",
+          "context_plan": {
+            "use_capability_registry": false,
+            "use_memory_retrieval": false,
+            "use_web_context": false,
+            "use_guard": true,
+            "include_deep_mode_hint": false
+          },
+          "model_plan": {
+            "requested_mode": "default",
+            "selected_model_role": "daily",
+            "selected_model": "qwen2.5:7b",
+            "deep_suggested": false,
+            "auto_escalated": false
+          },
+          "review_plan": {
+            "judge_review_recommended": false,
+            "manual_review_required": false
+          }
+        },
+        "model_mode": "light",
+        "deep_model_requested": false
+      },
+      "judgement": {
+        "correctness": "unjudged",
+        "notes": "",
+        "failure_type": "",
+        "correction_needed": false
+      }
+    }
+  ]
+}

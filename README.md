@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/version-0.1.5-blue" alt="version">
+  <img src="https://img.shields.io/badge/version-0.2.0--alpha-blue" alt="version">
   <img src="https://img.shields.io/badge/python-3.11+-blue" alt="python">
   <img src="https://img.shields.io/badge/tests-631%2F631-brightgreen" alt="tests">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="license">
@@ -11,11 +11,11 @@
 </p>
 
 <h1 align="center">MemoryQwen</h1>
-<h3 align="center">本地 AI Agent — 你的家用 AI 工作站</h3>
+<h3 align="center">本地 AI Agent — 自适应认知外骨骼 v0.2-alpha</h3>
 
 ---
 
-> **你的数据，你的模型，你的规则。** MemoryQwen 是一个完全运行在你电脑上的 AI agent 系统。不依赖任何云服务，所有数据留在本地。它会记住你教给它的一切，并在每次对话中引用来源。
+> **你的数据，你的模型，你的规则。** MemoryQwen v0.2-alpha 引入了 ACE-v1 自适应认知外骨骼——系统现在先判断事实、难度和风险，再决定如何回答。7B 仍是默认，14B 是可选 deep mode。不依赖任何云服务，所有数据留在本地。
 
 ## ✨ 为什么用 MemoryQwen？
 
@@ -68,7 +68,7 @@ python -m src.cli chat "API 地址是什么？" --debug-memory
 └─────────────────────────────────────────────────────┘
 ```
 
-## ✅ v0.1.5 功能概览
+## ✅ v0.2-alpha 功能概览
 
 | 模块 | 功能 | 状态 |
 |------|------|:----:|
@@ -85,7 +85,7 @@ python -m src.cli chat "API 地址是什么？" --debug-memory
 | 🛡️ 边界 | 能力边界守卫，防止模型幻觉夸大功能 | ✅ |
 | 🏷️ 来源 | 文件归档 → memory/sources/，聊天时精确引用 | ✅ |
 
-## v0.1.5 尚未实现
+## 尚未实现
 
 > Web UI · PDF/DOCX · embedding/向量检索 · daemon 后台 · tray 图标 · 爬虫 · LoRA 微调 · 一键安装 exe
 
@@ -171,8 +171,9 @@ python -m src.cli eval run training_packs/  # 运行评估
 
 ## 🗺️ 路线图
 
-- **v0.1** ✅ — CLI 形态，Developer Preview
-- **v0.1.5** ✅ — Internet Query (联网查询 + [W] 引用)
+- **v0.1.x** ✅ — Developer Preview
+- **v0.1.5** ✅ — Internet Query
+- **v0.2-alpha** ✅ — ACE-v1 自适应认知外骨骼
 - **v0.2** — Web UI 图形界面
 - **v0.3** — Embedding 向量检索 + 混合搜索
 

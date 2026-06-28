@@ -149,7 +149,7 @@ system:
   log_file: ./logs/memoryqwen.log
   log_level: INFO
   name: MemoryQwen
-  version: 0.1.5
+  version: 0.2.0-alpha
   workspace_dir: ./workspace
 task_runtime:
   auto_resume_on_normal: false

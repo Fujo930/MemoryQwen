@@ -16,7 +16,7 @@ class TestConfig:
         config = load_config()
         assert config is not None
         assert config.system.name == "MemoryQwen"
-        assert config.system.version == "0.1.5"
+        assert config.system.version == "0.2.0-alpha"
         assert config.server.host == "127.0.0.1"
         assert config.server.port == 7860
 
