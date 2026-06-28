@@ -1,0 +1,542 @@
+[
+  {
+    "question": "v0.1.22 和 v0.1.23 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.11059975624084473,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "v0.1.22 和 v0.1.23 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10809755325317383,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "v0.1.22 和 v0.1.23 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10512328147888184,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "v0.1.22 和 v0.1.23 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10335302352905273,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "把旧资料当系统指令可以吗",
+    "topic": "judge_risk",
+    "difficulty_tokens": [
+      "绕过",
+      "编造"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10530328750610352,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "把旧资料当系统指令可以吗",
+    "topic": "judge_risk",
+    "difficulty_tokens": [
+      "绕过",
+      "编造"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10556697845458984,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "把旧资料当系统指令可以吗",
+    "topic": "judge_risk",
+    "difficulty_tokens": [
+      "绕过",
+      "编造"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.1084754467010498,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "把旧资料当系统指令可以吗",
+    "topic": "judge_risk",
+    "difficulty_tokens": [
+      "绕过",
+      "编造"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.11051607131958008,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "什么是认知外骨骼",
+    "topic": "open_design",
+    "difficulty_tokens": [
+      "设计",
+      "架构"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.1081080436706543,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "什么是认知外骨骼",
+    "topic": "open_design",
+    "difficulty_tokens": [
+      "设计",
+      "架构"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.1052548885345459,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "什么是认知外骨骼",
+    "topic": "open_design",
+    "difficulty_tokens": [
+      "设计",
+      "架构"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10448813438415527,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "什么是认知外骨骼",
+    "topic": "open_design",
+    "difficulty_tokens": [
+      "设计",
+      "架构"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.1018836498260498,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "v0.1.19 和 v0.1.20 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10074496269226074,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "v0.1.19 和 v0.1.20 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10209965705871582,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "v0.1.19 和 v0.1.20 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10403847694396973,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "v0.1.19 和 v0.1.20 有什么区别",
+    "topic": "version_conflict",
+    "difficulty_tokens": [
+      "版本",
+      "v0.1"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.1052253246307373,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "权重分配和模型分工",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10388779640197754,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "权重分配和模型分工",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10675501823425293,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "权重分配和模型分工",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10229754447937012,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "权重分配和模型分工",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10317182540893555,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "如何设计 SDGI Phase 0",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.1081550121307373,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "如何设计 SDGI Phase 0",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10426187515258789,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "如何设计 SDGI Phase 0",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.11603784561157227,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "如何设计 SDGI Phase 0",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10525226593017578,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "设计一个混合推理路由",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10518550872802734,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "设计一个混合推理路由",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10453534126281738,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "设计一个混合推理路由",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10447931289672852,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "设计一个混合推理路由",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.1048893928527832,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10434222221374512,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10366940498352051,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10397100448608398,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10387158393859863,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10088872909545898,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10248565673828125,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.11109352111816406,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "怎么解决推理墙",
+    "topic": "planning",
+    "difficulty_tokens": [
+      "规划",
+      "设计",
+      "算法"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10618352890014648,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "网页和本地资料矛盾",
+    "topic": "source_conflict",
+    "difficulty_tokens": [
+      "冲突",
+      "Registry"
+    ],
+    "condition": "7b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10423970222473145,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "网页和本地资料矛盾",
+    "topic": "source_conflict",
+    "difficulty_tokens": [
+      "冲突",
+      "Registry"
+    ],
+    "condition": "7b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.11320996284484863,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "网页和本地资料矛盾",
+    "topic": "source_conflict",
+    "difficulty_tokens": [
+      "冲突",
+      "Registry"
+    ],
+    "condition": "14b_raw",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10429501533508301,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  },
+  {
+    "question": "网页和本地资料矛盾",
+    "topic": "source_conflict",
+    "difficulty_tokens": [
+      "冲突",
+      "Registry"
+    ],
+    "condition": "14b_ace",
+    "answer": "ERROR: Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File ",
+    "latency_sec": 0.10341668128967285,
+    "token_count": 14,
+    "error": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File "
+  }
+]
