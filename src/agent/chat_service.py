@@ -87,14 +87,17 @@ class AgentChatService:
         except Exception as e:
             logger.warning("Capability guard failed: %s", e)
 
-        # 1.6 检索门控
-        gate_decision = RetrievalDecision(should_retrieve=True,
-            store_types=["knowledge_store", "error_store", "strategy_store"],
-            top_k=5, reason="default")
+        # 1.6 检索门控 (with anaphora skip)
         retrieval_skipped = False
         try:
-            gate_decision = self.retrieval_gate.decide(request.message)
-            retrieval_skipped = gate_decision.skipped_retrieval
+            from src.agent.anaphora_detector import is_anaphora_followup
+            if is_anaphora_followup(request.message):
+                retrieval_skipped = True
+                gate_decision = RetrievalDecision(should_retrieve=False,
+                    store_types=[], top_k=0, reason="anaphora_followup_skip")
+            else:
+                gate_decision = self.retrieval_gate.decide(request.message)
+                retrieval_skipped = gate_decision.skipped_retrieval
         except Exception as e:
             logger.warning("Retrieval gate failed: %s", e)
 
