@@ -167,12 +167,26 @@ class AgentChatService:
                 web_meta["reason"] = decision.reason
                 if decision.should_query_web:
                     svc = WebQueryService(self.config)
-                    result = svc.ask(request.message, max_results=3)
-                    web_sources = result.sources
+                    if decision.reason.startswith("url_pasted:"):
+                        # URL pasted — fetch directly
+                        url = decision.reason.split(":", 1)[1]
+                        ws = svc.fetch(url)
+                        if not ws.text.startswith("[Error:"):
+                            web_sources = [ws]
+                            web_meta["sources"] = [ws.source_id]
+                        else:
+                            web_meta["fetch_error"] = ws.text
+                            web_meta["sources"] = []
+                    else:
+                        result = svc.ask(request.message, max_results=3)
+                        web_sources = result.sources
+                        web_meta["sources"] = [getattr(s, "source_id", f"W{i}") for i, s in enumerate(web_sources, 1)]
                     web_meta["queried"] = True
                     web_meta["source_count"] = len(web_sources)
-                    web_meta["elapsed_ms"] = result.elapsed_ms
-                    web_meta["sources"] = [getattr(s, "source_id", f"W{i}") for i, s in enumerate(web_sources, 1)]
+                    try:
+                        web_meta["elapsed_ms"] = result.elapsed_ms
+                    except NameError:
+                        web_meta["elapsed_ms"] = 0
                     memory_used.append("web")
             except Exception as e:
                 logger.warning("Web query failed: %s", e)

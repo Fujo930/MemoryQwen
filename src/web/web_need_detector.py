@@ -8,6 +8,10 @@ based on keyword signals and question category.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+import re
+
+# URL regex for detecting pasted URLs in chat
+_URL_PATTERN = re.compile(r"https?://[^\s\u4e00-\u9fff]+")
 
 # ── Web signal keywords ─────────────────────────────────────
 _WEB_SIGNAL_KEYWORDS: list[str] = [
@@ -50,6 +54,16 @@ class WebNeedDetector:
     """
 
     def should_use_web(self, user_message: str, web_enabled: bool) -> WebNeedDecision:
+        # Rule 0: pasted URL → always trigger web fetch
+        url_match = _URL_PATTERN.search(user_message)
+        if url_match and web_enabled:
+            url = url_match.group(0).rstrip(".,;:!?)")
+            return WebNeedDecision(
+                should_query_web=True,
+                reason=f"url_pasted:{url[:60]}",
+                confidence=1.0,
+            )
+
         # Rule 1: web disabled → never
         if not web_enabled:
             return WebNeedDecision(
