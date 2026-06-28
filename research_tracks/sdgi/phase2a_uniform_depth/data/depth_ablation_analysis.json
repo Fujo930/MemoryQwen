@@ -1,0 +1,77 @@
+{
+  "experiment": "SDGI Phase 2A — Uniform Depth Ablation (Path B: Depth Proxy)",
+  "date": "2026-06-28",
+  "data_sources": [
+    "SDGI Phase 0 (27Q)",
+    "ACE-v1 Eval (120Q)",
+    "M2 200Q Eval",
+    "Manual 7B/14B comparison"
+  ],
+  "route_depth_sensitivity": {},
+  "token_class_analysis": {},
+  "conditions_compared": [
+    "7B_raw",
+    "7B_ACE",
+    "14B_raw",
+    "14B_ACE"
+  ],
+  "route_accuracy": {
+    "shallow": "12/12",
+    "memory": "21/24",
+    "capability_registry": "26/26",
+    "judge_review": "15/16",
+    "web": "14/14",
+    "deep_suggested": "16/16",
+    "manual_review": "12/12"
+  },
+  "token_depth_correlation": {
+    "planning": {
+      "total_signals": 2,
+      "deep_suggested_count": 2,
+      "deep_ratio": 100.0
+    },
+    "conflict": {
+      "total_signals": 1,
+      "deep_suggested_count": 1,
+      "deep_ratio": 100.0
+    },
+    "hallucination": {
+      "total_signals": 5,
+      "deep_suggested_count": 0,
+      "deep_ratio": 0.0
+    },
+    "capability": {
+      "total_signals": 10,
+      "deep_suggested_count": 1,
+      "deep_ratio": 10.0
+    },
+    "web": {
+      "total_signals": 0,
+      "deep_suggested_count": 0,
+      "deep_ratio": 0.0
+    }
+  },
+  "deep_model_gain": {
+    "version_hallucination": {
+      "7B_rate": "~5%",
+      "14B_rate": "0%",
+      "improvement": "eliminated"
+    },
+    "capability_directness": {
+      "7B": "hesitates",
+      "14B": "direct",
+      "improvement": "significant"
+    },
+    "planning_engagement": {
+      "7B": "20% reject",
+      "14B": "30% partial",
+      "improvement": "marginal"
+    }
+  },
+  "ace_context_gain": {
+    "overclaim_prevention": "+18%",
+    "version_hallucination_reduction": "+3%",
+    "retrieval_efficiency": "+35% (casual skip)",
+    "route_accuracy": "+18.4% (78→96.7%)"
+  }
+}
