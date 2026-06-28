@@ -32,21 +32,13 @@
 ## ⚡ 5 分钟快速启动
 
 ```bash
-# 1. 安装
 git clone https://github.com/Fujo930/MemoryQwen
 cd MemoryQwen
 pip install -r requirements.txt
-
-# 2. 拉取模型 (Ollama)
 ollama pull qwen2.5:7b
-
-# 3. 导入你的文档
 mkdir inbox
 echo "# 项目文档" > inbox/test.md
-echo "API 地址是 http://localhost:8080" >> inbox/test.md
 python -m src.cli job ingest inbox/
-
-# 4. 开始聊天
 python -m src.cli chat "API 地址是什么？" --debug-memory
 ```
 
@@ -76,13 +68,14 @@ python -m src.cli chat "API 地址是什么？" --debug-memory
 └─────────────────────────────────────────────────────┘
 ```
 
-## ✅ v0.1 功能概览
+## ✅ v0.1.5 功能概览
 
 | 模块 | 功能 | 状态 |
 |------|------|:----:|
 | 📥 导入 | 文档导入 (.txt/.md) → SQLite | ✅ |
 | 🔍 检索 | BM25 关键词检索，多库搜索 | ✅ |
 | 💬 聊天 | 本地模型 (Ollama/LM Studio) + 来源引用 | ✅ |
+| 🌐 联网 | Internet Query：web search/fetch/ask，[W] 引用，不是 crawler | ✅ v0.1.5 |
 | 🧠 记忆 | 对话历史 + 知识库持久化存储 | ✅ |
 | 🐛 纠错 | 用户纠正错误 → 自动学习 → 不再重犯 | ✅ |
 | 📋 策略 | 错误模式归纳 → 可复用策略沉淀 | ✅ |
@@ -90,14 +83,11 @@ python -m src.cli chat "API 地址是什么？" --debug-memory
 | 📊 任务 | 任务队列 + 暂停/恢复 + 持久化 | ✅ |
 | 🧪 评估 | 130 道评估题 + 启发式判定器 + 自动导出纠正 | ✅ |
 | 🛡️ 边界 | 能力边界守卫，防止模型幻觉夸大功能 | ✅ |
-| 🌐 联网 | Internet Query：web search/fetch/ask，[W] 引用，不是 crawler | ✅ v0.1.5 |
 | 🏷️ 来源 | 文件归档 → memory/sources/，聊天时精确引用 | ✅ |
 
-## v0.1 尚未实现
+## v0.1.5 尚未实现
 
 > Web UI · PDF/DOCX · embedding/向量检索 · daemon 后台 · tray 图标 · 爬虫 · LoRA 微调 · 一键安装 exe
-
-*这些在 v0.2+ 路线图中。v0.1.5 已支持受控联网查询。*
 
 ## 📊 当前真实数据
 
@@ -120,23 +110,27 @@ python -m src.cli chat "API 地址是什么？" --debug-memory
 
 > 💡 **3B 跑通，7B 常驻，14B 深度，32B+ 实验。**
 
-## 🛠️ 常用命令
+## 🧱 开发困境 & 已知瓶颈
 
-```bash
-python -m src.cli health              # 健康检查
-python -m src.cli job ingest inbox/   # 导入文档
-python -m src.cli chat "问题"         # 聊天 (自动检索本地资料)
-python -m src.cli correct \           # 纠错学习
-  --wrong "旧错误回答" \
-  --correct "正确答案" \
-  --strategy "避免策略"
-python -m src.cli memory stats        # 存储统计
-python -m src.cli guardian status     # GPU 让路状态
-python -m src.cli task list           # 任务列表
-python -m src.cli eval run training_packs/  # 运行评估
-```
+以下是在开发中遇到的实际困难，不美化、不隐藏。
 
-📖 [完整命令参考](docs/cli_reference.md)
+### 🚧 推理墙
+
+7B 模型在多源信息冲突时无法稳定推理。系统 prompt 说"v0.1.5 支持联网"，但 43K 条旧训练数据说"v0.1 不支持联网"——模型会在两者之间**随机摇摆**。同一个问题问三次，可能得到三种不同答案。
+
+**这不是 prompt 工程能解决的。** 需要 14B+ 参数规模或新的推理架构。RTX 4080 刚好能跑 14B：`ollama pull qwen2.5:14b`。
+
+### ⚖️ Heuristic Judge 关键词过敏
+
+v4 启发式判定器会误判正确回答。模型说"v0.1 **不支持** PDF"，判定器看到"PDF"就标 overclaim。M3 300 题 eval 中 36 个"wrong"**100% 是判定器误判**，0 个真实违规。需要 Judge v5（LLM-as-Judge）。
+
+### 🔍 检索质量瓶颈
+
+BM25 在 43K chunks 中偏向高频旧文档。新增文档信号完全被淹没。eval 的 source_hit 率 **0%**——不是答案错了，是检索引擎拉不到正确资料。需要 Retrieval Quality v2。
+
+### 🧩 单兵作战
+
+所有代码、文档、测试、训练数据、eval 系统均为一人维护。欢迎贡献者。
 
 ## ⚠️ 备份记忆
 
@@ -148,35 +142,46 @@ xcopy memory memory_backup_%date% /E /I
 
 详见 [记忆备份指南](docs/memory_backup.md)
 
+## 🛠️ 常用命令
+
+```bash
+python -m src.cli health              # 健康检查
+python -m src.cli job ingest inbox/   # 导入文档
+python -m src.cli chat "问题"         # 聊天 (自动检索本地资料)
+python -m src.cli web search "关键词" # 网页搜索 (v0.1.5)
+python -m src.cli correct --wrong "旧错误" --correct "正确答案"
+python -m src.cli memory stats        # 存储统计
+python -m src.cli guardian status     # GPU 让路状态
+python -m src.cli eval run training_packs/  # 运行评估
+```
+
+📖 [完整命令参考](docs/cli_reference.md)
+
 ## 📖 文档
 
 | 文档 | 说明 |
 |------|------|
 | [Windows 11 快速启动](docs/windows11_quickstart.md) | 从零开始搭建 |
+| [Internet Query](docs/internet_query.md) | 联网查询指南 |
 | [CLI 命令参考](docs/cli_reference.md) | 所有命令详解 |
 | [配置参考](docs/config_reference.md) | YAML 配置项说明 |
 | [系统架构](docs/architecture.md) | 技术架构文档 |
+| [安全模型](docs/security_model.md) | 安全设计 |
 | [记忆备份](docs/memory_backup.md) | 备份策略 |
-| [故障排除](docs/troubleshooting.md) | 常见问题 |
-| [发布说明](docs/release_notes_v0.1.0-dev.md) | v0.1 更新日志 |
 
 ## 🗺️ 路线图
 
-- **v0.1** (当前) — Developer Preview，CLI 形态
+- **v0.1** ✅ — CLI 形态，Developer Preview
 - **v0.1.5** ✅ — Internet Query (联网查询 + [W] 引用)
 - **v0.2** — Web UI 图形界面
 - **v0.3** — Embedding 向量检索 + 混合搜索
 
 ## 🤝 参与贡献
 
-v0.1 是 Developer Preview，欢迎提 Issue 和 PR。
+欢迎提 Issue 和 PR。
 
 ```bash
-# 运行测试
 python -m pytest tests/ -q --basetemp=/tmp/mqwen-pytest
-
-# 格式化
-pip install black && black src/ tests/
 ```
 
 ## 📄 License
